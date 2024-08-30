@@ -1,0 +1,14 @@
+{
+    "files.associations": {
+        "*.inc": "cpp",
+        "istream": "cpp",
+        "*.tcc": "cpp",
+        "vector": "cpp",
+        "mutex": "cpp",
+        "ostream": "cpp",
+        "stop_token": "cpp",
+        "typeinfo": "cpp",
+        "*.def": "cpp"
+    },
+    "cmake.sourceDirectory": "/Users/amanuelbogale/Documents/llvm-learn/calc-language"
+}
