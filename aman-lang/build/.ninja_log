@@ -1,0 +1,11 @@
+# ninja log v6
+2	62	1725067861972153985	lib/Lexer/CMakeFiles/amanlangLexer.dir/Lexer.cc.o	4d480b38000003e2
+3	62	1725067861972637531	lib/Sema/CMakeFiles/amanlangSema.dir/Sema.cc.o	5c3f517e39eccd2f
+63	791	1725067862032477949	lib/Parser/libamanlangParser.a	cfb339f86b60e7f8
+2	61	1725067861971614313	lib/Basic/CMakeFiles/amanlangBasic.dir/Diagnostic.cc.o	7f0836a89f213b82
+3	63	1725067861972405696	lib/Parser/CMakeFiles/amanlangParser.dir/Parser.cc.o	e3423da86de79fc7
+62	791	1725067862031744984	lib/Lexer/libamanlangLexer.a	7082b58cd85cdb4
+62	791	1725067862032107821	lib/Sema/libamanlangSema.a	80c7db15e3c7a248
+61	791	1725067862031090395	lib/Basic/libamanlangBasic.a	db9c943a22ad39e2
+1	576	1725069522533923144	lib/Basic/CMakeFiles/amanlangBasic.dir/Diagnostic.cc.o	7f0836a89f213b82
+579	620	1725069523111510542	lib/Basic/libamanlangBasic.a	db9c943a22ad39e2

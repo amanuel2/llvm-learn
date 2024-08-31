@@ -1,0 +1,1647 @@
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeDetermineSystem.cmake:205 (message)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      The system is: Darwin - 23.4.0 - arm64
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+      Compiler: /opt/homebrew/opt/llvm/bin/clang 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
+      
+      The C compiler identification is Clang, found in:
+        /Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/3.30.2/CompilerIdC/a.out
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+      Compiler: /opt/homebrew/opt/llvm/bin/clang++ 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
+      
+      The CXX compiler identification is Clang, found in:
+        /Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/3.30.2/CompilerIdCXX/a.out
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:74 (try_compile)"
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    checks:
+      - "Detecting C compiler ABI info"
+    directories:
+      source: "/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-T2uShF"
+      binary: "/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-T2uShF"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "/opt/homebrew/Cellar/llvm/18.1.6/bin/clang-scan-deps"
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: "-L/opt/homebrew/opt/llvm/lib"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: "14.4"
+      CMAKE_OSX_SYSROOT: "/Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk"
+    buildResult:
+      variable: "CMAKE_C_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-T2uShF'
+        
+        Run Build Command(s): /opt/homebrew/bin/ninja -v cmTC_e2ff3
+        [1/2] /opt/homebrew/opt/llvm/bin/clang   -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4   -v -Wl,-v -MD -MT CMakeFiles/cmTC_e2ff3.dir/CMakeCCompilerABI.c.o -MF CMakeFiles/cmTC_e2ff3.dir/CMakeCCompilerABI.c.o.d -o CMakeFiles/cmTC_e2ff3.dir/CMakeCCompilerABI.c.o -c /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeCCompilerABI.c
+        Homebrew clang version 18.1.6
+        Target: arm64-apple-darwin23.4.0
+        Thread model: posix
+        InstalledDir: /opt/homebrew/opt/llvm/bin
+        clang: warning: -Wl,-v: 'linker' input unused [-Wunused-command-line-argument]
+         (in-process)
+         "/opt/homebrew/Cellar/llvm/18.1.6/bin/clang-18" -cc1 -triple arm64-apple-macosx14.4.0 -Wundef-prefix=TARGET_OS_ -Werror=undef-prefix -Wdeprecated-objc-isa-usage -Werror=deprecated-objc-isa-usage -emit-obj -mrelax-all -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -mrelocation-model pic -pic-level 2 -mframe-pointer=non-leaf -ffp-contract=on -fno-rounding-math -funwind-tables=1 -target-sdk-version=15.0 -fcompatibility-qualified-id-block-type-checking -fvisibility-inlines-hidden-static-local-var -fbuiltin-headers-in-system-modules -fdefine-target-os-macros -target-cpu apple-m1 -target-feature +zcm -target-feature +zcz -target-feature +v8.5a -target-feature +aes -target-feature +crc -target-feature +dotprod -target-feature +complxnum -target-feature +fp-armv8 -target-feature +fullfp16 -target-feature +fp16fml -target-feature +jsconv -target-feature +lse -target-feature +pauth -target-feature +ras -target-feature +rcpc -target-feature +rdm -target-feature +sha2 -target-feature +sha3 -target-feature +neon -target-abi darwinpcs -debugger-tuning=lldb -fdebug-compilation-dir=/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-T2uShF -target-linker-version 1053.12 -v -fcoverage-compilation-dir=/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-T2uShF -resource-dir /opt/homebrew/Cellar/llvm/18.1.6/lib/clang/18 -dependency-file CMakeFiles/cmTC_e2ff3.dir/CMakeCCompilerABI.c.o.d -MT CMakeFiles/cmTC_e2ff3.dir/CMakeCCompilerABI.c.o -sys-header-deps -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -internal-isystem /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk/usr/local/include -internal-isystem /opt/homebrew/Cellar/llvm/18.1.6/lib/clang/18/include -internal-externc-isystem /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk/usr/include -ferror-limit 19 -stack-protector 1 -fblocks -fencode-extended-block-signature -fregister-global-dtors-with-atexit -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -fmax-type-align=16 -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_e2ff3.dir/CMakeCCompilerABI.c.o -x c /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeCCompilerABI.c
+        clang -cc1 version 18.1.6 based upon LLVM 18.1.6 default target arm64-apple-darwin23.4.0
+        ignoring nonexistent directory "/Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk/usr/local/include"
+        ignoring nonexistent directory "/Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk/Library/Frameworks"
+        #include "..." search starts here:
+        #include <...> search starts here:
+         /opt/homebrew/Cellar/llvm/18.1.6/lib/clang/18/include
+         /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk/usr/include
+         /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk/System/Library/Frameworks (framework directory)
+        End of search list.
+        [2/2] : && /opt/homebrew/opt/llvm/bin/clang -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4 -Wl,-search_paths_first -Wl,-headerpad_max_install_names -L/opt/homebrew/opt/llvm/lib -v -Wl,-v CMakeFiles/cmTC_e2ff3.dir/CMakeCCompilerABI.c.o -o cmTC_e2ff3   && :
+        Homebrew clang version 18.1.6
+        Target: arm64-apple-darwin23.4.0
+        Thread model: posix
+        InstalledDir: /opt/homebrew/opt/llvm/bin
+         "/opt/homebrew/anaconda3/bin/ld" -demangle -lto_library /opt/homebrew/Cellar/llvm/18.1.6/lib/libLTO.dylib -dynamic -arch arm64 -platform_version macos 14.4.0 15.0 -syslibroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk -mllvm -enable-linkonceodr-outlining -o cmTC_e2ff3 -L/opt/homebrew/opt/llvm/lib -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTC_e2ff3.dir/CMakeCCompilerABI.c.o -lSystem /opt/homebrew/Cellar/llvm/18.1.6/lib/clang/18/lib/darwin/libclang_rt.osx.a
+        @(#)PROGRAM:ld  PROJECT:ld64-530
+        BUILD 07:38:32 Sep  7 2022
+        configured to support archs: armv6 armv7 armv7s arm64 arm64e arm64_32 i386 x86_64 x86_64h armv6m armv7k armv7m armv7em (tvOS)
+        Library search paths:
+        	/opt/homebrew/opt/llvm/lib
+        	/Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk/usr/lib
+        Framework search paths:
+        	/Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk/System/Library/Frameworks/
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:113 (message)"
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Effective list of requested architectures (possibly empty)  : ""
+      Effective list of architectures found in the ABI info binary: "arm64"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:182 (message)"
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Parsed C implicit include dir info: rv=done
+        found start of include info
+        found start of implicit include info
+          add: [/opt/homebrew/Cellar/llvm/18.1.6/lib/clang/18/include]
+          add: [/Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk/usr/include]
+        end of search list found
+        collapse include dir [/opt/homebrew/Cellar/llvm/18.1.6/lib/clang/18/include] ==> [/opt/homebrew/Cellar/llvm/18.1.6/lib/clang/18/include]
+        collapse include dir [/Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk/usr/include] ==> [/Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk/usr/include]
+        implicit include dirs: [/opt/homebrew/Cellar/llvm/18.1.6/lib/clang/18/include;/Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk/usr/include]
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:218 (message)"
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Parsed C implicit link information:
+        link line regex: [^( *|.*[/\\])(ld[0-9]*(\\.[a-z]+)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(\\.[a-z]+)?))("|,| |$)]
+        ignore line: [Change Dir: '/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-T2uShF']
+        ignore line: []
+        ignore line: [Run Build Command(s): /opt/homebrew/bin/ninja -v cmTC_e2ff3]
+        ignore line: [[1/2] /opt/homebrew/opt/llvm/bin/clang   -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4   -v -Wl -v -MD -MT CMakeFiles/cmTC_e2ff3.dir/CMakeCCompilerABI.c.o -MF CMakeFiles/cmTC_e2ff3.dir/CMakeCCompilerABI.c.o.d -o CMakeFiles/cmTC_e2ff3.dir/CMakeCCompilerABI.c.o -c /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeCCompilerABI.c]
+        ignore line: [Homebrew clang version 18.1.6]
+        ignore line: [Target: arm64-apple-darwin23.4.0]
+        ignore line: [Thread model: posix]
+        ignore line: [InstalledDir: /opt/homebrew/opt/llvm/bin]
+        ignore line: [clang: warning: -Wl -v: 'linker' input unused [-Wunused-command-line-argument]]
+        ignore line: [ (in-process)]
+        ignore line: [ "/opt/homebrew/Cellar/llvm/18.1.6/bin/clang-18" -cc1 -triple arm64-apple-macosx14.4.0 -Wundef-prefix=TARGET_OS_ -Werror=undef-prefix -Wdeprecated-objc-isa-usage -Werror=deprecated-objc-isa-usage -emit-obj -mrelax-all -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -mrelocation-model pic -pic-level 2 -mframe-pointer=non-leaf -ffp-contract=on -fno-rounding-math -funwind-tables=1 -target-sdk-version=15.0 -fcompatibility-qualified-id-block-type-checking -fvisibility-inlines-hidden-static-local-var -fbuiltin-headers-in-system-modules -fdefine-target-os-macros -target-cpu apple-m1 -target-feature +zcm -target-feature +zcz -target-feature +v8.5a -target-feature +aes -target-feature +crc -target-feature +dotprod -target-feature +complxnum -target-feature +fp-armv8 -target-feature +fullfp16 -target-feature +fp16fml -target-feature +jsconv -target-feature +lse -target-feature +pauth -target-feature +ras -target-feature +rcpc -target-feature +rdm -target-feature +sha2 -target-feature +sha3 -target-feature +neon -target-abi darwinpcs -debugger-tuning=lldb -fdebug-compilation-dir=/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-T2uShF -target-linker-version 1053.12 -v -fcoverage-compilation-dir=/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-T2uShF -resource-dir /opt/homebrew/Cellar/llvm/18.1.6/lib/clang/18 -dependency-file CMakeFiles/cmTC_e2ff3.dir/CMakeCCompilerABI.c.o.d -MT CMakeFiles/cmTC_e2ff3.dir/CMakeCCompilerABI.c.o -sys-header-deps -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -internal-isystem /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk/usr/local/include -internal-isystem /opt/homebrew/Cellar/llvm/18.1.6/lib/clang/18/include -internal-externc-isystem /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk/usr/include -ferror-limit 19 -stack-protector 1 -fblocks -fencode-extended-block-signature -fregister-global-dtors-with-atexit -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -fmax-type-align=16 -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_e2ff3.dir/CMakeCCompilerABI.c.o -x c /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeCCompilerABI.c]
+        ignore line: [clang -cc1 version 18.1.6 based upon LLVM 18.1.6 default target arm64-apple-darwin23.4.0]
+        ignore line: [ignoring nonexistent directory "/Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk/usr/local/include"]
+        ignore line: [ignoring nonexistent directory "/Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk/Library/Frameworks"]
+        ignore line: [#include "..." search starts here:]
+        ignore line: [#include <...> search starts here:]
+        ignore line: [ /opt/homebrew/Cellar/llvm/18.1.6/lib/clang/18/include]
+        ignore line: [ /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk/usr/include]
+        ignore line: [ /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk/System/Library/Frameworks (framework directory)]
+        ignore line: [End of search list.]
+        ignore line: [[2/2] : && /opt/homebrew/opt/llvm/bin/clang -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4 -Wl -search_paths_first -Wl -headerpad_max_install_names -L/opt/homebrew/opt/llvm/lib -v -Wl -v CMakeFiles/cmTC_e2ff3.dir/CMakeCCompilerABI.c.o -o cmTC_e2ff3   && :]
+        ignore line: [Homebrew clang version 18.1.6]
+        ignore line: [Target: arm64-apple-darwin23.4.0]
+        ignore line: [Thread model: posix]
+        ignore line: [InstalledDir: /opt/homebrew/opt/llvm/bin]
+        link line: [ "/opt/homebrew/anaconda3/bin/ld" -demangle -lto_library /opt/homebrew/Cellar/llvm/18.1.6/lib/libLTO.dylib -dynamic -arch arm64 -platform_version macos 14.4.0 15.0 -syslibroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk -mllvm -enable-linkonceodr-outlining -o cmTC_e2ff3 -L/opt/homebrew/opt/llvm/lib -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTC_e2ff3.dir/CMakeCCompilerABI.c.o -lSystem /opt/homebrew/Cellar/llvm/18.1.6/lib/clang/18/lib/darwin/libclang_rt.osx.a]
+          arg [/opt/homebrew/anaconda3/bin/ld] ==> ignore
+          arg [-demangle] ==> ignore
+          arg [-lto_library] ==> ignore, skip following value
+          arg [/opt/homebrew/Cellar/llvm/18.1.6/lib/libLTO.dylib] ==> skip value of -lto_library
+          arg [-dynamic] ==> ignore
+          arg [-arch] ==> ignore
+          arg [arm64] ==> ignore
+          arg [-platform_version] ==> ignore
+          arg [macos] ==> ignore
+          arg [14.4.0] ==> ignore
+          arg [15.0] ==> ignore
+          arg [-syslibroot] ==> ignore
+          arg [/Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk] ==> ignore
+          arg [-mllvm] ==> ignore
+          arg [-enable-linkonceodr-outlining] ==> ignore
+          arg [-o] ==> ignore
+          arg [cmTC_e2ff3] ==> ignore
+          arg [-L/opt/homebrew/opt/llvm/lib] ==> dir [/opt/homebrew/opt/llvm/lib]
+          arg [-search_paths_first] ==> ignore
+          arg [-headerpad_max_install_names] ==> ignore
+          arg [-v] ==> ignore
+          arg [CMakeFiles/cmTC_e2ff3.dir/CMakeCCompilerABI.c.o] ==> ignore
+          arg [-lSystem] ==> lib [System]
+          arg [/opt/homebrew/Cellar/llvm/18.1.6/lib/clang/18/lib/darwin/libclang_rt.osx.a] ==> lib [/opt/homebrew/Cellar/llvm/18.1.6/lib/clang/18/lib/darwin/libclang_rt.osx.a]
+        linker tool for 'C': /opt/homebrew/anaconda3/bin/ld
+        Library search paths: [;/opt/homebrew/opt/llvm/lib;/Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk/usr/lib]
+        Framework search paths: [;/Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk/System/Library/Frameworks/]
+        remove lib [System]
+        remove lib [/opt/homebrew/Cellar/llvm/18.1.6/lib/clang/18/lib/darwin/libclang_rt.osx.a]
+        collapse library dir [/opt/homebrew/opt/llvm/lib] ==> [/opt/homebrew/opt/llvm/lib]
+        collapse library dir [/opt/homebrew/opt/llvm/lib] ==> [/opt/homebrew/opt/llvm/lib]
+        collapse library dir [/Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk/usr/lib] ==> [/Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk/usr/lib]
+        collapse framework dir [/Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk/System/Library/Frameworks/] ==> [/Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk/System/Library/Frameworks]
+        implicit libs: []
+        implicit objs: []
+        implicit dirs: [/opt/homebrew/opt/llvm/lib;/Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk/usr/lib]
+        implicit fwks: [/Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk/System/Library/Frameworks]
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CMakeDetermineLinkerId.cmake:40 (message)"
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:255 (cmake_determine_linker_id)"
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Running the C compiler's linker: "/opt/homebrew/anaconda3/bin/ld" "-v"
+      @(#)PROGRAM:ld  PROJECT:ld64-530
+      BUILD 07:38:32 Sep  7 2022
+      configured to support archs: armv6 armv7 armv7s arm64 arm64e arm64_32 i386 x86_64 x86_64h armv6m armv7k armv7m armv7em (tvOS)
+      LTO support using: LLVM version 14.0.6 (static support for 29, runtime is 29)
+      TAPI support using: TAPI version 11.0.0 (tapi-1100.0.11)
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:74 (try_compile)"
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    checks:
+      - "Detecting CXX compiler ABI info"
+    directories:
+      source: "/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-p5kvwQ"
+      binary: "/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-p5kvwQ"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "/opt/homebrew/Cellar/llvm/18.1.6/bin/clang-scan-deps"
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_CXX_SCAN_FOR_MODULES: "OFF"
+      CMAKE_EXE_LINKER_FLAGS: "-L/opt/homebrew/opt/llvm/lib"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: "14.4"
+      CMAKE_OSX_SYSROOT: "/Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk"
+    buildResult:
+      variable: "CMAKE_CXX_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-p5kvwQ'
+        
+        Run Build Command(s): /opt/homebrew/bin/ninja -v cmTC_24202
+        [1/2] /opt/homebrew/opt/llvm/bin/clang++   -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4   -v -Wl,-v -MD -MT CMakeFiles/cmTC_24202.dir/CMakeCXXCompilerABI.cpp.o -MF CMakeFiles/cmTC_24202.dir/CMakeCXXCompilerABI.cpp.o.d -o CMakeFiles/cmTC_24202.dir/CMakeCXXCompilerABI.cpp.o -c /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeCXXCompilerABI.cpp
+        Homebrew clang version 18.1.6
+        Target: arm64-apple-darwin23.4.0
+        Thread model: posix
+        InstalledDir: /opt/homebrew/opt/llvm/bin
+        clang++: warning: -Wl,-v: 'linker' input unused [-Wunused-command-line-argument]
+         (in-process)
+         "/opt/homebrew/Cellar/llvm/18.1.6/bin/clang-18" -cc1 -triple arm64-apple-macosx14.4.0 -Wundef-prefix=TARGET_OS_ -Werror=undef-prefix -Wdeprecated-objc-isa-usage -Werror=deprecated-objc-isa-usage -emit-obj -mrelax-all -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -mframe-pointer=non-leaf -ffp-contract=on -fno-rounding-math -funwind-tables=1 -target-sdk-version=15.0 -fcompatibility-qualified-id-block-type-checking -fvisibility-inlines-hidden-static-local-var -fbuiltin-headers-in-system-modules -fdefine-target-os-macros -target-cpu apple-m1 -target-feature +zcm -target-feature +zcz -target-feature +v8.5a -target-feature +aes -target-feature +crc -target-feature +dotprod -target-feature +complxnum -target-feature +fp-armv8 -target-feature +fullfp16 -target-feature +fp16fml -target-feature +jsconv -target-feature +lse -target-feature +pauth -target-feature +ras -target-feature +rcpc -target-feature +rdm -target-feature +sha2 -target-feature +sha3 -target-feature +neon -target-abi darwinpcs -debugger-tuning=lldb -fdebug-compilation-dir=/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-p5kvwQ -target-linker-version 1053.12 -v -fcoverage-compilation-dir=/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-p5kvwQ -resource-dir /opt/homebrew/Cellar/llvm/18.1.6/lib/clang/18 -dependency-file CMakeFiles/cmTC_24202.dir/CMakeCXXCompilerABI.cpp.o.d -MT CMakeFiles/cmTC_24202.dir/CMakeCXXCompilerABI.cpp.o -sys-header-deps -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -internal-isystem /opt/homebrew/opt/llvm/bin/../include/c++/v1 -internal-isystem /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk/usr/local/include -internal-isystem /opt/homebrew/Cellar/llvm/18.1.6/lib/clang/18/include -internal-externc-isystem /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk/usr/include -fdeprecated-macro -ferror-limit 19 -stack-protector 1 -fblocks -fencode-extended-block-signature -fregister-global-dtors-with-atexit -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -fcxx-exceptions -fexceptions -fmax-type-align=16 -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_24202.dir/CMakeCXXCompilerABI.cpp.o -x c++ /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeCXXCompilerABI.cpp
+        clang -cc1 version 18.1.6 based upon LLVM 18.1.6 default target arm64-apple-darwin23.4.0
+        ignoring nonexistent directory "/Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk/usr/local/include"
+        ignoring nonexistent directory "/Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk/Library/Frameworks"
+        #include "..." search starts here:
+        #include <...> search starts here:
+         /opt/homebrew/opt/llvm/bin/../include/c++/v1
+         /opt/homebrew/Cellar/llvm/18.1.6/lib/clang/18/include
+         /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk/usr/include
+         /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk/System/Library/Frameworks (framework directory)
+        End of search list.
+        [2/2] : && /opt/homebrew/opt/llvm/bin/clang++ -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4 -Wl,-search_paths_first -Wl,-headerpad_max_install_names -L/opt/homebrew/opt/llvm/lib -v -Wl,-v CMakeFiles/cmTC_24202.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_24202   && :
+        Homebrew clang version 18.1.6
+        Target: arm64-apple-darwin23.4.0
+        Thread model: posix
+        InstalledDir: /opt/homebrew/opt/llvm/bin
+         "/opt/homebrew/anaconda3/bin/ld" -demangle -lto_library /opt/homebrew/Cellar/llvm/18.1.6/lib/libLTO.dylib -dynamic -arch arm64 -platform_version macos 14.4.0 15.0 -syslibroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk -mllvm -enable-linkonceodr-outlining -o cmTC_24202 -L/opt/homebrew/opt/llvm/lib -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTC_24202.dir/CMakeCXXCompilerABI.cpp.o -lc++ -lSystem /opt/homebrew/Cellar/llvm/18.1.6/lib/clang/18/lib/darwin/libclang_rt.osx.a
+        @(#)PROGRAM:ld  PROJECT:ld64-530
+        BUILD 07:38:32 Sep  7 2022
+        configured to support archs: armv6 armv7 armv7s arm64 arm64e arm64_32 i386 x86_64 x86_64h armv6m armv7k armv7m armv7em (tvOS)
+        Library search paths:
+        	/opt/homebrew/opt/llvm/lib
+        	/Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk/usr/lib
+        Framework search paths:
+        	/Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk/System/Library/Frameworks/
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:113 (message)"
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Effective list of requested architectures (possibly empty)  : ""
+      Effective list of architectures found in the ABI info binary: "arm64"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:182 (message)"
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Parsed CXX implicit include dir info: rv=done
+        found start of include info
+        found start of implicit include info
+          add: [/opt/homebrew/opt/llvm/bin/../include/c++/v1]
+          add: [/opt/homebrew/Cellar/llvm/18.1.6/lib/clang/18/include]
+          add: [/Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk/usr/include]
+        end of search list found
+        collapse include dir [/opt/homebrew/opt/llvm/bin/../include/c++/v1] ==> [/opt/homebrew/opt/llvm/include/c++/v1]
+        collapse include dir [/opt/homebrew/Cellar/llvm/18.1.6/lib/clang/18/include] ==> [/opt/homebrew/Cellar/llvm/18.1.6/lib/clang/18/include]
+        collapse include dir [/Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk/usr/include] ==> [/Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk/usr/include]
+        implicit include dirs: [/opt/homebrew/opt/llvm/include/c++/v1;/opt/homebrew/Cellar/llvm/18.1.6/lib/clang/18/include;/Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk/usr/include]
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:218 (message)"
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Parsed CXX implicit link information:
+        link line regex: [^( *|.*[/\\])(ld[0-9]*(\\.[a-z]+)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(\\.[a-z]+)?))("|,| |$)]
+        ignore line: [Change Dir: '/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-p5kvwQ']
+        ignore line: []
+        ignore line: [Run Build Command(s): /opt/homebrew/bin/ninja -v cmTC_24202]
+        ignore line: [[1/2] /opt/homebrew/opt/llvm/bin/clang++   -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4   -v -Wl -v -MD -MT CMakeFiles/cmTC_24202.dir/CMakeCXXCompilerABI.cpp.o -MF CMakeFiles/cmTC_24202.dir/CMakeCXXCompilerABI.cpp.o.d -o CMakeFiles/cmTC_24202.dir/CMakeCXXCompilerABI.cpp.o -c /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeCXXCompilerABI.cpp]
+        ignore line: [Homebrew clang version 18.1.6]
+        ignore line: [Target: arm64-apple-darwin23.4.0]
+        ignore line: [Thread model: posix]
+        ignore line: [InstalledDir: /opt/homebrew/opt/llvm/bin]
+        ignore line: [clang++: warning: -Wl -v: 'linker' input unused [-Wunused-command-line-argument]]
+        ignore line: [ (in-process)]
+        ignore line: [ "/opt/homebrew/Cellar/llvm/18.1.6/bin/clang-18" -cc1 -triple arm64-apple-macosx14.4.0 -Wundef-prefix=TARGET_OS_ -Werror=undef-prefix -Wdeprecated-objc-isa-usage -Werror=deprecated-objc-isa-usage -emit-obj -mrelax-all -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -mframe-pointer=non-leaf -ffp-contract=on -fno-rounding-math -funwind-tables=1 -target-sdk-version=15.0 -fcompatibility-qualified-id-block-type-checking -fvisibility-inlines-hidden-static-local-var -fbuiltin-headers-in-system-modules -fdefine-target-os-macros -target-cpu apple-m1 -target-feature +zcm -target-feature +zcz -target-feature +v8.5a -target-feature +aes -target-feature +crc -target-feature +dotprod -target-feature +complxnum -target-feature +fp-armv8 -target-feature +fullfp16 -target-feature +fp16fml -target-feature +jsconv -target-feature +lse -target-feature +pauth -target-feature +ras -target-feature +rcpc -target-feature +rdm -target-feature +sha2 -target-feature +sha3 -target-feature +neon -target-abi darwinpcs -debugger-tuning=lldb -fdebug-compilation-dir=/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-p5kvwQ -target-linker-version 1053.12 -v -fcoverage-compilation-dir=/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-p5kvwQ -resource-dir /opt/homebrew/Cellar/llvm/18.1.6/lib/clang/18 -dependency-file CMakeFiles/cmTC_24202.dir/CMakeCXXCompilerABI.cpp.o.d -MT CMakeFiles/cmTC_24202.dir/CMakeCXXCompilerABI.cpp.o -sys-header-deps -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -internal-isystem /opt/homebrew/opt/llvm/bin/../include/c++/v1 -internal-isystem /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk/usr/local/include -internal-isystem /opt/homebrew/Cellar/llvm/18.1.6/lib/clang/18/include -internal-externc-isystem /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk/usr/include -fdeprecated-macro -ferror-limit 19 -stack-protector 1 -fblocks -fencode-extended-block-signature -fregister-global-dtors-with-atexit -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -fcxx-exceptions -fexceptions -fmax-type-align=16 -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_24202.dir/CMakeCXXCompilerABI.cpp.o -x c++ /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeCXXCompilerABI.cpp]
+        ignore line: [clang -cc1 version 18.1.6 based upon LLVM 18.1.6 default target arm64-apple-darwin23.4.0]
+        ignore line: [ignoring nonexistent directory "/Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk/usr/local/include"]
+        ignore line: [ignoring nonexistent directory "/Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk/Library/Frameworks"]
+        ignore line: [#include "..." search starts here:]
+        ignore line: [#include <...> search starts here:]
+        ignore line: [ /opt/homebrew/opt/llvm/bin/../include/c++/v1]
+        ignore line: [ /opt/homebrew/Cellar/llvm/18.1.6/lib/clang/18/include]
+        ignore line: [ /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk/usr/include]
+        ignore line: [ /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk/System/Library/Frameworks (framework directory)]
+        ignore line: [End of search list.]
+        ignore line: [[2/2] : && /opt/homebrew/opt/llvm/bin/clang++ -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4 -Wl -search_paths_first -Wl -headerpad_max_install_names -L/opt/homebrew/opt/llvm/lib -v -Wl -v CMakeFiles/cmTC_24202.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_24202   && :]
+        ignore line: [Homebrew clang version 18.1.6]
+        ignore line: [Target: arm64-apple-darwin23.4.0]
+        ignore line: [Thread model: posix]
+        ignore line: [InstalledDir: /opt/homebrew/opt/llvm/bin]
+        link line: [ "/opt/homebrew/anaconda3/bin/ld" -demangle -lto_library /opt/homebrew/Cellar/llvm/18.1.6/lib/libLTO.dylib -dynamic -arch arm64 -platform_version macos 14.4.0 15.0 -syslibroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk -mllvm -enable-linkonceodr-outlining -o cmTC_24202 -L/opt/homebrew/opt/llvm/lib -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTC_24202.dir/CMakeCXXCompilerABI.cpp.o -lc++ -lSystem /opt/homebrew/Cellar/llvm/18.1.6/lib/clang/18/lib/darwin/libclang_rt.osx.a]
+          arg [/opt/homebrew/anaconda3/bin/ld] ==> ignore
+          arg [-demangle] ==> ignore
+          arg [-lto_library] ==> ignore, skip following value
+          arg [/opt/homebrew/Cellar/llvm/18.1.6/lib/libLTO.dylib] ==> skip value of -lto_library
+          arg [-dynamic] ==> ignore
+          arg [-arch] ==> ignore
+          arg [arm64] ==> ignore
+          arg [-platform_version] ==> ignore
+          arg [macos] ==> ignore
+          arg [14.4.0] ==> ignore
+          arg [15.0] ==> ignore
+          arg [-syslibroot] ==> ignore
+          arg [/Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk] ==> ignore
+          arg [-mllvm] ==> ignore
+          arg [-enable-linkonceodr-outlining] ==> ignore
+          arg [-o] ==> ignore
+          arg [cmTC_24202] ==> ignore
+          arg [-L/opt/homebrew/opt/llvm/lib] ==> dir [/opt/homebrew/opt/llvm/lib]
+          arg [-search_paths_first] ==> ignore
+          arg [-headerpad_max_install_names] ==> ignore
+          arg [-v] ==> ignore
+          arg [CMakeFiles/cmTC_24202.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+          arg [-lc++] ==> lib [c++]
+          arg [-lSystem] ==> lib [System]
+          arg [/opt/homebrew/Cellar/llvm/18.1.6/lib/clang/18/lib/darwin/libclang_rt.osx.a] ==> lib [/opt/homebrew/Cellar/llvm/18.1.6/lib/clang/18/lib/darwin/libclang_rt.osx.a]
+        linker tool for 'CXX': /opt/homebrew/anaconda3/bin/ld
+        Library search paths: [;/opt/homebrew/opt/llvm/lib;/Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk/usr/lib]
+        Framework search paths: [;/Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk/System/Library/Frameworks/]
+        remove lib [System]
+        remove lib [/opt/homebrew/Cellar/llvm/18.1.6/lib/clang/18/lib/darwin/libclang_rt.osx.a]
+        collapse library dir [/opt/homebrew/opt/llvm/lib] ==> [/opt/homebrew/opt/llvm/lib]
+        collapse library dir [/opt/homebrew/opt/llvm/lib] ==> [/opt/homebrew/opt/llvm/lib]
+        collapse library dir [/Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk/usr/lib] ==> [/Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk/usr/lib]
+        collapse framework dir [/Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk/System/Library/Frameworks/] ==> [/Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk/System/Library/Frameworks]
+        implicit libs: [c++]
+        implicit objs: []
+        implicit dirs: [/opt/homebrew/opt/llvm/lib;/Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk/usr/lib]
+        implicit fwks: [/Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk/System/Library/Frameworks]
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CMakeDetermineLinkerId.cmake:40 (message)"
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:255 (cmake_determine_linker_id)"
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Running the CXX compiler's linker: "/opt/homebrew/anaconda3/bin/ld" "-v"
+      @(#)PROGRAM:ld  PROJECT:ld64-530
+      BUILD 07:38:32 Sep  7 2022
+      configured to support archs: armv6 armv7 armv7s arm64 arm64e arm64_32 i386 x86_64 x86_64h armv6m armv7k armv7m armv7em (tvOS)
+      LTO support using: LLVM version 14.0.6 (static support for 29, runtime is 29)
+      TAPI support using: TAPI version 11.0.0 (tapi-1100.0.11)
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CheckCSourceCompiles.cmake:52 (cmake_check_source_compiles)"
+      - "/opt/homebrew/opt/llvm/lib/cmake/llvm/FindFFI.cmake:59 (check_c_source_compiles)"
+      - "/opt/homebrew/opt/llvm/lib/cmake/llvm/LLVMConfig.cmake:255 (find_package)"
+      - "CMakeLists.txt:23 (find_package)"
+    checks:
+      - "Performing Test HAVE_FFI_CALL"
+    directories:
+      source: "/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-0NMq4t"
+      binary: "/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-0NMq4t"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "/opt/homebrew/Cellar/llvm/18.1.6/bin/clang-scan-deps"
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: "-L/opt/homebrew/opt/llvm/lib"
+      CMAKE_MODULE_PATH: "/Users/aman/Documents/llvm-project/install/lib/cmake/llvm;/Users/aman/Documents/llvm-project/install/lib/cmake/clang;/opt/homebrew/opt/llvm/lib/cmake/llvm"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: "14.4"
+      CMAKE_OSX_SYSROOT: "/Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk"
+    buildResult:
+      variable: "HAVE_FFI_CALL"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-0NMq4t'
+        
+        Run Build Command(s): /opt/homebrew/bin/ninja -v cmTC_952b6
+        [1/2] /opt/homebrew/opt/llvm/bin/clang -DHAVE_FFI_CALL  -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4 -MD -MT CMakeFiles/cmTC_952b6.dir/src.c.o -MF CMakeFiles/cmTC_952b6.dir/src.c.o.d -o CMakeFiles/cmTC_952b6.dir/src.c.o -c /Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-0NMq4t/src.c
+        [2/2] : && /opt/homebrew/opt/llvm/bin/clang -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4 -Wl,-search_paths_first -Wl,-headerpad_max_install_names -L/opt/homebrew/opt/llvm/lib CMakeFiles/cmTC_952b6.dir/src.c.o -o cmTC_952b6  /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk/usr/lib/libffi.tbd && :
+        ld: warning: text-based stub file /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk/usr/lib/libffi.tbd and library file /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk/usr/lib/libffi.tbd are out of sync. Falling back to library file for linking.
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CheckIncludeFile.cmake:90 (try_compile)"
+      - "/opt/homebrew/opt/llvm/lib/cmake/llvm/FindLibEdit.cmake:28 (check_include_file)"
+      - "/opt/homebrew/opt/llvm/lib/cmake/llvm/LLVMConfig.cmake:262 (find_package)"
+      - "CMakeLists.txt:23 (find_package)"
+    checks:
+      - "Looking for histedit.h"
+    directories:
+      source: "/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-e7JWA6"
+      binary: "/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-e7JWA6"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "/opt/homebrew/Cellar/llvm/18.1.6/bin/clang-scan-deps"
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: "-L/opt/homebrew/opt/llvm/lib"
+      CMAKE_MODULE_PATH: "/Users/aman/Documents/llvm-project/install/lib/cmake/llvm;/Users/aman/Documents/llvm-project/install/lib/cmake/clang;/opt/homebrew/opt/llvm/lib/cmake/llvm"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: "14.4"
+      CMAKE_OSX_SYSROOT: "/Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk"
+    buildResult:
+      variable: "HAVE_HISTEDIT_H"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-e7JWA6'
+        
+        Run Build Command(s): /opt/homebrew/bin/ninja -v cmTC_f3b96
+        [1/2] /opt/homebrew/opt/llvm/bin/clang   -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4 -MD -MT CMakeFiles/cmTC_f3b96.dir/CheckIncludeFile.c.o -MF CMakeFiles/cmTC_f3b96.dir/CheckIncludeFile.c.o.d -o CMakeFiles/cmTC_f3b96.dir/CheckIncludeFile.c.o -c /Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-e7JWA6/CheckIncludeFile.c
+        [2/2] : && /opt/homebrew/opt/llvm/bin/clang -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4 -Wl,-search_paths_first -Wl,-headerpad_max_install_names -L/opt/homebrew/opt/llvm/lib CMakeFiles/cmTC_f3b96.dir/CheckIncludeFile.c.o -o cmTC_f3b96  /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk/usr/lib/libedit.tbd && :
+        ld: warning: text-based stub file /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk/usr/lib/libedit.tbd and library file /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk/usr/lib/libedit.tbd are out of sync. Falling back to library file for linking.
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CheckCSourceCompiles.cmake:52 (cmake_check_source_compiles)"
+      - "/opt/homebrew/opt/llvm/lib/cmake/llvm/FindTerminfo.cmake:32 (check_c_source_compiles)"
+      - "/opt/homebrew/opt/llvm/lib/cmake/llvm/LLVMConfig.cmake:267 (find_package)"
+      - "CMakeLists.txt:23 (find_package)"
+    checks:
+      - "Performing Test Terminfo_LINKABLE"
+    directories:
+      source: "/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-NpvqRR"
+      binary: "/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-NpvqRR"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "/opt/homebrew/Cellar/llvm/18.1.6/bin/clang-scan-deps"
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: "-L/opt/homebrew/opt/llvm/lib"
+      CMAKE_MODULE_PATH: "/Users/aman/Documents/llvm-project/install/lib/cmake/llvm;/Users/aman/Documents/llvm-project/install/lib/cmake/clang;/opt/homebrew/opt/llvm/lib/cmake/llvm"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: "14.4"
+      CMAKE_OSX_SYSROOT: "/Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk"
+    buildResult:
+      variable: "Terminfo_LINKABLE"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-NpvqRR'
+        
+        Run Build Command(s): /opt/homebrew/bin/ninja -v cmTC_7c266
+        [1/2] /opt/homebrew/opt/llvm/bin/clang -DTerminfo_LINKABLE  -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4 -MD -MT CMakeFiles/cmTC_7c266.dir/src.c.o -MF CMakeFiles/cmTC_7c266.dir/src.c.o.d -o CMakeFiles/cmTC_7c266.dir/src.c.o -c /Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-NpvqRR/src.c
+        [2/2] : && /opt/homebrew/opt/llvm/bin/clang -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4 -Wl,-search_paths_first -Wl,-headerpad_max_install_names -L/opt/homebrew/opt/llvm/lib CMakeFiles/cmTC_7c266.dir/src.c.o -o cmTC_7c266  /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk/usr/lib/libcurses.tbd && :
+        ld: warning: text-based stub file /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk/usr/lib/libcurses.tbd and library file /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk/usr/lib/libcurses.tbd are out of sync. Falling back to library file for linking.
+        
+      exitCode: 0
+...
+
+---
+events:
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CheckCXXSourceCompiles.cmake:52 (cmake_check_source_compiles)"
+      - "/opt/homebrew/opt/llvm/lib/cmake/llvm/CheckCompilerVersion.cmake:77 (check_cxx_source_compiles)"
+      - "/opt/homebrew/opt/llvm/lib/cmake/llvm/HandleLLVMOptions.cmake:9 (include)"
+      - "CMakeLists.txt:44 (include)"
+    checks:
+      - "Performing Test LLVM_LIBSTDCXX_MIN"
+    directories:
+      source: "/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-VXZGpq"
+      binary: "/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-VXZGpq"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "/opt/homebrew/Cellar/llvm/18.1.6/bin/clang-scan-deps"
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: "-L/opt/homebrew/opt/llvm/lib"
+      CMAKE_MODULE_PATH: "/Users/aman/Documents/llvm-project/install/lib/cmake/llvm;/Users/aman/Documents/llvm-project/install/lib/cmake/clang;/opt/homebrew/opt/llvm/lib/cmake/llvm;/opt/homebrew/opt/llvm/lib/cmake/llvm"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: "14.4"
+      CMAKE_OSX_SYSROOT: "/Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk"
+    buildResult:
+      variable: "LLVM_LIBSTDCXX_MIN"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-VXZGpq'
+        
+        Run Build Command(s): /opt/homebrew/bin/ninja -v cmTC_e11dd
+        [1/2] /opt/homebrew/opt/llvm/bin/clang++ -DLLVM_LIBSTDCXX_MIN  -std=c++0x -std=c++17 -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4 -MD -MT CMakeFiles/cmTC_e11dd.dir/src.cxx.o -MF CMakeFiles/cmTC_e11dd.dir/src.cxx.o.d -o CMakeFiles/cmTC_e11dd.dir/src.cxx.o -c /Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-VXZGpq/src.cxx
+        [2/2] : && /opt/homebrew/opt/llvm/bin/clang++ -std=c++0x -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4 -Wl,-search_paths_first -Wl,-headerpad_max_install_names -L/opt/homebrew/opt/llvm/lib CMakeFiles/cmTC_e11dd.dir/src.cxx.o -o cmTC_e11dd   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CheckCXXSourceCompiles.cmake:52 (cmake_check_source_compiles)"
+      - "/opt/homebrew/opt/llvm/lib/cmake/llvm/CheckCompilerVersion.cmake:90 (check_cxx_source_compiles)"
+      - "/opt/homebrew/opt/llvm/lib/cmake/llvm/HandleLLVMOptions.cmake:9 (include)"
+      - "CMakeLists.txt:44 (include)"
+    checks:
+      - "Performing Test LLVM_LIBSTDCXX_SOFT_ERROR"
+    directories:
+      source: "/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-PBSK4E"
+      binary: "/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-PBSK4E"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "/opt/homebrew/Cellar/llvm/18.1.6/bin/clang-scan-deps"
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: "-L/opt/homebrew/opt/llvm/lib"
+      CMAKE_MODULE_PATH: "/Users/aman/Documents/llvm-project/install/lib/cmake/llvm;/Users/aman/Documents/llvm-project/install/lib/cmake/clang;/opt/homebrew/opt/llvm/lib/cmake/llvm;/opt/homebrew/opt/llvm/lib/cmake/llvm"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: "14.4"
+      CMAKE_OSX_SYSROOT: "/Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk"
+    buildResult:
+      variable: "LLVM_LIBSTDCXX_SOFT_ERROR"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-PBSK4E'
+        
+        Run Build Command(s): /opt/homebrew/bin/ninja -v cmTC_30859
+        [1/2] /opt/homebrew/opt/llvm/bin/clang++ -DLLVM_LIBSTDCXX_SOFT_ERROR  -std=c++0x -std=c++17 -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4 -MD -MT CMakeFiles/cmTC_30859.dir/src.cxx.o -MF CMakeFiles/cmTC_30859.dir/src.cxx.o.d -o CMakeFiles/cmTC_30859.dir/src.cxx.o -c /Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-PBSK4E/src.cxx
+        [2/2] : && /opt/homebrew/opt/llvm/bin/clang++ -std=c++0x -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4 -Wl,-search_paths_first -Wl,-headerpad_max_install_names -L/opt/homebrew/opt/llvm/lib CMakeFiles/cmTC_30859.dir/src.cxx.o -o cmTC_30859   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CheckCCompilerFlag.cmake:51 (cmake_check_compiler_flag)"
+      - "/opt/homebrew/opt/llvm/lib/cmake/llvm/HandleLLVMOptions.cmake:312 (check_c_compiler_flag)"
+      - "/opt/homebrew/opt/llvm/lib/cmake/llvm/HandleLLVMOptions.cmake:380 (add_flag_or_print_warning)"
+      - "CMakeLists.txt:44 (include)"
+    checks:
+      - "Performing Test C_SUPPORTS_FPIC"
+    directories:
+      source: "/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-bmfKxP"
+      binary: "/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-bmfKxP"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "/opt/homebrew/Cellar/llvm/18.1.6/bin/clang-scan-deps"
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: "-L/opt/homebrew/opt/llvm/lib"
+      CMAKE_MODULE_PATH: "/Users/aman/Documents/llvm-project/install/lib/cmake/llvm;/Users/aman/Documents/llvm-project/install/lib/cmake/clang;/opt/homebrew/opt/llvm/lib/cmake/llvm;/opt/homebrew/opt/llvm/lib/cmake/llvm"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: "14.4"
+      CMAKE_OSX_SYSROOT: "/Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk"
+    buildResult:
+      variable: "C_SUPPORTS_FPIC"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-bmfKxP'
+        
+        Run Build Command(s): /opt/homebrew/bin/ninja -v cmTC_4ceaa
+        [1/2] /opt/homebrew/opt/llvm/bin/clang -DC_SUPPORTS_FPIC  -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4   -Werror -fPIC -MD -MT CMakeFiles/cmTC_4ceaa.dir/src.c.o -MF CMakeFiles/cmTC_4ceaa.dir/src.c.o.d -o CMakeFiles/cmTC_4ceaa.dir/src.c.o -c /Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-bmfKxP/src.c
+        [2/2] : && /opt/homebrew/opt/llvm/bin/clang -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4 -Wl,-search_paths_first -Wl,-headerpad_max_install_names -L/opt/homebrew/opt/llvm/lib CMakeFiles/cmTC_4ceaa.dir/src.c.o -o cmTC_4ceaa   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CheckCXXCompilerFlag.cmake:34 (cmake_check_compiler_flag)"
+      - "/opt/homebrew/opt/llvm/lib/cmake/llvm/HandleLLVMOptions.cmake:313 (check_cxx_compiler_flag)"
+      - "/opt/homebrew/opt/llvm/lib/cmake/llvm/HandleLLVMOptions.cmake:380 (add_flag_or_print_warning)"
+      - "CMakeLists.txt:44 (include)"
+    checks:
+      - "Performing Test CXX_SUPPORTS_FPIC"
+    directories:
+      source: "/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-aqWZ5J"
+      binary: "/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-aqWZ5J"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "/opt/homebrew/Cellar/llvm/18.1.6/bin/clang-scan-deps"
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: "-L/opt/homebrew/opt/llvm/lib"
+      CMAKE_MODULE_PATH: "/Users/aman/Documents/llvm-project/install/lib/cmake/llvm;/Users/aman/Documents/llvm-project/install/lib/cmake/clang;/opt/homebrew/opt/llvm/lib/cmake/llvm;/opt/homebrew/opt/llvm/lib/cmake/llvm"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: "14.4"
+      CMAKE_OSX_SYSROOT: "/Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk"
+    buildResult:
+      variable: "CXX_SUPPORTS_FPIC"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-aqWZ5J'
+        
+        Run Build Command(s): /opt/homebrew/bin/ninja -v cmTC_8817c
+        [1/2] /opt/homebrew/opt/llvm/bin/clang++ -DCXX_SUPPORTS_FPIC  -std=c++17 -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4   -Werror -fPIC -MD -MT CMakeFiles/cmTC_8817c.dir/src.cxx.o -MF CMakeFiles/cmTC_8817c.dir/src.cxx.o.d -o CMakeFiles/cmTC_8817c.dir/src.cxx.o -c /Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-aqWZ5J/src.cxx
+        [2/2] : && /opt/homebrew/opt/llvm/bin/clang++ -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4 -Wl,-search_paths_first -Wl,-headerpad_max_install_names -L/opt/homebrew/opt/llvm/lib CMakeFiles/cmTC_8817c.dir/src.cxx.o -o cmTC_8817c   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CheckCCompilerFlag.cmake:51 (cmake_check_compiler_flag)"
+      - "/opt/homebrew/opt/llvm/lib/cmake/llvm/HandleLLVMOptions.cmake:305 (check_c_compiler_flag)"
+      - "/opt/homebrew/opt/llvm/lib/cmake/llvm/HandleLLVMOptions.cmake:391 (add_flag_if_supported)"
+      - "CMakeLists.txt:44 (include)"
+    checks:
+      - "Performing Test C_SUPPORTS_FNO_SEMANTIC_INTERPOSITION"
+    directories:
+      source: "/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-sElnij"
+      binary: "/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-sElnij"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "/opt/homebrew/Cellar/llvm/18.1.6/bin/clang-scan-deps"
+      CMAKE_C_FLAGS: " -fPIC"
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: "-L/opt/homebrew/opt/llvm/lib"
+      CMAKE_MODULE_PATH: "/Users/aman/Documents/llvm-project/install/lib/cmake/llvm;/Users/aman/Documents/llvm-project/install/lib/cmake/clang;/opt/homebrew/opt/llvm/lib/cmake/llvm;/opt/homebrew/opt/llvm/lib/cmake/llvm"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: "14.4"
+      CMAKE_OSX_SYSROOT: "/Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk"
+    buildResult:
+      variable: "C_SUPPORTS_FNO_SEMANTIC_INTERPOSITION"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-sElnij'
+        
+        Run Build Command(s): /opt/homebrew/bin/ninja -v cmTC_43667
+        [1/2] /opt/homebrew/opt/llvm/bin/clang -DC_SUPPORTS_FNO_SEMANTIC_INTERPOSITION  -fPIC  -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4   -Werror -fno-semantic-interposition -MD -MT CMakeFiles/cmTC_43667.dir/src.c.o -MF CMakeFiles/cmTC_43667.dir/src.c.o.d -o CMakeFiles/cmTC_43667.dir/src.c.o -c /Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-sElnij/src.c
+        FAILED: CMakeFiles/cmTC_43667.dir/src.c.o 
+        /opt/homebrew/opt/llvm/bin/clang -DC_SUPPORTS_FNO_SEMANTIC_INTERPOSITION  -fPIC  -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4   -Werror -fno-semantic-interposition -MD -MT CMakeFiles/cmTC_43667.dir/src.c.o -MF CMakeFiles/cmTC_43667.dir/src.c.o.d -o CMakeFiles/cmTC_43667.dir/src.c.o -c /Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-sElnij/src.c
+        clang: error: argument unused during compilation: '-fno-semantic-interposition' [-Werror,-Wunused-command-line-argument]
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CheckCXXCompilerFlag.cmake:34 (cmake_check_compiler_flag)"
+      - "/opt/homebrew/opt/llvm/lib/cmake/llvm/HandleLLVMOptions.cmake:307 (check_cxx_compiler_flag)"
+      - "/opt/homebrew/opt/llvm/lib/cmake/llvm/HandleLLVMOptions.cmake:391 (add_flag_if_supported)"
+      - "CMakeLists.txt:44 (include)"
+    checks:
+      - "Performing Test CXX_SUPPORTS_FNO_SEMANTIC_INTERPOSITION"
+    directories:
+      source: "/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-POj935"
+      binary: "/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-POj935"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "/opt/homebrew/Cellar/llvm/18.1.6/bin/clang-scan-deps"
+      CMAKE_CXX_FLAGS: " -fPIC"
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: "-L/opt/homebrew/opt/llvm/lib"
+      CMAKE_MODULE_PATH: "/Users/aman/Documents/llvm-project/install/lib/cmake/llvm;/Users/aman/Documents/llvm-project/install/lib/cmake/clang;/opt/homebrew/opt/llvm/lib/cmake/llvm;/opt/homebrew/opt/llvm/lib/cmake/llvm"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: "14.4"
+      CMAKE_OSX_SYSROOT: "/Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk"
+    buildResult:
+      variable: "CXX_SUPPORTS_FNO_SEMANTIC_INTERPOSITION"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-POj935'
+        
+        Run Build Command(s): /opt/homebrew/bin/ninja -v cmTC_28eb0
+        [1/2] /opt/homebrew/opt/llvm/bin/clang++ -DCXX_SUPPORTS_FNO_SEMANTIC_INTERPOSITION  -fPIC  -std=c++17 -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4   -Werror -fno-semantic-interposition -MD -MT CMakeFiles/cmTC_28eb0.dir/src.cxx.o -MF CMakeFiles/cmTC_28eb0.dir/src.cxx.o.d -o CMakeFiles/cmTC_28eb0.dir/src.cxx.o -c /Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-POj935/src.cxx
+        FAILED: CMakeFiles/cmTC_28eb0.dir/src.cxx.o 
+        /opt/homebrew/opt/llvm/bin/clang++ -DCXX_SUPPORTS_FNO_SEMANTIC_INTERPOSITION  -fPIC  -std=c++17 -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4   -Werror -fno-semantic-interposition -MD -MT CMakeFiles/cmTC_28eb0.dir/src.cxx.o -MF CMakeFiles/cmTC_28eb0.dir/src.cxx.o.d -o CMakeFiles/cmTC_28eb0.dir/src.cxx.o -c /Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-POj935/src.cxx
+        clang++: error: argument unused during compilation: '-fno-semantic-interposition' [-Werror,-Wunused-command-line-argument]
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CheckCXXCompilerFlag.cmake:34 (cmake_check_compiler_flag)"
+      - "/opt/homebrew/opt/llvm/lib/cmake/llvm/HandleLLVMOptions.cmake:416 (check_cxx_compiler_flag)"
+      - "CMakeLists.txt:44 (include)"
+    checks:
+      - "Performing Test SUPPORTS_FVISIBILITY_INLINES_HIDDEN_FLAG"
+    directories:
+      source: "/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-2FG3pM"
+      binary: "/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-2FG3pM"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "/opt/homebrew/Cellar/llvm/18.1.6/bin/clang-scan-deps"
+      CMAKE_CXX_FLAGS: " -fPIC"
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: "-L/opt/homebrew/opt/llvm/lib"
+      CMAKE_MODULE_PATH: "/Users/aman/Documents/llvm-project/install/lib/cmake/llvm;/Users/aman/Documents/llvm-project/install/lib/cmake/clang;/opt/homebrew/opt/llvm/lib/cmake/llvm;/opt/homebrew/opt/llvm/lib/cmake/llvm"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: "14.4"
+      CMAKE_OSX_SYSROOT: "/Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk"
+    buildResult:
+      variable: "SUPPORTS_FVISIBILITY_INLINES_HIDDEN_FLAG"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-2FG3pM'
+        
+        Run Build Command(s): /opt/homebrew/bin/ninja -v cmTC_21833
+        [1/2] /opt/homebrew/opt/llvm/bin/clang++ -DSUPPORTS_FVISIBILITY_INLINES_HIDDEN_FLAG  -fPIC  -std=c++17 -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4   -fvisibility-inlines-hidden -MD -MT CMakeFiles/cmTC_21833.dir/src.cxx.o -MF CMakeFiles/cmTC_21833.dir/src.cxx.o.d -o CMakeFiles/cmTC_21833.dir/src.cxx.o -c /Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-2FG3pM/src.cxx
+        [2/2] : && /opt/homebrew/opt/llvm/bin/clang++ -fPIC  -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4 -Wl,-search_paths_first -Wl,-headerpad_max_install_names -L/opt/homebrew/opt/llvm/lib CMakeFiles/cmTC_21833.dir/src.cxx.o -o cmTC_21833   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CheckCCompilerFlag.cmake:51 (cmake_check_compiler_flag)"
+      - "/opt/homebrew/opt/llvm/lib/cmake/llvm/HandleLLVMOptions.cmake:305 (check_c_compiler_flag)"
+      - "/opt/homebrew/opt/llvm/lib/cmake/llvm/HandleLLVMOptions.cmake:639 (add_flag_if_supported)"
+      - "CMakeLists.txt:44 (include)"
+    checks:
+      - "Performing Test C_SUPPORTS_WERROR_DATE_TIME"
+    directories:
+      source: "/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-n3ZcNb"
+      binary: "/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-n3ZcNb"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "/opt/homebrew/Cellar/llvm/18.1.6/bin/clang-scan-deps"
+      CMAKE_C_FLAGS: " -fPIC"
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: "-L/opt/homebrew/opt/llvm/lib"
+      CMAKE_MODULE_PATH: "/Users/aman/Documents/llvm-project/install/lib/cmake/llvm;/Users/aman/Documents/llvm-project/install/lib/cmake/clang;/opt/homebrew/opt/llvm/lib/cmake/llvm;/opt/homebrew/opt/llvm/lib/cmake/llvm"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: "14.4"
+      CMAKE_OSX_SYSROOT: "/Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk"
+    buildResult:
+      variable: "C_SUPPORTS_WERROR_DATE_TIME"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-n3ZcNb'
+        
+        Run Build Command(s): /opt/homebrew/bin/ninja -v cmTC_a4841
+        [1/2] /opt/homebrew/opt/llvm/bin/clang -DC_SUPPORTS_WERROR_DATE_TIME  -fPIC  -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4   -Werror -Werror=date-time -MD -MT CMakeFiles/cmTC_a4841.dir/src.c.o -MF CMakeFiles/cmTC_a4841.dir/src.c.o.d -o CMakeFiles/cmTC_a4841.dir/src.c.o -c /Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-n3ZcNb/src.c
+        [2/2] : && /opt/homebrew/opt/llvm/bin/clang -fPIC  -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4 -Wl,-search_paths_first -Wl,-headerpad_max_install_names -L/opt/homebrew/opt/llvm/lib CMakeFiles/cmTC_a4841.dir/src.c.o -o cmTC_a4841   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CheckCXXCompilerFlag.cmake:34 (cmake_check_compiler_flag)"
+      - "/opt/homebrew/opt/llvm/lib/cmake/llvm/HandleLLVMOptions.cmake:307 (check_cxx_compiler_flag)"
+      - "/opt/homebrew/opt/llvm/lib/cmake/llvm/HandleLLVMOptions.cmake:639 (add_flag_if_supported)"
+      - "CMakeLists.txt:44 (include)"
+    checks:
+      - "Performing Test CXX_SUPPORTS_WERROR_DATE_TIME"
+    directories:
+      source: "/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-W9KDcz"
+      binary: "/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-W9KDcz"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "/opt/homebrew/Cellar/llvm/18.1.6/bin/clang-scan-deps"
+      CMAKE_CXX_FLAGS: " -fPIC -fvisibility-inlines-hidden"
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: "-L/opt/homebrew/opt/llvm/lib"
+      CMAKE_MODULE_PATH: "/Users/aman/Documents/llvm-project/install/lib/cmake/llvm;/Users/aman/Documents/llvm-project/install/lib/cmake/clang;/opt/homebrew/opt/llvm/lib/cmake/llvm;/opt/homebrew/opt/llvm/lib/cmake/llvm"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: "14.4"
+      CMAKE_OSX_SYSROOT: "/Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk"
+    buildResult:
+      variable: "CXX_SUPPORTS_WERROR_DATE_TIME"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-W9KDcz'
+        
+        Run Build Command(s): /opt/homebrew/bin/ninja -v cmTC_e1be1
+        [1/2] /opt/homebrew/opt/llvm/bin/clang++ -DCXX_SUPPORTS_WERROR_DATE_TIME  -fPIC -fvisibility-inlines-hidden  -std=c++17 -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4   -Werror -Werror=date-time -MD -MT CMakeFiles/cmTC_e1be1.dir/src.cxx.o -MF CMakeFiles/cmTC_e1be1.dir/src.cxx.o.d -o CMakeFiles/cmTC_e1be1.dir/src.cxx.o -c /Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-W9KDcz/src.cxx
+        [2/2] : && /opt/homebrew/opt/llvm/bin/clang++ -fPIC -fvisibility-inlines-hidden  -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4 -Wl,-search_paths_first -Wl,-headerpad_max_install_names -L/opt/homebrew/opt/llvm/lib CMakeFiles/cmTC_e1be1.dir/src.cxx.o -o cmTC_e1be1   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CheckCCompilerFlag.cmake:51 (cmake_check_compiler_flag)"
+      - "/opt/homebrew/opt/llvm/lib/cmake/llvm/HandleLLVMOptions.cmake:305 (check_c_compiler_flag)"
+      - "/opt/homebrew/opt/llvm/lib/cmake/llvm/HandleLLVMOptions.cmake:640 (add_flag_if_supported)"
+      - "CMakeLists.txt:44 (include)"
+    checks:
+      - "Performing Test C_SUPPORTS_WERROR_UNGUARDED_AVAILABILITY_NEW"
+    directories:
+      source: "/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-Ao9O82"
+      binary: "/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-Ao9O82"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "/opt/homebrew/Cellar/llvm/18.1.6/bin/clang-scan-deps"
+      CMAKE_C_FLAGS: " -fPIC -Werror=date-time"
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: "-L/opt/homebrew/opt/llvm/lib"
+      CMAKE_MODULE_PATH: "/Users/aman/Documents/llvm-project/install/lib/cmake/llvm;/Users/aman/Documents/llvm-project/install/lib/cmake/clang;/opt/homebrew/opt/llvm/lib/cmake/llvm;/opt/homebrew/opt/llvm/lib/cmake/llvm"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: "14.4"
+      CMAKE_OSX_SYSROOT: "/Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk"
+    buildResult:
+      variable: "C_SUPPORTS_WERROR_UNGUARDED_AVAILABILITY_NEW"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-Ao9O82'
+        
+        Run Build Command(s): /opt/homebrew/bin/ninja -v cmTC_77ce1
+        [1/2] /opt/homebrew/opt/llvm/bin/clang -DC_SUPPORTS_WERROR_UNGUARDED_AVAILABILITY_NEW  -fPIC -Werror=date-time  -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4   -Werror -Werror=unguarded-availability-new -MD -MT CMakeFiles/cmTC_77ce1.dir/src.c.o -MF CMakeFiles/cmTC_77ce1.dir/src.c.o.d -o CMakeFiles/cmTC_77ce1.dir/src.c.o -c /Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-Ao9O82/src.c
+        [2/2] : && /opt/homebrew/opt/llvm/bin/clang -fPIC -Werror=date-time  -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4 -Wl,-search_paths_first -Wl,-headerpad_max_install_names -L/opt/homebrew/opt/llvm/lib CMakeFiles/cmTC_77ce1.dir/src.c.o -o cmTC_77ce1   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CheckCXXCompilerFlag.cmake:34 (cmake_check_compiler_flag)"
+      - "/opt/homebrew/opt/llvm/lib/cmake/llvm/HandleLLVMOptions.cmake:307 (check_cxx_compiler_flag)"
+      - "/opt/homebrew/opt/llvm/lib/cmake/llvm/HandleLLVMOptions.cmake:640 (add_flag_if_supported)"
+      - "CMakeLists.txt:44 (include)"
+    checks:
+      - "Performing Test CXX_SUPPORTS_WERROR_UNGUARDED_AVAILABILITY_NEW"
+    directories:
+      source: "/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-YmA9Xm"
+      binary: "/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-YmA9Xm"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "/opt/homebrew/Cellar/llvm/18.1.6/bin/clang-scan-deps"
+      CMAKE_CXX_FLAGS: " -fPIC -fvisibility-inlines-hidden -Werror=date-time"
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: "-L/opt/homebrew/opt/llvm/lib"
+      CMAKE_MODULE_PATH: "/Users/aman/Documents/llvm-project/install/lib/cmake/llvm;/Users/aman/Documents/llvm-project/install/lib/cmake/clang;/opt/homebrew/opt/llvm/lib/cmake/llvm;/opt/homebrew/opt/llvm/lib/cmake/llvm"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: "14.4"
+      CMAKE_OSX_SYSROOT: "/Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk"
+    buildResult:
+      variable: "CXX_SUPPORTS_WERROR_UNGUARDED_AVAILABILITY_NEW"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-YmA9Xm'
+        
+        Run Build Command(s): /opt/homebrew/bin/ninja -v cmTC_4c6f7
+        [1/2] /opt/homebrew/opt/llvm/bin/clang++ -DCXX_SUPPORTS_WERROR_UNGUARDED_AVAILABILITY_NEW  -fPIC -fvisibility-inlines-hidden -Werror=date-time  -std=c++17 -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4   -Werror -Werror=unguarded-availability-new -MD -MT CMakeFiles/cmTC_4c6f7.dir/src.cxx.o -MF CMakeFiles/cmTC_4c6f7.dir/src.cxx.o.d -o CMakeFiles/cmTC_4c6f7.dir/src.cxx.o -c /Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-YmA9Xm/src.cxx
+        [2/2] : && /opt/homebrew/opt/llvm/bin/clang++ -fPIC -fvisibility-inlines-hidden -Werror=date-time  -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4 -Wl,-search_paths_first -Wl,-headerpad_max_install_names -L/opt/homebrew/opt/llvm/lib CMakeFiles/cmTC_4c6f7.dir/src.cxx.o -o cmTC_4c6f7   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CheckCCompilerFlag.cmake:51 (cmake_check_compiler_flag)"
+      - "/opt/homebrew/opt/llvm/lib/cmake/llvm/HandleLLVMOptions.cmake:305 (check_c_compiler_flag)"
+      - "/opt/homebrew/opt/llvm/lib/cmake/llvm/HandleLLVMOptions.cmake:650 (add_flag_if_supported)"
+      - "CMakeLists.txt:44 (include)"
+    checks:
+      - "Performing Test C_SUPPORTS_CMAKE_CXX_FLAGS"
+    directories:
+      source: "/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-sLSOYG"
+      binary: "/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-sLSOYG"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "/opt/homebrew/Cellar/llvm/18.1.6/bin/clang-scan-deps"
+      CMAKE_C_FLAGS: " -fPIC -Werror=date-time -Werror=unguarded-availability-new"
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: "-L/opt/homebrew/opt/llvm/lib"
+      CMAKE_MODULE_PATH: "/Users/aman/Documents/llvm-project/install/lib/cmake/llvm;/Users/aman/Documents/llvm-project/install/lib/cmake/clang;/opt/homebrew/opt/llvm/lib/cmake/llvm;/opt/homebrew/opt/llvm/lib/cmake/llvm"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: "14.4"
+      CMAKE_OSX_SYSROOT: "/Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk"
+    buildResult:
+      variable: "C_SUPPORTS_CMAKE_CXX_FLAGS"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-sLSOYG'
+        
+        Run Build Command(s): /opt/homebrew/bin/ninja -v cmTC_55aa3
+        [1/2] /opt/homebrew/opt/llvm/bin/clang -DC_SUPPORTS_CMAKE_CXX_FLAGS  -fPIC -Werror=date-time -Werror=unguarded-availability-new  -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4   -Werror -fno-lifetime-dse -MD -MT CMakeFiles/cmTC_55aa3.dir/src.c.o -MF CMakeFiles/cmTC_55aa3.dir/src.c.o.d -o CMakeFiles/cmTC_55aa3.dir/src.c.o -c /Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-sLSOYG/src.c
+        FAILED: CMakeFiles/cmTC_55aa3.dir/src.c.o 
+        /opt/homebrew/opt/llvm/bin/clang -DC_SUPPORTS_CMAKE_CXX_FLAGS  -fPIC -Werror=date-time -Werror=unguarded-availability-new  -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4   -Werror -fno-lifetime-dse -MD -MT CMakeFiles/cmTC_55aa3.dir/src.c.o -MF CMakeFiles/cmTC_55aa3.dir/src.c.o.d -o CMakeFiles/cmTC_55aa3.dir/src.c.o -c /Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-sLSOYG/src.c
+        clang: error: unknown argument: '-fno-lifetime-dse'
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CheckCXXCompilerFlag.cmake:34 (cmake_check_compiler_flag)"
+      - "/opt/homebrew/opt/llvm/lib/cmake/llvm/HandleLLVMOptions.cmake:307 (check_cxx_compiler_flag)"
+      - "/opt/homebrew/opt/llvm/lib/cmake/llvm/HandleLLVMOptions.cmake:650 (add_flag_if_supported)"
+      - "CMakeLists.txt:44 (include)"
+    checks:
+      - "Performing Test CXX_SUPPORTS_CMAKE_CXX_FLAGS"
+    directories:
+      source: "/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-ogCY40"
+      binary: "/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-ogCY40"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "/opt/homebrew/Cellar/llvm/18.1.6/bin/clang-scan-deps"
+      CMAKE_CXX_FLAGS: " -fPIC -fvisibility-inlines-hidden -Werror=date-time -Werror=unguarded-availability-new"
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: "-L/opt/homebrew/opt/llvm/lib"
+      CMAKE_MODULE_PATH: "/Users/aman/Documents/llvm-project/install/lib/cmake/llvm;/Users/aman/Documents/llvm-project/install/lib/cmake/clang;/opt/homebrew/opt/llvm/lib/cmake/llvm;/opt/homebrew/opt/llvm/lib/cmake/llvm"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: "14.4"
+      CMAKE_OSX_SYSROOT: "/Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk"
+    buildResult:
+      variable: "CXX_SUPPORTS_CMAKE_CXX_FLAGS"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-ogCY40'
+        
+        Run Build Command(s): /opt/homebrew/bin/ninja -v cmTC_4f86e
+        [1/2] /opt/homebrew/opt/llvm/bin/clang++ -DCXX_SUPPORTS_CMAKE_CXX_FLAGS  -fPIC -fvisibility-inlines-hidden -Werror=date-time -Werror=unguarded-availability-new  -std=c++17 -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4   -Werror -fno-lifetime-dse -MD -MT CMakeFiles/cmTC_4f86e.dir/src.cxx.o -MF CMakeFiles/cmTC_4f86e.dir/src.cxx.o.d -o CMakeFiles/cmTC_4f86e.dir/src.cxx.o -c /Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-ogCY40/src.cxx
+        FAILED: CMakeFiles/cmTC_4f86e.dir/src.cxx.o 
+        /opt/homebrew/opt/llvm/bin/clang++ -DCXX_SUPPORTS_CMAKE_CXX_FLAGS  -fPIC -fvisibility-inlines-hidden -Werror=date-time -Werror=unguarded-availability-new  -std=c++17 -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4   -Werror -fno-lifetime-dse -MD -MT CMakeFiles/cmTC_4f86e.dir/src.cxx.o -MF CMakeFiles/cmTC_4f86e.dir/src.cxx.o.d -o CMakeFiles/cmTC_4f86e.dir/src.cxx.o -c /Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-ogCY40/src.cxx
+        clang++: error: unknown argument: '-fno-lifetime-dse'
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CheckCXXCompilerFlag.cmake:34 (cmake_check_compiler_flag)"
+      - "/opt/homebrew/opt/llvm/lib/cmake/llvm/HandleLLVMOptions.cmake:786 (check_cxx_compiler_flag)"
+      - "CMakeLists.txt:44 (include)"
+    checks:
+      - "Performing Test CXX_SUPPORTS_MISSING_FIELD_INITIALIZERS_FLAG"
+    directories:
+      source: "/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-o0fc6B"
+      binary: "/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-o0fc6B"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "/opt/homebrew/Cellar/llvm/18.1.6/bin/clang-scan-deps"
+      CMAKE_CXX_FLAGS: " -fPIC -fvisibility-inlines-hidden -Werror=date-time -Werror=unguarded-availability-new -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual"
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: "-L/opt/homebrew/opt/llvm/lib"
+      CMAKE_MODULE_PATH: "/Users/aman/Documents/llvm-project/install/lib/cmake/llvm;/Users/aman/Documents/llvm-project/install/lib/cmake/clang;/opt/homebrew/opt/llvm/lib/cmake/llvm;/opt/homebrew/opt/llvm/lib/cmake/llvm"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: "14.4"
+      CMAKE_OSX_SYSROOT: "/Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk"
+    buildResult:
+      variable: "CXX_SUPPORTS_MISSING_FIELD_INITIALIZERS_FLAG"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-o0fc6B'
+        
+        Run Build Command(s): /opt/homebrew/bin/ninja -v cmTC_3f674
+        [1/2] /opt/homebrew/opt/llvm/bin/clang++ -DCXX_SUPPORTS_MISSING_FIELD_INITIALIZERS_FLAG  -fPIC -fvisibility-inlines-hidden -Werror=date-time -Werror=unguarded-availability-new -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual  -std=c++17 -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4   -Wmissing-field-initializers -MD -MT CMakeFiles/cmTC_3f674.dir/src.cxx.o -MF CMakeFiles/cmTC_3f674.dir/src.cxx.o.d -o CMakeFiles/cmTC_3f674.dir/src.cxx.o -c /Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-o0fc6B/src.cxx
+        [2/2] : && /opt/homebrew/opt/llvm/bin/clang++ -fPIC -fvisibility-inlines-hidden -Werror=date-time -Werror=unguarded-availability-new -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual  -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4 -Wl,-search_paths_first -Wl,-headerpad_max_install_names -L/opt/homebrew/opt/llvm/lib CMakeFiles/cmTC_3f674.dir/src.cxx.o -o cmTC_3f674   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CheckCCompilerFlag.cmake:51 (cmake_check_compiler_flag)"
+      - "/opt/homebrew/opt/llvm/lib/cmake/llvm/HandleLLVMOptions.cmake:305 (check_c_compiler_flag)"
+      - "/opt/homebrew/opt/llvm/lib/cmake/llvm/HandleLLVMOptions.cmake:805 (add_flag_if_supported)"
+      - "CMakeLists.txt:44 (include)"
+    checks:
+      - "Performing Test C_SUPPORTS_IMPLICIT_FALLTHROUGH_FLAG"
+    directories:
+      source: "/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-43QqeK"
+      binary: "/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-43QqeK"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "/opt/homebrew/Cellar/llvm/18.1.6/bin/clang-scan-deps"
+      CMAKE_C_FLAGS: " -fPIC -Werror=date-time -Werror=unguarded-availability-new -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers"
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: "-L/opt/homebrew/opt/llvm/lib"
+      CMAKE_MODULE_PATH: "/Users/aman/Documents/llvm-project/install/lib/cmake/llvm;/Users/aman/Documents/llvm-project/install/lib/cmake/clang;/opt/homebrew/opt/llvm/lib/cmake/llvm;/opt/homebrew/opt/llvm/lib/cmake/llvm"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: "14.4"
+      CMAKE_OSX_SYSROOT: "/Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk"
+    buildResult:
+      variable: "C_SUPPORTS_IMPLICIT_FALLTHROUGH_FLAG"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-43QqeK'
+        
+        Run Build Command(s): /opt/homebrew/bin/ninja -v cmTC_c6f6d
+        [1/2] /opt/homebrew/opt/llvm/bin/clang -DC_SUPPORTS_IMPLICIT_FALLTHROUGH_FLAG  -fPIC -Werror=date-time -Werror=unguarded-availability-new -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers  -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4   -Werror -Wimplicit-fallthrough -MD -MT CMakeFiles/cmTC_c6f6d.dir/src.c.o -MF CMakeFiles/cmTC_c6f6d.dir/src.c.o.d -o CMakeFiles/cmTC_c6f6d.dir/src.c.o -c /Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-43QqeK/src.c
+        [2/2] : && /opt/homebrew/opt/llvm/bin/clang -fPIC -Werror=date-time -Werror=unguarded-availability-new -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers  -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4 -Wl,-search_paths_first -Wl,-headerpad_max_install_names -L/opt/homebrew/opt/llvm/lib CMakeFiles/cmTC_c6f6d.dir/src.c.o -o cmTC_c6f6d   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CheckCXXCompilerFlag.cmake:34 (cmake_check_compiler_flag)"
+      - "/opt/homebrew/opt/llvm/lib/cmake/llvm/HandleLLVMOptions.cmake:307 (check_cxx_compiler_flag)"
+      - "/opt/homebrew/opt/llvm/lib/cmake/llvm/HandleLLVMOptions.cmake:805 (add_flag_if_supported)"
+      - "CMakeLists.txt:44 (include)"
+    checks:
+      - "Performing Test CXX_SUPPORTS_IMPLICIT_FALLTHROUGH_FLAG"
+    directories:
+      source: "/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-ejNY7M"
+      binary: "/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-ejNY7M"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "/opt/homebrew/Cellar/llvm/18.1.6/bin/clang-scan-deps"
+      CMAKE_CXX_FLAGS: " -fPIC -fvisibility-inlines-hidden -Werror=date-time -Werror=unguarded-availability-new -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers"
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: "-L/opt/homebrew/opt/llvm/lib"
+      CMAKE_MODULE_PATH: "/Users/aman/Documents/llvm-project/install/lib/cmake/llvm;/Users/aman/Documents/llvm-project/install/lib/cmake/clang;/opt/homebrew/opt/llvm/lib/cmake/llvm;/opt/homebrew/opt/llvm/lib/cmake/llvm"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: "14.4"
+      CMAKE_OSX_SYSROOT: "/Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk"
+    buildResult:
+      variable: "CXX_SUPPORTS_IMPLICIT_FALLTHROUGH_FLAG"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-ejNY7M'
+        
+        Run Build Command(s): /opt/homebrew/bin/ninja -v cmTC_82115
+        [1/2] /opt/homebrew/opt/llvm/bin/clang++ -DCXX_SUPPORTS_IMPLICIT_FALLTHROUGH_FLAG  -fPIC -fvisibility-inlines-hidden -Werror=date-time -Werror=unguarded-availability-new -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers  -std=c++17 -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4   -Werror -Wimplicit-fallthrough -MD -MT CMakeFiles/cmTC_82115.dir/src.cxx.o -MF CMakeFiles/cmTC_82115.dir/src.cxx.o.d -o CMakeFiles/cmTC_82115.dir/src.cxx.o -c /Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-ejNY7M/src.cxx
+        [2/2] : && /opt/homebrew/opt/llvm/bin/clang++ -fPIC -fvisibility-inlines-hidden -Werror=date-time -Werror=unguarded-availability-new -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers  -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4 -Wl,-search_paths_first -Wl,-headerpad_max_install_names -L/opt/homebrew/opt/llvm/lib CMakeFiles/cmTC_82115.dir/src.cxx.o -o cmTC_82115   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CheckCCompilerFlag.cmake:51 (cmake_check_compiler_flag)"
+      - "/opt/homebrew/opt/llvm/lib/cmake/llvm/HandleLLVMOptions.cmake:305 (check_c_compiler_flag)"
+      - "/opt/homebrew/opt/llvm/lib/cmake/llvm/HandleLLVMOptions.cmake:806 (add_flag_if_supported)"
+      - "CMakeLists.txt:44 (include)"
+    checks:
+      - "Performing Test C_SUPPORTS_COVERED_SWITCH_DEFAULT_FLAG"
+    directories:
+      source: "/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-tfGGOF"
+      binary: "/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-tfGGOF"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "/opt/homebrew/Cellar/llvm/18.1.6/bin/clang-scan-deps"
+      CMAKE_C_FLAGS: " -fPIC -Werror=date-time -Werror=unguarded-availability-new -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wimplicit-fallthrough"
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: "-L/opt/homebrew/opt/llvm/lib"
+      CMAKE_MODULE_PATH: "/Users/aman/Documents/llvm-project/install/lib/cmake/llvm;/Users/aman/Documents/llvm-project/install/lib/cmake/clang;/opt/homebrew/opt/llvm/lib/cmake/llvm;/opt/homebrew/opt/llvm/lib/cmake/llvm"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: "14.4"
+      CMAKE_OSX_SYSROOT: "/Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk"
+    buildResult:
+      variable: "C_SUPPORTS_COVERED_SWITCH_DEFAULT_FLAG"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-tfGGOF'
+        
+        Run Build Command(s): /opt/homebrew/bin/ninja -v cmTC_7465b
+        [1/2] /opt/homebrew/opt/llvm/bin/clang -DC_SUPPORTS_COVERED_SWITCH_DEFAULT_FLAG  -fPIC -Werror=date-time -Werror=unguarded-availability-new -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wimplicit-fallthrough  -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4   -Werror -Wcovered-switch-default -MD -MT CMakeFiles/cmTC_7465b.dir/src.c.o -MF CMakeFiles/cmTC_7465b.dir/src.c.o.d -o CMakeFiles/cmTC_7465b.dir/src.c.o -c /Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-tfGGOF/src.c
+        [2/2] : && /opt/homebrew/opt/llvm/bin/clang -fPIC -Werror=date-time -Werror=unguarded-availability-new -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wimplicit-fallthrough  -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4 -Wl,-search_paths_first -Wl,-headerpad_max_install_names -L/opt/homebrew/opt/llvm/lib CMakeFiles/cmTC_7465b.dir/src.c.o -o cmTC_7465b   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CheckCXXCompilerFlag.cmake:34 (cmake_check_compiler_flag)"
+      - "/opt/homebrew/opt/llvm/lib/cmake/llvm/HandleLLVMOptions.cmake:307 (check_cxx_compiler_flag)"
+      - "/opt/homebrew/opt/llvm/lib/cmake/llvm/HandleLLVMOptions.cmake:806 (add_flag_if_supported)"
+      - "CMakeLists.txt:44 (include)"
+    checks:
+      - "Performing Test CXX_SUPPORTS_COVERED_SWITCH_DEFAULT_FLAG"
+    directories:
+      source: "/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-zqxfe0"
+      binary: "/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-zqxfe0"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "/opt/homebrew/Cellar/llvm/18.1.6/bin/clang-scan-deps"
+      CMAKE_CXX_FLAGS: " -fPIC -fvisibility-inlines-hidden -Werror=date-time -Werror=unguarded-availability-new -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wimplicit-fallthrough"
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: "-L/opt/homebrew/opt/llvm/lib"
+      CMAKE_MODULE_PATH: "/Users/aman/Documents/llvm-project/install/lib/cmake/llvm;/Users/aman/Documents/llvm-project/install/lib/cmake/clang;/opt/homebrew/opt/llvm/lib/cmake/llvm;/opt/homebrew/opt/llvm/lib/cmake/llvm"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: "14.4"
+      CMAKE_OSX_SYSROOT: "/Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk"
+    buildResult:
+      variable: "CXX_SUPPORTS_COVERED_SWITCH_DEFAULT_FLAG"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-zqxfe0'
+        
+        Run Build Command(s): /opt/homebrew/bin/ninja -v cmTC_bd6a2
+        [1/2] /opt/homebrew/opt/llvm/bin/clang++ -DCXX_SUPPORTS_COVERED_SWITCH_DEFAULT_FLAG  -fPIC -fvisibility-inlines-hidden -Werror=date-time -Werror=unguarded-availability-new -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wimplicit-fallthrough  -std=c++17 -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4   -Werror -Wcovered-switch-default -MD -MT CMakeFiles/cmTC_bd6a2.dir/src.cxx.o -MF CMakeFiles/cmTC_bd6a2.dir/src.cxx.o.d -o CMakeFiles/cmTC_bd6a2.dir/src.cxx.o -c /Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-zqxfe0/src.cxx
+        [2/2] : && /opt/homebrew/opt/llvm/bin/clang++ -fPIC -fvisibility-inlines-hidden -Werror=date-time -Werror=unguarded-availability-new -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wimplicit-fallthrough  -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4 -Wl,-search_paths_first -Wl,-headerpad_max_install_names -L/opt/homebrew/opt/llvm/lib CMakeFiles/cmTC_bd6a2.dir/src.cxx.o -o cmTC_bd6a2   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CheckCXXCompilerFlag.cmake:34 (cmake_check_compiler_flag)"
+      - "/opt/homebrew/opt/llvm/lib/cmake/llvm/HandleLLVMOptions.cmake:817 (check_cxx_compiler_flag)"
+      - "CMakeLists.txt:44 (include)"
+    checks:
+      - "Performing Test CXX_SUPPORTS_CLASS_MEMACCESS_FLAG"
+    directories:
+      source: "/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-nHtErJ"
+      binary: "/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-nHtErJ"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "/opt/homebrew/Cellar/llvm/18.1.6/bin/clang-scan-deps"
+      CMAKE_CXX_FLAGS: " -fPIC -fvisibility-inlines-hidden -Werror=date-time -Werror=unguarded-availability-new -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wimplicit-fallthrough -Wcovered-switch-default"
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: "-L/opt/homebrew/opt/llvm/lib"
+      CMAKE_MODULE_PATH: "/Users/aman/Documents/llvm-project/install/lib/cmake/llvm;/Users/aman/Documents/llvm-project/install/lib/cmake/clang;/opt/homebrew/opt/llvm/lib/cmake/llvm;/opt/homebrew/opt/llvm/lib/cmake/llvm"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: "14.4"
+      CMAKE_OSX_SYSROOT: "/Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk"
+    buildResult:
+      variable: "CXX_SUPPORTS_CLASS_MEMACCESS_FLAG"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-nHtErJ'
+        
+        Run Build Command(s): /opt/homebrew/bin/ninja -v cmTC_431d4
+        [1/2] /opt/homebrew/opt/llvm/bin/clang++ -DCXX_SUPPORTS_CLASS_MEMACCESS_FLAG  -fPIC -fvisibility-inlines-hidden -Werror=date-time -Werror=unguarded-availability-new -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wimplicit-fallthrough -Wcovered-switch-default  -std=c++17 -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4   -Wclass-memaccess -MD -MT CMakeFiles/cmTC_431d4.dir/src.cxx.o -MF CMakeFiles/cmTC_431d4.dir/src.cxx.o.d -o CMakeFiles/cmTC_431d4.dir/src.cxx.o -c /Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-nHtErJ/src.cxx
+        warning: unknown warning option '-Wclass-memaccess'; did you mean '-Wclass-varargs'? [-Wunknown-warning-option]
+        1 warning generated.
+        [2/2] : && /opt/homebrew/opt/llvm/bin/clang++ -fPIC -fvisibility-inlines-hidden -Werror=date-time -Werror=unguarded-availability-new -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wimplicit-fallthrough -Wcovered-switch-default  -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4 -Wl,-search_paths_first -Wl,-headerpad_max_install_names -L/opt/homebrew/opt/llvm/lib CMakeFiles/cmTC_431d4.dir/src.cxx.o -o cmTC_431d4   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CheckCXXCompilerFlag.cmake:34 (cmake_check_compiler_flag)"
+      - "/opt/homebrew/opt/llvm/lib/cmake/llvm/HandleLLVMOptions.cmake:834 (check_cxx_compiler_flag)"
+      - "CMakeLists.txt:44 (include)"
+    checks:
+      - "Performing Test CXX_SUPPORTS_NOEXCEPT_TYPE_FLAG"
+    directories:
+      source: "/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-6npnw9"
+      binary: "/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-6npnw9"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "/opt/homebrew/Cellar/llvm/18.1.6/bin/clang-scan-deps"
+      CMAKE_CXX_FLAGS: " -fPIC -fvisibility-inlines-hidden -Werror=date-time -Werror=unguarded-availability-new -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wimplicit-fallthrough -Wcovered-switch-default"
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: "-L/opt/homebrew/opt/llvm/lib"
+      CMAKE_MODULE_PATH: "/Users/aman/Documents/llvm-project/install/lib/cmake/llvm;/Users/aman/Documents/llvm-project/install/lib/cmake/clang;/opt/homebrew/opt/llvm/lib/cmake/llvm;/opt/homebrew/opt/llvm/lib/cmake/llvm"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: "14.4"
+      CMAKE_OSX_SYSROOT: "/Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk"
+    buildResult:
+      variable: "CXX_SUPPORTS_NOEXCEPT_TYPE_FLAG"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-6npnw9'
+        
+        Run Build Command(s): /opt/homebrew/bin/ninja -v cmTC_f7469
+        [1/2] /opt/homebrew/opt/llvm/bin/clang++ -DCXX_SUPPORTS_NOEXCEPT_TYPE_FLAG  -fPIC -fvisibility-inlines-hidden -Werror=date-time -Werror=unguarded-availability-new -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wimplicit-fallthrough -Wcovered-switch-default  -std=c++17 -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4   -Wnoexcept-type -MD -MT CMakeFiles/cmTC_f7469.dir/src.cxx.o -MF CMakeFiles/cmTC_f7469.dir/src.cxx.o.d -o CMakeFiles/cmTC_f7469.dir/src.cxx.o -c /Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-6npnw9/src.cxx
+        [2/2] : && /opt/homebrew/opt/llvm/bin/clang++ -fPIC -fvisibility-inlines-hidden -Werror=date-time -Werror=unguarded-availability-new -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wimplicit-fallthrough -Wcovered-switch-default  -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4 -Wl,-search_paths_first -Wl,-headerpad_max_install_names -L/opt/homebrew/opt/llvm/lib CMakeFiles/cmTC_f7469.dir/src.cxx.o -o cmTC_f7469   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CheckCXXSourceCompiles.cmake:52 (cmake_check_source_compiles)"
+      - "/opt/homebrew/opt/llvm/lib/cmake/llvm/HandleLLVMOptions.cmake:842 (CHECK_CXX_SOURCE_COMPILES)"
+      - "CMakeLists.txt:44 (include)"
+    checks:
+      - "Performing Test CXX_WONT_WARN_ON_FINAL_NONVIRTUALDTOR"
+    directories:
+      source: "/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-kLhrSr"
+      binary: "/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-kLhrSr"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "/opt/homebrew/Cellar/llvm/18.1.6/bin/clang-scan-deps"
+      CMAKE_CXX_FLAGS: " -fPIC -fvisibility-inlines-hidden -Werror=date-time -Werror=unguarded-availability-new -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wimplicit-fallthrough -Wcovered-switch-default -Wno-noexcept-type"
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: "-L/opt/homebrew/opt/llvm/lib"
+      CMAKE_MODULE_PATH: "/Users/aman/Documents/llvm-project/install/lib/cmake/llvm;/Users/aman/Documents/llvm-project/install/lib/cmake/clang;/opt/homebrew/opt/llvm/lib/cmake/llvm;/opt/homebrew/opt/llvm/lib/cmake/llvm"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: "14.4"
+      CMAKE_OSX_SYSROOT: "/Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk"
+    buildResult:
+      variable: "CXX_WONT_WARN_ON_FINAL_NONVIRTUALDTOR"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-kLhrSr'
+        
+        Run Build Command(s): /opt/homebrew/bin/ninja -v cmTC_2a414
+        [1/2] /opt/homebrew/opt/llvm/bin/clang++ -DCXX_WONT_WARN_ON_FINAL_NONVIRTUALDTOR  -fPIC -fvisibility-inlines-hidden -Werror=date-time -Werror=unguarded-availability-new -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wimplicit-fallthrough -Wcovered-switch-default -Wno-noexcept-type  -Werror=non-virtual-dtor -std=c++17 -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4 -MD -MT CMakeFiles/cmTC_2a414.dir/src.cxx.o -MF CMakeFiles/cmTC_2a414.dir/src.cxx.o.d -o CMakeFiles/cmTC_2a414.dir/src.cxx.o -c /Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-kLhrSr/src.cxx
+        [2/2] : && /opt/homebrew/opt/llvm/bin/clang++ -fPIC -fvisibility-inlines-hidden -Werror=date-time -Werror=unguarded-availability-new -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wimplicit-fallthrough -Wcovered-switch-default -Wno-noexcept-type  -Werror=non-virtual-dtor -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4 -Wl,-search_paths_first -Wl,-headerpad_max_install_names -L/opt/homebrew/opt/llvm/lib CMakeFiles/cmTC_2a414.dir/src.cxx.o -o cmTC_2a414   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CheckCXXCompilerFlag.cmake:34 (cmake_check_compiler_flag)"
+      - "/opt/homebrew/opt/llvm/lib/cmake/llvm/HandleLLVMOptions.cmake:854 (check_cxx_compiler_flag)"
+      - "CMakeLists.txt:44 (include)"
+    checks:
+      - "Performing Test CXX_SUPPORTS_SUGGEST_OVERRIDE_FLAG"
+    directories:
+      source: "/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-uw9tJl"
+      binary: "/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-uw9tJl"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "/opt/homebrew/Cellar/llvm/18.1.6/bin/clang-scan-deps"
+      CMAKE_CXX_FLAGS: " -fPIC -fvisibility-inlines-hidden -Werror=date-time -Werror=unguarded-availability-new -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wimplicit-fallthrough -Wcovered-switch-default -Wno-noexcept-type -Wnon-virtual-dtor -Wdelete-non-virtual-dtor"
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: "-L/opt/homebrew/opt/llvm/lib"
+      CMAKE_MODULE_PATH: "/Users/aman/Documents/llvm-project/install/lib/cmake/llvm;/Users/aman/Documents/llvm-project/install/lib/cmake/clang;/opt/homebrew/opt/llvm/lib/cmake/llvm;/opt/homebrew/opt/llvm/lib/cmake/llvm"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: "14.4"
+      CMAKE_OSX_SYSROOT: "/Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk"
+    buildResult:
+      variable: "CXX_SUPPORTS_SUGGEST_OVERRIDE_FLAG"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-uw9tJl'
+        
+        Run Build Command(s): /opt/homebrew/bin/ninja -v cmTC_add54
+        [1/2] /opt/homebrew/opt/llvm/bin/clang++ -DCXX_SUPPORTS_SUGGEST_OVERRIDE_FLAG  -fPIC -fvisibility-inlines-hidden -Werror=date-time -Werror=unguarded-availability-new -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wimplicit-fallthrough -Wcovered-switch-default -Wno-noexcept-type -Wnon-virtual-dtor -Wdelete-non-virtual-dtor  -std=c++17 -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4   -Wsuggest-override -MD -MT CMakeFiles/cmTC_add54.dir/src.cxx.o -MF CMakeFiles/cmTC_add54.dir/src.cxx.o.d -o CMakeFiles/cmTC_add54.dir/src.cxx.o -c /Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-uw9tJl/src.cxx
+        [2/2] : && /opt/homebrew/opt/llvm/bin/clang++ -fPIC -fvisibility-inlines-hidden -Werror=date-time -Werror=unguarded-availability-new -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wimplicit-fallthrough -Wcovered-switch-default -Wno-noexcept-type -Wnon-virtual-dtor -Wdelete-non-virtual-dtor  -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4 -Wl,-search_paths_first -Wl,-headerpad_max_install_names -L/opt/homebrew/opt/llvm/lib CMakeFiles/cmTC_add54.dir/src.cxx.o -o cmTC_add54   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CheckCXXSourceCompiles.cmake:52 (cmake_check_source_compiles)"
+      - "/opt/homebrew/opt/llvm/lib/cmake/llvm/HandleLLVMOptions.cmake:858 (CHECK_CXX_SOURCE_COMPILES)"
+      - "CMakeLists.txt:44 (include)"
+    checks:
+      - "Performing Test CXX_WSUGGEST_OVERRIDE_ALLOWS_ONLY_FINAL"
+    directories:
+      source: "/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-mnFy4E"
+      binary: "/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-mnFy4E"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "/opt/homebrew/Cellar/llvm/18.1.6/bin/clang-scan-deps"
+      CMAKE_CXX_FLAGS: " -fPIC -fvisibility-inlines-hidden -Werror=date-time -Werror=unguarded-availability-new -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wimplicit-fallthrough -Wcovered-switch-default -Wno-noexcept-type -Wnon-virtual-dtor -Wdelete-non-virtual-dtor"
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: "-L/opt/homebrew/opt/llvm/lib"
+      CMAKE_MODULE_PATH: "/Users/aman/Documents/llvm-project/install/lib/cmake/llvm;/Users/aman/Documents/llvm-project/install/lib/cmake/clang;/opt/homebrew/opt/llvm/lib/cmake/llvm;/opt/homebrew/opt/llvm/lib/cmake/llvm"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: "14.4"
+      CMAKE_OSX_SYSROOT: "/Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk"
+    buildResult:
+      variable: "CXX_WSUGGEST_OVERRIDE_ALLOWS_ONLY_FINAL"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-mnFy4E'
+        
+        Run Build Command(s): /opt/homebrew/bin/ninja -v cmTC_a01b5
+        [1/2] /opt/homebrew/opt/llvm/bin/clang++ -DCXX_WSUGGEST_OVERRIDE_ALLOWS_ONLY_FINAL  -fPIC -fvisibility-inlines-hidden -Werror=date-time -Werror=unguarded-availability-new -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wimplicit-fallthrough -Wcovered-switch-default -Wno-noexcept-type -Wnon-virtual-dtor -Wdelete-non-virtual-dtor  -Werror=suggest-override -std=c++17 -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4 -MD -MT CMakeFiles/cmTC_a01b5.dir/src.cxx.o -MF CMakeFiles/cmTC_a01b5.dir/src.cxx.o.d -o CMakeFiles/cmTC_a01b5.dir/src.cxx.o -c /Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-mnFy4E/src.cxx
+        /Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-mnFy4E/src.cxx:1:7: warning: 'base' has virtual functions but non-virtual destructor [-Wnon-virtual-dtor]
+            1 | class base {public: virtual void anchor();};
+              |       ^
+        /Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-mnFy4E/src.cxx:2:38: warning: 'derived' has virtual functions but non-virtual destructor [-Wnon-virtual-dtor]
+            2 |                                class derived : base {public: void anchor() final;};
+              |                                      ^
+        2 warnings generated.
+        [2/2] : && /opt/homebrew/opt/llvm/bin/clang++ -fPIC -fvisibility-inlines-hidden -Werror=date-time -Werror=unguarded-availability-new -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wimplicit-fallthrough -Wcovered-switch-default -Wno-noexcept-type -Wnon-virtual-dtor -Wdelete-non-virtual-dtor  -Werror=suggest-override -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4 -Wl,-search_paths_first -Wl,-headerpad_max_install_names -L/opt/homebrew/opt/llvm/lib CMakeFiles/cmTC_a01b5.dir/src.cxx.o -o cmTC_a01b5   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CheckCSourceCompiles.cmake:52 (cmake_check_source_compiles)"
+      - "/opt/homebrew/opt/llvm/lib/cmake/llvm/HandleLLVMOptions.cmake:870 (CHECK_C_SOURCE_COMPILES)"
+      - "CMakeLists.txt:44 (include)"
+    checks:
+      - "Performing Test C_WCOMMENT_ALLOWS_LINE_WRAP"
+    directories:
+      source: "/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-VK2Aoo"
+      binary: "/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-VK2Aoo"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "/opt/homebrew/Cellar/llvm/18.1.6/bin/clang-scan-deps"
+      CMAKE_C_FLAGS: " -fPIC -Werror=date-time -Werror=unguarded-availability-new -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wimplicit-fallthrough -Wcovered-switch-default"
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: "-L/opt/homebrew/opt/llvm/lib"
+      CMAKE_MODULE_PATH: "/Users/aman/Documents/llvm-project/install/lib/cmake/llvm;/Users/aman/Documents/llvm-project/install/lib/cmake/clang;/opt/homebrew/opt/llvm/lib/cmake/llvm;/opt/homebrew/opt/llvm/lib/cmake/llvm"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: "14.4"
+      CMAKE_OSX_SYSROOT: "/Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk"
+    buildResult:
+      variable: "C_WCOMMENT_ALLOWS_LINE_WRAP"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-VK2Aoo'
+        
+        Run Build Command(s): /opt/homebrew/bin/ninja -v cmTC_833b4
+        [1/2] /opt/homebrew/opt/llvm/bin/clang -DC_WCOMMENT_ALLOWS_LINE_WRAP  -fPIC -Werror=date-time -Werror=unguarded-availability-new -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wimplicit-fallthrough -Wcovered-switch-default  -Werror -Wcomment -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4 -MD -MT CMakeFiles/cmTC_833b4.dir/src.c.o -MF CMakeFiles/cmTC_833b4.dir/src.c.o.d -o CMakeFiles/cmTC_833b4.dir/src.c.o -c /Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-VK2Aoo/src.c
+        [2/2] : && /opt/homebrew/opt/llvm/bin/clang -fPIC -Werror=date-time -Werror=unguarded-availability-new -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wimplicit-fallthrough -Wcovered-switch-default  -Werror -Wcomment -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4 -Wl,-search_paths_first -Wl,-headerpad_max_install_names -L/opt/homebrew/opt/llvm/lib CMakeFiles/cmTC_833b4.dir/src.c.o -o cmTC_833b4   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CheckCCompilerFlag.cmake:51 (cmake_check_compiler_flag)"
+      - "/opt/homebrew/opt/llvm/lib/cmake/llvm/HandleLLVMOptions.cmake:305 (check_c_compiler_flag)"
+      - "/opt/homebrew/opt/llvm/lib/cmake/llvm/HandleLLVMOptions.cmake:878 (add_flag_if_supported)"
+      - "CMakeLists.txt:44 (include)"
+    checks:
+      - "Performing Test C_SUPPORTS_STRING_CONVERSION_FLAG"
+    directories:
+      source: "/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-dOikAO"
+      binary: "/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-dOikAO"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "/opt/homebrew/Cellar/llvm/18.1.6/bin/clang-scan-deps"
+      CMAKE_C_FLAGS: " -fPIC -Werror=date-time -Werror=unguarded-availability-new -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wimplicit-fallthrough -Wcovered-switch-default"
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: "-L/opt/homebrew/opt/llvm/lib"
+      CMAKE_MODULE_PATH: "/Users/aman/Documents/llvm-project/install/lib/cmake/llvm;/Users/aman/Documents/llvm-project/install/lib/cmake/clang;/opt/homebrew/opt/llvm/lib/cmake/llvm;/opt/homebrew/opt/llvm/lib/cmake/llvm"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: "14.4"
+      CMAKE_OSX_SYSROOT: "/Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk"
+    buildResult:
+      variable: "C_SUPPORTS_STRING_CONVERSION_FLAG"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-dOikAO'
+        
+        Run Build Command(s): /opt/homebrew/bin/ninja -v cmTC_e6257
+        [1/2] /opt/homebrew/opt/llvm/bin/clang -DC_SUPPORTS_STRING_CONVERSION_FLAG  -fPIC -Werror=date-time -Werror=unguarded-availability-new -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wimplicit-fallthrough -Wcovered-switch-default  -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4   -Werror -Wstring-conversion -MD -MT CMakeFiles/cmTC_e6257.dir/src.c.o -MF CMakeFiles/cmTC_e6257.dir/src.c.o.d -o CMakeFiles/cmTC_e6257.dir/src.c.o -c /Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-dOikAO/src.c
+        [2/2] : && /opt/homebrew/opt/llvm/bin/clang -fPIC -Werror=date-time -Werror=unguarded-availability-new -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wimplicit-fallthrough -Wcovered-switch-default  -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4 -Wl,-search_paths_first -Wl,-headerpad_max_install_names -L/opt/homebrew/opt/llvm/lib CMakeFiles/cmTC_e6257.dir/src.c.o -o cmTC_e6257   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CheckCXXCompilerFlag.cmake:34 (cmake_check_compiler_flag)"
+      - "/opt/homebrew/opt/llvm/lib/cmake/llvm/HandleLLVMOptions.cmake:307 (check_cxx_compiler_flag)"
+      - "/opt/homebrew/opt/llvm/lib/cmake/llvm/HandleLLVMOptions.cmake:878 (add_flag_if_supported)"
+      - "CMakeLists.txt:44 (include)"
+    checks:
+      - "Performing Test CXX_SUPPORTS_STRING_CONVERSION_FLAG"
+    directories:
+      source: "/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-A1HnzP"
+      binary: "/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-A1HnzP"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "/opt/homebrew/Cellar/llvm/18.1.6/bin/clang-scan-deps"
+      CMAKE_CXX_FLAGS: " -fPIC -fvisibility-inlines-hidden -Werror=date-time -Werror=unguarded-availability-new -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wimplicit-fallthrough -Wcovered-switch-default -Wno-noexcept-type -Wnon-virtual-dtor -Wdelete-non-virtual-dtor -Wsuggest-override"
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: "-L/opt/homebrew/opt/llvm/lib"
+      CMAKE_MODULE_PATH: "/Users/aman/Documents/llvm-project/install/lib/cmake/llvm;/Users/aman/Documents/llvm-project/install/lib/cmake/clang;/opt/homebrew/opt/llvm/lib/cmake/llvm;/opt/homebrew/opt/llvm/lib/cmake/llvm"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: "14.4"
+      CMAKE_OSX_SYSROOT: "/Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk"
+    buildResult:
+      variable: "CXX_SUPPORTS_STRING_CONVERSION_FLAG"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-A1HnzP'
+        
+        Run Build Command(s): /opt/homebrew/bin/ninja -v cmTC_f1ac7
+        [1/2] /opt/homebrew/opt/llvm/bin/clang++ -DCXX_SUPPORTS_STRING_CONVERSION_FLAG  -fPIC -fvisibility-inlines-hidden -Werror=date-time -Werror=unguarded-availability-new -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wimplicit-fallthrough -Wcovered-switch-default -Wno-noexcept-type -Wnon-virtual-dtor -Wdelete-non-virtual-dtor -Wsuggest-override  -std=c++17 -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4   -Werror -Wstring-conversion -MD -MT CMakeFiles/cmTC_f1ac7.dir/src.cxx.o -MF CMakeFiles/cmTC_f1ac7.dir/src.cxx.o.d -o CMakeFiles/cmTC_f1ac7.dir/src.cxx.o -c /Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-A1HnzP/src.cxx
+        [2/2] : && /opt/homebrew/opt/llvm/bin/clang++ -fPIC -fvisibility-inlines-hidden -Werror=date-time -Werror=unguarded-availability-new -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wimplicit-fallthrough -Wcovered-switch-default -Wno-noexcept-type -Wnon-virtual-dtor -Wdelete-non-virtual-dtor -Wsuggest-override  -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4 -Wl,-search_paths_first -Wl,-headerpad_max_install_names -L/opt/homebrew/opt/llvm/lib CMakeFiles/cmTC_f1ac7.dir/src.cxx.o -o cmTC_f1ac7   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CheckCCompilerFlag.cmake:51 (cmake_check_compiler_flag)"
+      - "/opt/homebrew/opt/llvm/lib/cmake/llvm/HandleLLVMOptions.cmake:305 (check_c_compiler_flag)"
+      - "/opt/homebrew/opt/llvm/lib/cmake/llvm/HandleLLVMOptions.cmake:888 (add_flag_if_supported)"
+      - "CMakeLists.txt:44 (include)"
+    checks:
+      - "Performing Test C_SUPPORTS_MISLEADING_INDENTATION_FLAG"
+    directories:
+      source: "/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-NBTacB"
+      binary: "/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-NBTacB"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "/opt/homebrew/Cellar/llvm/18.1.6/bin/clang-scan-deps"
+      CMAKE_C_FLAGS: " -fPIC -Werror=date-time -Werror=unguarded-availability-new -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wimplicit-fallthrough -Wcovered-switch-default -Wstring-conversion"
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: "-L/opt/homebrew/opt/llvm/lib"
+      CMAKE_MODULE_PATH: "/Users/aman/Documents/llvm-project/install/lib/cmake/llvm;/Users/aman/Documents/llvm-project/install/lib/cmake/clang;/opt/homebrew/opt/llvm/lib/cmake/llvm;/opt/homebrew/opt/llvm/lib/cmake/llvm"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: "14.4"
+      CMAKE_OSX_SYSROOT: "/Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk"
+    buildResult:
+      variable: "C_SUPPORTS_MISLEADING_INDENTATION_FLAG"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-NBTacB'
+        
+        Run Build Command(s): /opt/homebrew/bin/ninja -v cmTC_74a5a
+        [1/2] /opt/homebrew/opt/llvm/bin/clang -DC_SUPPORTS_MISLEADING_INDENTATION_FLAG  -fPIC -Werror=date-time -Werror=unguarded-availability-new -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wimplicit-fallthrough -Wcovered-switch-default -Wstring-conversion  -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4   -Werror -Wmisleading-indentation -MD -MT CMakeFiles/cmTC_74a5a.dir/src.c.o -MF CMakeFiles/cmTC_74a5a.dir/src.c.o.d -o CMakeFiles/cmTC_74a5a.dir/src.c.o -c /Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-NBTacB/src.c
+        [2/2] : && /opt/homebrew/opt/llvm/bin/clang -fPIC -Werror=date-time -Werror=unguarded-availability-new -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wimplicit-fallthrough -Wcovered-switch-default -Wstring-conversion  -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4 -Wl,-search_paths_first -Wl,-headerpad_max_install_names -L/opt/homebrew/opt/llvm/lib CMakeFiles/cmTC_74a5a.dir/src.c.o -o cmTC_74a5a   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CheckCXXCompilerFlag.cmake:34 (cmake_check_compiler_flag)"
+      - "/opt/homebrew/opt/llvm/lib/cmake/llvm/HandleLLVMOptions.cmake:307 (check_cxx_compiler_flag)"
+      - "/opt/homebrew/opt/llvm/lib/cmake/llvm/HandleLLVMOptions.cmake:888 (add_flag_if_supported)"
+      - "CMakeLists.txt:44 (include)"
+    checks:
+      - "Performing Test CXX_SUPPORTS_MISLEADING_INDENTATION_FLAG"
+    directories:
+      source: "/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-LFOFLy"
+      binary: "/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-LFOFLy"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "/opt/homebrew/Cellar/llvm/18.1.6/bin/clang-scan-deps"
+      CMAKE_CXX_FLAGS: " -fPIC -fvisibility-inlines-hidden -Werror=date-time -Werror=unguarded-availability-new -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wimplicit-fallthrough -Wcovered-switch-default -Wno-noexcept-type -Wnon-virtual-dtor -Wdelete-non-virtual-dtor -Wsuggest-override -Wstring-conversion"
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: "-L/opt/homebrew/opt/llvm/lib"
+      CMAKE_MODULE_PATH: "/Users/aman/Documents/llvm-project/install/lib/cmake/llvm;/Users/aman/Documents/llvm-project/install/lib/cmake/clang;/opt/homebrew/opt/llvm/lib/cmake/llvm;/opt/homebrew/opt/llvm/lib/cmake/llvm"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: "14.4"
+      CMAKE_OSX_SYSROOT: "/Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk"
+    buildResult:
+      variable: "CXX_SUPPORTS_MISLEADING_INDENTATION_FLAG"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-LFOFLy'
+        
+        Run Build Command(s): /opt/homebrew/bin/ninja -v cmTC_f2d9d
+        [1/2] /opt/homebrew/opt/llvm/bin/clang++ -DCXX_SUPPORTS_MISLEADING_INDENTATION_FLAG  -fPIC -fvisibility-inlines-hidden -Werror=date-time -Werror=unguarded-availability-new -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wimplicit-fallthrough -Wcovered-switch-default -Wno-noexcept-type -Wnon-virtual-dtor -Wdelete-non-virtual-dtor -Wsuggest-override -Wstring-conversion  -std=c++17 -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4   -Werror -Wmisleading-indentation -MD -MT CMakeFiles/cmTC_f2d9d.dir/src.cxx.o -MF CMakeFiles/cmTC_f2d9d.dir/src.cxx.o.d -o CMakeFiles/cmTC_f2d9d.dir/src.cxx.o -c /Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-LFOFLy/src.cxx
+        [2/2] : && /opt/homebrew/opt/llvm/bin/clang++ -fPIC -fvisibility-inlines-hidden -Werror=date-time -Werror=unguarded-availability-new -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wimplicit-fallthrough -Wcovered-switch-default -Wno-noexcept-type -Wnon-virtual-dtor -Wdelete-non-virtual-dtor -Wsuggest-override -Wstring-conversion  -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4 -Wl,-search_paths_first -Wl,-headerpad_max_install_names -L/opt/homebrew/opt/llvm/lib CMakeFiles/cmTC_f2d9d.dir/src.cxx.o -o cmTC_f2d9d   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CheckCCompilerFlag.cmake:51 (cmake_check_compiler_flag)"
+      - "/opt/homebrew/opt/llvm/lib/cmake/llvm/HandleLLVMOptions.cmake:305 (check_c_compiler_flag)"
+      - "/opt/homebrew/opt/llvm/lib/cmake/llvm/HandleLLVMOptions.cmake:892 (add_flag_if_supported)"
+      - "CMakeLists.txt:44 (include)"
+    checks:
+      - "Performing Test C_SUPPORTS_CTAD_MAYBE_UNSPPORTED_FLAG"
+    directories:
+      source: "/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-CV3Ckl"
+      binary: "/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-CV3Ckl"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "/opt/homebrew/Cellar/llvm/18.1.6/bin/clang-scan-deps"
+      CMAKE_C_FLAGS: " -fPIC -Werror=date-time -Werror=unguarded-availability-new -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wimplicit-fallthrough -Wcovered-switch-default -Wstring-conversion -Wmisleading-indentation"
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: "-L/opt/homebrew/opt/llvm/lib"
+      CMAKE_MODULE_PATH: "/Users/aman/Documents/llvm-project/install/lib/cmake/llvm;/Users/aman/Documents/llvm-project/install/lib/cmake/clang;/opt/homebrew/opt/llvm/lib/cmake/llvm;/opt/homebrew/opt/llvm/lib/cmake/llvm"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: "14.4"
+      CMAKE_OSX_SYSROOT: "/Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk"
+    buildResult:
+      variable: "C_SUPPORTS_CTAD_MAYBE_UNSPPORTED_FLAG"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-CV3Ckl'
+        
+        Run Build Command(s): /opt/homebrew/bin/ninja -v cmTC_8c837
+        [1/2] /opt/homebrew/opt/llvm/bin/clang -DC_SUPPORTS_CTAD_MAYBE_UNSPPORTED_FLAG  -fPIC -Werror=date-time -Werror=unguarded-availability-new -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wimplicit-fallthrough -Wcovered-switch-default -Wstring-conversion -Wmisleading-indentation  -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4   -Werror -Wctad-maybe-unsupported -MD -MT CMakeFiles/cmTC_8c837.dir/src.c.o -MF CMakeFiles/cmTC_8c837.dir/src.c.o.d -o CMakeFiles/cmTC_8c837.dir/src.c.o -c /Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-CV3Ckl/src.c
+        [2/2] : && /opt/homebrew/opt/llvm/bin/clang -fPIC -Werror=date-time -Werror=unguarded-availability-new -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wimplicit-fallthrough -Wcovered-switch-default -Wstring-conversion -Wmisleading-indentation  -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4 -Wl,-search_paths_first -Wl,-headerpad_max_install_names -L/opt/homebrew/opt/llvm/lib CMakeFiles/cmTC_8c837.dir/src.c.o -o cmTC_8c837   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CheckCXXCompilerFlag.cmake:34 (cmake_check_compiler_flag)"
+      - "/opt/homebrew/opt/llvm/lib/cmake/llvm/HandleLLVMOptions.cmake:307 (check_cxx_compiler_flag)"
+      - "/opt/homebrew/opt/llvm/lib/cmake/llvm/HandleLLVMOptions.cmake:892 (add_flag_if_supported)"
+      - "CMakeLists.txt:44 (include)"
+    checks:
+      - "Performing Test CXX_SUPPORTS_CTAD_MAYBE_UNSPPORTED_FLAG"
+    directories:
+      source: "/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-EjDMWj"
+      binary: "/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-EjDMWj"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "/opt/homebrew/Cellar/llvm/18.1.6/bin/clang-scan-deps"
+      CMAKE_CXX_FLAGS: " -fPIC -fvisibility-inlines-hidden -Werror=date-time -Werror=unguarded-availability-new -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wimplicit-fallthrough -Wcovered-switch-default -Wno-noexcept-type -Wnon-virtual-dtor -Wdelete-non-virtual-dtor -Wsuggest-override -Wstring-conversion -Wmisleading-indentation"
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: "-L/opt/homebrew/opt/llvm/lib"
+      CMAKE_MODULE_PATH: "/Users/aman/Documents/llvm-project/install/lib/cmake/llvm;/Users/aman/Documents/llvm-project/install/lib/cmake/clang;/opt/homebrew/opt/llvm/lib/cmake/llvm;/opt/homebrew/opt/llvm/lib/cmake/llvm"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: "14.4"
+      CMAKE_OSX_SYSROOT: "/Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk"
+    buildResult:
+      variable: "CXX_SUPPORTS_CTAD_MAYBE_UNSPPORTED_FLAG"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-EjDMWj'
+        
+        Run Build Command(s): /opt/homebrew/bin/ninja -v cmTC_982b1
+        [1/2] /opt/homebrew/opt/llvm/bin/clang++ -DCXX_SUPPORTS_CTAD_MAYBE_UNSPPORTED_FLAG  -fPIC -fvisibility-inlines-hidden -Werror=date-time -Werror=unguarded-availability-new -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wimplicit-fallthrough -Wcovered-switch-default -Wno-noexcept-type -Wnon-virtual-dtor -Wdelete-non-virtual-dtor -Wsuggest-override -Wstring-conversion -Wmisleading-indentation  -std=c++17 -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4   -Werror -Wctad-maybe-unsupported -MD -MT CMakeFiles/cmTC_982b1.dir/src.cxx.o -MF CMakeFiles/cmTC_982b1.dir/src.cxx.o.d -o CMakeFiles/cmTC_982b1.dir/src.cxx.o -c /Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-EjDMWj/src.cxx
+        [2/2] : && /opt/homebrew/opt/llvm/bin/clang++ -fPIC -fvisibility-inlines-hidden -Werror=date-time -Werror=unguarded-availability-new -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wimplicit-fallthrough -Wcovered-switch-default -Wno-noexcept-type -Wnon-virtual-dtor -Wdelete-non-virtual-dtor -Wsuggest-override -Wstring-conversion -Wmisleading-indentation  -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4 -Wl,-search_paths_first -Wl,-headerpad_max_install_names -L/opt/homebrew/opt/llvm/lib CMakeFiles/cmTC_982b1.dir/src.cxx.o -o cmTC_982b1   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CheckLinkerFlag.cmake:37 (cmake_check_source_compiles)"
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CheckLinkerFlag.cmake:44 (cmake_check_linker_flag)"
+      - "/opt/homebrew/opt/llvm/lib/cmake/llvm/LLVMCheckLinkerFlag.cmake:5 (check_linker_flag)"
+      - "/opt/homebrew/opt/llvm/lib/cmake/llvm/HandleLLVMOptions.cmake:1072 (llvm_check_linker_flag)"
+      - "CMakeLists.txt:44 (include)"
+    checks:
+      - "Performing Test LINKER_SUPPORTS_COLOR_DIAGNOSTICS"
+    directories:
+      source: "/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-8CkVI0"
+      binary: "/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-8CkVI0"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "/opt/homebrew/Cellar/llvm/18.1.6/bin/clang-scan-deps"
+      CMAKE_CXX_FLAGS: " -fPIC -fvisibility-inlines-hidden -Werror=date-time -Werror=unguarded-availability-new -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wimplicit-fallthrough -Wcovered-switch-default -Wno-noexcept-type -Wnon-virtual-dtor -Wdelete-non-virtual-dtor -Wsuggest-override -Wstring-conversion -Wmisleading-indentation -Wctad-maybe-unsupported -fdiagnostics-color"
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: "-L/opt/homebrew/opt/llvm/lib"
+      CMAKE_MODULE_PATH: "/Users/aman/Documents/llvm-project/install/lib/cmake/llvm;/Users/aman/Documents/llvm-project/install/lib/cmake/clang;/opt/homebrew/opt/llvm/lib/cmake/llvm;/opt/homebrew/opt/llvm/lib/cmake/llvm"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: "14.4"
+      CMAKE_OSX_SYSROOT: "/Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk"
+    buildResult:
+      variable: "LINKER_SUPPORTS_COLOR_DIAGNOSTICS"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-8CkVI0'
+        
+        Run Build Command(s): /opt/homebrew/bin/ninja -v cmTC_7fabc
+        [1/2] /opt/homebrew/opt/llvm/bin/clang++ -DLINKER_SUPPORTS_COLOR_DIAGNOSTICS  -fPIC -fvisibility-inlines-hidden -Werror=date-time -Werror=unguarded-availability-new -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wimplicit-fallthrough -Wcovered-switch-default -Wno-noexcept-type -Wnon-virtual-dtor -Wdelete-non-virtual-dtor -Wsuggest-override -Wstring-conversion -Wmisleading-indentation -Wctad-maybe-unsupported -fdiagnostics-color  -std=c++17 -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4 -MD -MT CMakeFiles/cmTC_7fabc.dir/src.cxx.o -MF CMakeFiles/cmTC_7fabc.dir/src.cxx.o.d -o CMakeFiles/cmTC_7fabc.dir/src.cxx.o -c /Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-8CkVI0/src.cxx
+        [2/2] : && /opt/homebrew/opt/llvm/bin/clang++ -fPIC -fvisibility-inlines-hidden -Werror=date-time -Werror=unguarded-availability-new -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wimplicit-fallthrough -Wcovered-switch-default -Wno-noexcept-type -Wnon-virtual-dtor -Wdelete-non-virtual-dtor -Wsuggest-override -Wstring-conversion -Wmisleading-indentation -Wctad-maybe-unsupported -fdiagnostics-color  -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4 -Wl,-search_paths_first -Wl,-headerpad_max_install_names -L/opt/homebrew/opt/llvm/lib    -Wl,--color-diagnostics CMakeFiles/cmTC_7fabc.dir/src.cxx.o -o cmTC_7fabc   && :
+        FAILED: cmTC_7fabc 
+        : && /opt/homebrew/opt/llvm/bin/clang++ -fPIC -fvisibility-inlines-hidden -Werror=date-time -Werror=unguarded-availability-new -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wimplicit-fallthrough -Wcovered-switch-default -Wno-noexcept-type -Wnon-virtual-dtor -Wdelete-non-virtual-dtor -Wsuggest-override -Wstring-conversion -Wmisleading-indentation -Wctad-maybe-unsupported -fdiagnostics-color  -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4 -Wl,-search_paths_first -Wl,-headerpad_max_install_names -L/opt/homebrew/opt/llvm/lib    -Wl,--color-diagnostics CMakeFiles/cmTC_7fabc.dir/src.cxx.o -o cmTC_7fabc   && :
+        ld: unknown option: --color-diagnostics
+        clang++: error: linker command failed with exit code 1 (use -v to see invocation)
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CheckSymbolExists.cmake:154 (try_compile)"
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CheckSymbolExists.cmake:66 (__CHECK_SYMBOL_EXISTS_IMPL)"
+      - "/opt/homebrew/opt/llvm/lib/cmake/llvm/HandleLLVMOptions.cmake:1307 (check_symbol_exists)"
+      - "CMakeLists.txt:44 (include)"
+    checks:
+      - "Looking for os_signpost_interval_begin"
+    directories:
+      source: "/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-AJFz77"
+      binary: "/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-AJFz77"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "/opt/homebrew/Cellar/llvm/18.1.6/bin/clang-scan-deps"
+      CMAKE_C_FLAGS: " -fPIC  -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wimplicit-fallthrough -Wcovered-switch-default -Wstring-conversion -Wmisleading-indentation -Wctad-maybe-unsupported -fdiagnostics-color"
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: "-L/opt/homebrew/opt/llvm/lib"
+      CMAKE_MODULE_PATH: "/Users/aman/Documents/llvm-project/install/lib/cmake/llvm;/Users/aman/Documents/llvm-project/install/lib/cmake/clang;/opt/homebrew/opt/llvm/lib/cmake/llvm;/opt/homebrew/opt/llvm/lib/cmake/llvm"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: "14.4"
+      CMAKE_OSX_SYSROOT: "/Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk"
+    buildResult:
+      variable: "macos_signposts_available"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-AJFz77'
+        
+        Run Build Command(s): /opt/homebrew/bin/ninja -v cmTC_2499a
+        [1/2] /opt/homebrew/opt/llvm/bin/clang   -fPIC  -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wimplicit-fallthrough -Wcovered-switch-default -Wstring-conversion -Wmisleading-indentation -Wctad-maybe-unsupported -fdiagnostics-color  -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4 -MD -MT CMakeFiles/cmTC_2499a.dir/CheckSymbolExists.c.o -MF CMakeFiles/cmTC_2499a.dir/CheckSymbolExists.c.o.d -o CMakeFiles/cmTC_2499a.dir/CheckSymbolExists.c.o -c /Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-AJFz77/CheckSymbolExists.c
+        [2/2] : && /opt/homebrew/opt/llvm/bin/clang -fPIC  -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wimplicit-fallthrough -Wcovered-switch-default -Wstring-conversion -Wmisleading-indentation -Wctad-maybe-unsupported -fdiagnostics-color  -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4 -Wl,-search_paths_first -Wl,-headerpad_max_install_names -L/opt/homebrew/opt/llvm/lib CMakeFiles/cmTC_2499a.dir/CheckSymbolExists.c.o -o cmTC_2499a   && :
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CheckCXXSourceCompiles.cmake:52 (cmake_check_source_compiles)"
+      - "/opt/homebrew/opt/llvm/lib/cmake/llvm/HandleLLVMOptions.cmake:1309 (check_cxx_source_compiles)"
+      - "CMakeLists.txt:44 (include)"
+    checks:
+      - "Performing Test macos_signposts_usable"
+    directories:
+      source: "/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-w1BJEt"
+      binary: "/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-w1BJEt"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "/opt/homebrew/Cellar/llvm/18.1.6/bin/clang-scan-deps"
+      CMAKE_CXX_FLAGS: " -fPIC -fvisibility-inlines-hidden -Werror=date-time -Werror=unguarded-availability-new -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wimplicit-fallthrough -Wcovered-switch-default -Wno-noexcept-type -Wnon-virtual-dtor -Wdelete-non-virtual-dtor -Wsuggest-override -Wstring-conversion -Wmisleading-indentation -Wctad-maybe-unsupported -fdiagnostics-color"
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: "-L/opt/homebrew/opt/llvm/lib"
+      CMAKE_MODULE_PATH: "/Users/aman/Documents/llvm-project/install/lib/cmake/llvm;/Users/aman/Documents/llvm-project/install/lib/cmake/clang;/opt/homebrew/opt/llvm/lib/cmake/llvm;/opt/homebrew/opt/llvm/lib/cmake/llvm"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: "14.4"
+      CMAKE_OSX_SYSROOT: "/Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk"
+    buildResult:
+      variable: "macos_signposts_usable"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-w1BJEt'
+        
+        Run Build Command(s): /opt/homebrew/bin/ninja -v cmTC_8c844
+        [1/2] /opt/homebrew/opt/llvm/bin/clang++ -Dmacos_signposts_usable  -fPIC -fvisibility-inlines-hidden -Werror=date-time -Werror=unguarded-availability-new -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wimplicit-fallthrough -Wcovered-switch-default -Wno-noexcept-type -Wnon-virtual-dtor -Wdelete-non-virtual-dtor -Wsuggest-override -Wstring-conversion -Wmisleading-indentation -Wctad-maybe-unsupported -fdiagnostics-color  -std=c++17 -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4 -MD -MT CMakeFiles/cmTC_8c844.dir/src.cxx.o -MF CMakeFiles/cmTC_8c844.dir/src.cxx.o.d -o CMakeFiles/cmTC_8c844.dir/src.cxx.o -c /Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/CMakeScratch/TryCompile-w1BJEt/src.cxx
+        [2/2] : && /opt/homebrew/opt/llvm/bin/clang++ -fPIC -fvisibility-inlines-hidden -Werror=date-time -Werror=unguarded-availability-new -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wimplicit-fallthrough -Wcovered-switch-default -Wno-noexcept-type -Wnon-virtual-dtor -Wdelete-non-virtual-dtor -Wsuggest-override -Wstring-conversion -Wmisleading-indentation -Wctad-maybe-unsupported -fdiagnostics-color  -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4 -Wl,-search_paths_first -Wl,-headerpad_max_install_names -L/opt/homebrew/opt/llvm/lib CMakeFiles/cmTC_8c844.dir/src.cxx.o -o cmTC_8c844   && :
+        
+      exitCode: 0
+...

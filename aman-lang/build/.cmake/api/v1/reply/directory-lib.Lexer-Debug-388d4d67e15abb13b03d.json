@@ -1,0 +1,53 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"install",
+			"add_amanlang_library"
+		],
+		"files" : 
+		[
+			"cmake/modules/AddAmanLang.cmake",
+			"lib/Lexer/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 1
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 1,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 38,
+				"parent" : 1
+			}
+		]
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 2,
+			"component" : "amanlangLexer",
+			"destination" : "lib",
+			"paths" : 
+			[
+				"lib/Lexer/libamanlangLexer.a"
+			],
+			"targetId" : "amanlangLexer::@15fcf96b279e5778ffea",
+			"targetIndex" : 3,
+			"type" : "target"
+		}
+	],
+	"paths" : 
+	{
+		"build" : "lib/Lexer",
+		"source" : "lib/Lexer"
+	}
+}
