@@ -12,6 +12,7 @@ namespace diag {
 enum {
 #define DIAG(ID, Level, Msg) ID,
 #include "amanlang/Basic/Diagnostic.def"
+#undef DIAG
 };
 } // namespace diag
 } // namespace amanlang

@@ -229,6 +229,14 @@ build lib/Basic/CMakeFiles/amanlangBasic.dir/Diagnostic.cc.o: CXX_COMPILER__aman
   OBJECT_DIR = lib/Basic/CMakeFiles/amanlangBasic.dir
   OBJECT_FILE_DIR = lib/Basic/CMakeFiles/amanlangBasic.dir
 
+build lib/Basic/CMakeFiles/amanlangBasic.dir/TokenKinds.cc.o: CXX_COMPILER__amanlangBasic_unscanned_Debug /Users/amanuelbogale/Documents/llvm-learn/aman-lang/lib/Basic/TokenKinds.cc || cmake_object_order_depends_target_amanlangBasic
+  DEFINES = -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS
+  DEP_FILE = lib/Basic/CMakeFiles/amanlangBasic.dir/TokenKinds.cc.o.d
+  FLAGS = -fPIC -fvisibility-inlines-hidden -Werror=date-time -Werror=unguarded-availability-new -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wimplicit-fallthrough -Wcovered-switch-default -Wno-noexcept-type -Wnon-virtual-dtor -Wdelete-non-virtual-dtor -Wsuggest-override -Wstring-conversion -Wmisleading-indentation -Wctad-maybe-unsupported -fdiagnostics-color -g -std=c++17 -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS
+  INCLUDES = -I/Users/amanuelbogale/Documents/llvm-learn/aman-lang/include -I/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/include -I/opt/homebrew/opt/llvm/include
+  OBJECT_DIR = lib/Basic/CMakeFiles/amanlangBasic.dir
+  OBJECT_FILE_DIR = lib/Basic/CMakeFiles/amanlangBasic.dir
+
 
 # =============================================================================
 # Link build statements for STATIC_LIBRARY target amanlangBasic
@@ -237,7 +245,7 @@ build lib/Basic/CMakeFiles/amanlangBasic.dir/Diagnostic.cc.o: CXX_COMPILER__aman
 #############################################
 # Link the static library lib/Basic/libamanlangBasic.a
 
-build lib/Basic/libamanlangBasic.a: CXX_STATIC_LIBRARY_LINKER__amanlangBasic_Debug lib/Basic/CMakeFiles/amanlangBasic.dir/Diagnostic.cc.o
+build lib/Basic/libamanlangBasic.a: CXX_STATIC_LIBRARY_LINKER__amanlangBasic_Debug lib/Basic/CMakeFiles/amanlangBasic.dir/Diagnostic.cc.o lib/Basic/CMakeFiles/amanlangBasic.dir/TokenKinds.cc.o
   ARCH_FLAGS = -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4
   LANGUAGE_COMPILE_FLAGS = -fPIC -fvisibility-inlines-hidden -Werror=date-time -Werror=unguarded-availability-new -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wimplicit-fallthrough -Wcovered-switch-default -Wno-noexcept-type -Wnon-virtual-dtor -Wdelete-non-virtual-dtor -Wsuggest-override -Wstring-conversion -Wmisleading-indentation -Wctad-maybe-unsupported -fdiagnostics-color -g
   OBJECT_DIR = lib/Basic/CMakeFiles/amanlangBasic.dir
