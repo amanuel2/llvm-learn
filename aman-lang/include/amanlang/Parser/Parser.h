@@ -7,6 +7,36 @@ namespace amanlang {
 class Parser {
     public:
     explicit Parser(Lexer &Lex);
+    ModuleDecl *parseModule();
+    ModuleDecl *parse();
+
+
+    bool parseCompilationUnit(ModuleDecl *&D);
+    bool parseImport();
+    bool parseBlock(DeclList &Decls, StmtList &Stmts);
+    bool parseDeclaration(DeclList &Decls);
+    bool parseConstantDeclaration(DeclList &Decls);
+    bool parseVariableDeclaration(DeclList &Decls);
+    bool parseProcedureDeclaration(DeclList &ParentDecls);
+    bool parseFormalParameters(FormalParamList &Params,
+                                Decl *&RetType);
+    bool parseFormalParameterList(FormalParamList &Params);
+    bool parseFormalParameter(FormalParamList &Params);
+    bool parseStatementSequence(StmtList &Stmts);
+    bool parseStatement(StmtList &Stmts);
+    bool parseIfStatement(StmtList &Stmts);
+    bool parseWhileStatement(StmtList &Stmts);
+    bool parseReturnStatement(StmtList &Stmts);
+    bool parseExpList(ExprList &Exprs);
+    bool parseExpression(Expr *&E);
+    bool parseRelation(OperatorInfo &Op);
+    bool parseSimpleExpression(Expr *&E);
+    bool parseAddOperator(OperatorInfo &Op);
+    bool parseTerm(Expr *&E);
+    bool parseMulOperator(OperatorInfo &Op);
+    bool parseFactor(Expr *&E);
+    bool parseQualident(Decl *&D);
+    bool parseIdentList(IdentList &Ids);
     
     private:
     Lexer& Lex;
@@ -50,6 +80,9 @@ class Parser {
     void next () {
         Lex.next (Tok);
     }
+    void advance() {
+        next ();
+    } 
 };
 
 } // namespace amanlang

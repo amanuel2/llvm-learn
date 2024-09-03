@@ -2,6 +2,7 @@
 #include "llvm/ADT/APSInt.h"
 #include "llvm/ADT/StringRef.h"
 #include "llvm/Support/SourceMgr.h"
+#include "amanlang/Lexer/Token.h"
 #include <string>
 #include <vector>
 
@@ -39,6 +40,7 @@ typedef struct {
     llvm::StringRef Name;
 } Ident;
 
+typedef std::vector<Ident> IdentList;
 
 ////////////////////////////////////////////////////////////
 #pragma mark - Declarations
@@ -113,6 +115,10 @@ class ModuleDecl : public Decl {
         Stmts = L;
     }
 
+    static bool classof (const Decl* D) {
+        return D->getKind () == DK_Module;
+    }
+
     private:
     DeclList Decls;
     StmtList Stmts;
@@ -132,6 +138,10 @@ class ConstantDecl : public Decl {
 
     static bool classof (const Decl* D) {
         return D->getKind () == DK_Const;
+    }
+
+    ConstantDecl (Decl* EnclosingDecl, llvm::SMLoc Loc, llvm::StringRef Name, Expr* E)
+    : Decl (DK_Const, EnclosingDecl, Loc, Name), E (E) {
     }
 
     private:
@@ -187,6 +197,9 @@ class VariableDecl : public Decl {
  * declaration, which binds a name to a type and indicates whether the parameter
  * is a variable parameter. This class is used to declare formal parameters in
  * function declarations in the Aman language.
+ * @example NonVar => `procedure foo (x: integer) { ... }`
+ * @example Var => `procedure foo (var x: integer) { ... }`
+ * Difference  between Var and NonVar: Var allows the procedure to modify the value of the parameter.
  */
 class FormalParameterDecl : public Decl {
     public:

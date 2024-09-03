@@ -25,7 +25,7 @@ class DiagnosticEngine {
     }
 
     template <typename... Args>
-    void report (llvm::SMLoc Loc, unsigned ID, Args&... As) {
+    void report (llvm::SMLoc Loc, unsigned ID, Args&&... As) {
         // SmallString<8> S = formatv("{0} {1}", 1234.412, "test").sstr<8>();
         std::string Msg = llvm::formatv(getDiagnosticText(ID), std::forward<Args>(As)...).str();
         llvm::SourceMgr::DiagKind Kind = getDiagnosticKind(ID);

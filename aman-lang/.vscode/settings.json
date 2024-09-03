@@ -31,6 +31,10 @@
         "variant": "cpp",
         "vector": "cpp",
         "memory": "cpp",
-        "algorithm": "cpp"
+        "algorithm": "cpp",
+        "deque": "cpp",
+        "functional": "cpp",
+        "unordered_map": "cpp",
+        "sstream": "cpp"
     }
 }

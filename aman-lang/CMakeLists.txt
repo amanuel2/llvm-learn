@@ -50,7 +50,11 @@ include(AddAmanLang)
 include_directories(BEFORE
   ${CMAKE_CURRENT_BINARY_DIR}/include
   ${CMAKE_CURRENT_SOURCE_DIR}/include
+  ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/antlr4-runtime
 )
+
+# include( ExternalAntlr4Cpp )
+
 
 message(STATUS "LLVM_DIR: ${CMAKE_CURRENT_SOURCE_DIR}/include")
 

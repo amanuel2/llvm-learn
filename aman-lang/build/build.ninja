@@ -225,7 +225,7 @@ build lib/Basic/CMakeFiles/amanlangBasic.dir/Diagnostic.cc.o: CXX_COMPILER__aman
   DEFINES = -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS
   DEP_FILE = lib/Basic/CMakeFiles/amanlangBasic.dir/Diagnostic.cc.o.d
   FLAGS = -fPIC -fvisibility-inlines-hidden -Werror=date-time -Werror=unguarded-availability-new -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wimplicit-fallthrough -Wcovered-switch-default -Wno-noexcept-type -Wnon-virtual-dtor -Wdelete-non-virtual-dtor -Wsuggest-override -Wstring-conversion -Wmisleading-indentation -Wctad-maybe-unsupported -fdiagnostics-color -g -std=c++17 -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS
-  INCLUDES = -I/Users/amanuelbogale/Documents/llvm-learn/aman-lang/include -I/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/include -I/opt/homebrew/opt/llvm/include
+  INCLUDES = -I/Users/amanuelbogale/Documents/llvm-learn/aman-lang/thirdparty/antlr4-runtime -I/Users/amanuelbogale/Documents/llvm-learn/aman-lang/include -I/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/include -I/opt/homebrew/opt/llvm/include
   OBJECT_DIR = lib/Basic/CMakeFiles/amanlangBasic.dir
   OBJECT_FILE_DIR = lib/Basic/CMakeFiles/amanlangBasic.dir
 
@@ -233,7 +233,7 @@ build lib/Basic/CMakeFiles/amanlangBasic.dir/TokenKinds.cc.o: CXX_COMPILER__aman
   DEFINES = -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS
   DEP_FILE = lib/Basic/CMakeFiles/amanlangBasic.dir/TokenKinds.cc.o.d
   FLAGS = -fPIC -fvisibility-inlines-hidden -Werror=date-time -Werror=unguarded-availability-new -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wimplicit-fallthrough -Wcovered-switch-default -Wno-noexcept-type -Wnon-virtual-dtor -Wdelete-non-virtual-dtor -Wsuggest-override -Wstring-conversion -Wmisleading-indentation -Wctad-maybe-unsupported -fdiagnostics-color -g -std=c++17 -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS
-  INCLUDES = -I/Users/amanuelbogale/Documents/llvm-learn/aman-lang/include -I/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/include -I/opt/homebrew/opt/llvm/include
+  INCLUDES = -I/Users/amanuelbogale/Documents/llvm-learn/aman-lang/thirdparty/antlr4-runtime -I/Users/amanuelbogale/Documents/llvm-learn/aman-lang/include -I/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/include -I/opt/homebrew/opt/llvm/include
   OBJECT_DIR = lib/Basic/CMakeFiles/amanlangBasic.dir
   OBJECT_FILE_DIR = lib/Basic/CMakeFiles/amanlangBasic.dir
 
@@ -338,7 +338,7 @@ build lib/Lexer/CMakeFiles/amanlangLexer.dir/Lexer.cc.o: CXX_COMPILER__amanlangL
   DEFINES = -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS
   DEP_FILE = lib/Lexer/CMakeFiles/amanlangLexer.dir/Lexer.cc.o.d
   FLAGS = -fPIC -fvisibility-inlines-hidden -Werror=date-time -Werror=unguarded-availability-new -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wimplicit-fallthrough -Wcovered-switch-default -Wno-noexcept-type -Wnon-virtual-dtor -Wdelete-non-virtual-dtor -Wsuggest-override -Wstring-conversion -Wmisleading-indentation -Wctad-maybe-unsupported -fdiagnostics-color -g -std=c++17 -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS
-  INCLUDES = -I/Users/amanuelbogale/Documents/llvm-learn/aman-lang/include -I/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/include -I/opt/homebrew/opt/llvm/include
+  INCLUDES = -I/Users/amanuelbogale/Documents/llvm-learn/aman-lang/thirdparty/antlr4-runtime -I/Users/amanuelbogale/Documents/llvm-learn/aman-lang/include -I/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/include -I/opt/homebrew/opt/llvm/include
   OBJECT_DIR = lib/Lexer/CMakeFiles/amanlangLexer.dir
   OBJECT_FILE_DIR = lib/Lexer/CMakeFiles/amanlangLexer.dir
 
@@ -443,7 +443,7 @@ build lib/Parser/CMakeFiles/amanlangParser.dir/Parser.cc.o: CXX_COMPILER__amanla
   DEFINES = -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS
   DEP_FILE = lib/Parser/CMakeFiles/amanlangParser.dir/Parser.cc.o.d
   FLAGS = -fPIC -fvisibility-inlines-hidden -Werror=date-time -Werror=unguarded-availability-new -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wimplicit-fallthrough -Wcovered-switch-default -Wno-noexcept-type -Wnon-virtual-dtor -Wdelete-non-virtual-dtor -Wsuggest-override -Wstring-conversion -Wmisleading-indentation -Wctad-maybe-unsupported -fdiagnostics-color -g -std=c++17 -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS
-  INCLUDES = -I/Users/amanuelbogale/Documents/llvm-learn/aman-lang/include -I/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/include -I/opt/homebrew/opt/llvm/include
+  INCLUDES = -I/Users/amanuelbogale/Documents/llvm-learn/aman-lang/thirdparty/antlr4-runtime -I/Users/amanuelbogale/Documents/llvm-learn/aman-lang/include -I/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/include -I/opt/homebrew/opt/llvm/include
   OBJECT_DIR = lib/Parser/CMakeFiles/amanlangParser.dir
   OBJECT_FILE_DIR = lib/Parser/CMakeFiles/amanlangParser.dir
 
@@ -548,7 +548,7 @@ build lib/Sema/CMakeFiles/amanlangSema.dir/Sema.cc.o: CXX_COMPILER__amanlangSema
   DEFINES = -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS
   DEP_FILE = lib/Sema/CMakeFiles/amanlangSema.dir/Sema.cc.o.d
   FLAGS = -fPIC -fvisibility-inlines-hidden -Werror=date-time -Werror=unguarded-availability-new -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wimplicit-fallthrough -Wcovered-switch-default -Wno-noexcept-type -Wnon-virtual-dtor -Wdelete-non-virtual-dtor -Wsuggest-override -Wstring-conversion -Wmisleading-indentation -Wctad-maybe-unsupported -fdiagnostics-color -g -std=c++17 -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS
-  INCLUDES = -I/Users/amanuelbogale/Documents/llvm-learn/aman-lang/include -I/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/include -I/opt/homebrew/opt/llvm/include
+  INCLUDES = -I/Users/amanuelbogale/Documents/llvm-learn/aman-lang/thirdparty/antlr4-runtime -I/Users/amanuelbogale/Documents/llvm-learn/aman-lang/include -I/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/include -I/opt/homebrew/opt/llvm/include
   OBJECT_DIR = lib/Sema/CMakeFiles/amanlangSema.dir
   OBJECT_FILE_DIR = lib/Sema/CMakeFiles/amanlangSema.dir
 
