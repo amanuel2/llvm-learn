@@ -1,61 +1,77 @@
 #pragma once
-#include "amanlang/Basic/Diagnostic.h"
-#include "amanlang/Lexer/Lexer.h"
 #include "amanlang/AST/AST.h"
+#include "amanlang/Basic/Diagnostic.h"
+#include "amanlang/Basic/TokenKinds.h"
+#include "amanlang/Lexer/Lexer.h"
+#include "amanlang/Sema/Sema.h"
 
 namespace amanlang {
 class Parser {
     public:
-    explicit Parser(Lexer &Lex);
-    ModuleDecl *parseModule();
-    ModuleDecl *parse();
+    explicit Parser (Lexer& Lex, Sema& Sema) : Lex (Lex), Actions(Sema) {
+        advance ();
+    };
 
+    // Overall SPI
+    ModuleDecl* parse ();
 
-    bool parseCompilationUnit(ModuleDecl *&D);
-    bool parseImport();
-    bool parseBlock(DeclList &Decls, StmtList &Stmts);
-    bool parseDeclaration(DeclList &Decls);
-    bool parseConstantDeclaration(DeclList &Decls);
-    bool parseVariableDeclaration(DeclList &Decls);
-    bool parseProcedureDeclaration(DeclList &ParentDecls);
-    bool parseFormalParameters(FormalParamList &Params,
-                                Decl *&RetType);
-    bool parseFormalParameterList(FormalParamList &Params);
-    bool parseFormalParameter(FormalParamList &Params);
-    bool parseStatementSequence(StmtList &Stmts);
-    bool parseStatement(StmtList &Stmts);
-    bool parseIfStatement(StmtList &Stmts);
-    bool parseWhileStatement(StmtList &Stmts);
-    bool parseReturnStatement(StmtList &Stmts);
-    bool parseExpList(ExprList &Exprs);
-    bool parseExpression(Expr *&E);
-    bool parseRelation(OperatorInfo &Op);
-    bool parseSimpleExpression(Expr *&E);
-    bool parseAddOperator(OperatorInfo &Op);
-    bool parseTerm(Expr *&E);
-    bool parseMulOperator(OperatorInfo &Op);
-    bool parseFactor(Expr *&E);
-    bool parseQualident(Decl *&D);
-    bool parseIdentList(IdentList &Ids);
-    
     private:
     Lexer& Lex;
-    // Sema &Actions;
+    Sema& Actions;
     Token Tok;
+
+    // Parser Module
+    bool parseCompilationUnit (ModuleDecl*& D);
+    bool parseImport ();
+    bool parseBlock (DeclList& Decls, StmtList& Stmts);
+
+    // Parser Declarations
+    bool parseDeclaration (DeclList& Decls);
+    bool parseConstantDeclaration (DeclList& Decls);
+    bool parseVariableDeclaration (DeclList& Decls);
+    bool parseProcedureDeclaration (DeclList& ParentDecls);
+    bool parseFormalParameters (FormalParamList& Params, Decl*& RetType);
+    bool parseFormalParameterList (FormalParamList& Params);
+    bool parseFormalParameter (FormalParamList& Params);
+
+    // Parser Statements
+    bool parseStatementSequence (StmtList& Stmts);
+    bool parseStatement (StmtList& Stmts);
+    bool parseIfStatement (StmtList& Stmts);
+    bool parseWhileStatement (StmtList& Stmts);
+    bool parseReturnStatement (StmtList& Stmts);
+
+    // Parser Expressions
+    bool parseExprList (ExprList& Exprs);
+    bool parseExpression (Expr*& E);
+    bool parseRelation (OperatorInfo& Op);
+    bool parseSimpleExpression (Expr*& E);
+
+    // Parser Operators
+    bool parseAddOperator (OperatorInfo& Op);
+    bool parseMulOperator (OperatorInfo& Op);
+
+    // Parser Terms
+    bool parseTerm (Expr*& E);
+    bool parseFactor (Expr*& E);
+    bool parseQualident (Decl*& D);
+    bool parseIdentList (IdentList& Ids);
+
+
     DiagnosticEngine getDiag () LLVM_READNONE {
         return Lex.getDiagnostics ();
     }
 
     bool expect (tok::TokenKind Kind) {
         if (Tok.is (Kind))
-            return false;
+            return true;
         const char* Expected = tok::getPunctuatorSpelling (Kind);
         if (!Expected)
             Expected = tok::getKeywordSpelling (Kind);
 
         llvm::StringRef Str (Tok.getLocation ().getPointer (), Tok.getLength ());
         getDiag ().report (Tok.getLocation (), diag::err_expected, Expected, Str);
-        return true;
+        return false;
     }
 
     bool consume (tok::TokenKind Expected) LLVM_READNONE {
@@ -77,12 +93,9 @@ class Parser {
         }
     }
 
-    void next () {
+    void advance () {
         Lex.next (Tok);
     }
-    void advance() {
-        next ();
-    } 
 };
 
 } // namespace amanlang

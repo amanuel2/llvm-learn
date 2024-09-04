@@ -16,7 +16,7 @@ namespace amanlang {
 
             constexpr LLVM_ATTRIBUTE_ALWAYS_INLINE bool is(tok::TokenKind Kind) { return this->Kind == Kind; }
             constexpr LLVM_ATTRIBUTE_ALWAYS_INLINE bool isNot(tok::TokenKind Kind) { return this->Kind != Kind; }
-            template <typename... Tokens> constexpr LLVM_ATTRIBUTE_ALWAYS_INLINE bool isOneOf(Tokens&... Toks) { return (... || is(Toks)); }
+            template <typename... Tokens> constexpr LLVM_ATTRIBUTE_ALWAYS_INLINE bool isOneOf(Tokens&&... Toks) { return (... || is(Toks)); }
 
             constexpr LLVM_ATTRIBUTE_ALWAYS_INLINE size_t getLength() LLVM_READNONE { return Len; }
             constexpr LLVM_ATTRIBUTE_ALWAYS_INLINE llvm::SMLoc getLocation() LLVM_READNONE { return llvm::SMLoc::getFromPointer(Ptr); }

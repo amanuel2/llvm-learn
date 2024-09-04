@@ -91,6 +91,20 @@ void Sema::actOnImport (llvm::StringRef ModuleName, IdentList& Ids) {
     Diag.report (llvm::SMLoc (), diag::err_not_yet_implemented);
 }
 
+/**
+ * Handles the declaration of constant values in the current scope.
+ *
+ * This function is responsible for creating new constant declarations and
+ * adding them to the current scope. It takes the location, name, and
+ * expression for the new constant, creates a `ConstantDecl` object, and
+ * inserts it into the current scope. If the constant name is already
+ * declared in the current scope, an error is reported.
+ *
+ * @param Decls The list of declarations to add the new constant declaration to.
+ * @param Loc The source location of the constant declaration.
+ * @param Name The name of the constant being declared.
+ * @param E The expression representing the value of the constant.
+ */
 void Sema::actOnConstantDeclaration (DeclList& Decls, llvm::SMLoc Loc, llvm::StringRef Name, Expr* E) {
     assert (CurScope && "CurrentScope not set");
     ConstantDecl* Decl = new ConstantDecl (CurDecl, Loc, Name, E);
