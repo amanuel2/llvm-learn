@@ -1,4 +1,3 @@
-
 create_subdirectory_options(AMANLANG TOOL) # LLVM/AddLLVM.mk
 
-add_amanlang_subdirectory(driver)
+add_subdirectory(driver)

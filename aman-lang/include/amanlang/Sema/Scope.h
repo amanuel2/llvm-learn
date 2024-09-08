@@ -2,6 +2,7 @@
 
 #include "llvm/ADT/StringMap.h"
 #include "llvm/ADT/StringRef.h"
+#include "amanlang/AST/AST.h"
 
 namespace amanlang {
     class Decl;

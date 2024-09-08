@@ -14,8 +14,14 @@
 # EXTERNAL cache entries
 ########################
 
-//Whether to build driver as part of LLVM
+//Whether to build DRIVER as part of AMANLANG
 AMANLANG_TOOL_DRIVER_BUILD:BOOL=OFF
+
+//Whether to build lib as part of AMANLANG
+AMANLANG_TOOL_LIB_BUILD:BOOL=ON
+
+//Whether to build tools as part of AMANLANG
+AMANLANG_TOOL_TOOLS_BUILD:BOOL=ON
 
 //Value Computed by CMake
 AmanLang_BINARY_DIR:STATIC=/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build
@@ -423,6 +429,8 @@ zstd_STATIC_LIBRARY:FILEPATH=/opt/homebrew/lib/libzstd.a
 # INTERNAL cache entries
 ########################
 
+//ADVANCED property for variable: AMANLANG_TOOL_DRIVER_BUILD
+AMANLANG_TOOL_DRIVER_BUILD-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_ADDR2LINE
 CMAKE_ADDR2LINE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_AR
@@ -557,7 +565,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=7
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=9
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

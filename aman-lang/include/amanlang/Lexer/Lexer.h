@@ -1,3 +1,4 @@
+#pragma once
 #include "amanlang/Basic/Diagnostic.h"
 #include "amanlang/Lexer/Token.h"
 #include "llvm/ADT/StringMap.h"

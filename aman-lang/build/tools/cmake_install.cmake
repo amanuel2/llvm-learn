@@ -37,3 +37,8 @@ if(NOT DEFINED CMAKE_OBJDUMP)
   set(CMAKE_OBJDUMP "/opt/homebrew/opt/llvm/bin/llvm-objdump")
 endif()
 
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/tools/driver/cmake_install.cmake")
+endif()
+

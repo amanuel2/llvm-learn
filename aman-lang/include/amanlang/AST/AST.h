@@ -1,8 +1,8 @@
 #pragma once
+#include "amanlang/Lexer/Token.h"
 #include "llvm/ADT/APSInt.h"
 #include "llvm/ADT/StringRef.h"
 #include "llvm/Support/SourceMgr.h"
-#include "amanlang/Lexer/Token.h"
 #include <string>
 #include <vector>
 

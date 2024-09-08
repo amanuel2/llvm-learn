@@ -75,11 +75,14 @@ class Parser {
     }
 
     bool consume (tok::TokenKind Expected) LLVM_READNONE {
+        llvm::outs() << "Consuming: " << tok::getTokenName (Expected) << "\n";
         if (Tok.is (Expected)) {
-            Lex.next (Tok);
+            llvm::outs () << "[AMAN] Consumed: " << tok::getTokenName (Expected) << "\n";
+            advance();
             return true;
-        } else
-            return false;
+        }
+        
+        return false;
     }
 
     template <typename... TokenKinds>

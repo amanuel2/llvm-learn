@@ -690,8 +690,10 @@ Expr* Sema::actOnFunctionCall (Decl* D, ExprList& Params) {
  */
 Decl* Sema::actOnQualIdentPart (Decl* Prev, llvm::SMLoc Loc, llvm::StringRef Name) {
     if (!Prev) {
+        llvm::outs() << "Lookup begin\n";
         if (Decl* D = CurScope->lookup (Name))
             return D;
+        llvm::outs() << "Lookup end\n";
     } else if (auto* Mod = llvm::dyn_cast<ModuleDecl> (Prev)) {
         auto Decls = Mod->getDecls ();
         for (auto it = Decls.begin (); it != Decls.end (); it++)

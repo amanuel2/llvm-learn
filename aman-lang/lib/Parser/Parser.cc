@@ -36,11 +36,15 @@ ModuleDecl* Parser::parse () {
  * @return `true` if the compilation unit was parsed successfully, `false` otherwise.
  */
 bool Parser::parseCompilationUnit (ModuleDecl*& D) {
-    auto handle_err = [this] { return skipUntil (); };
+    llvm::outs() << "parseCompilationUnit\n";
+    auto handle_err = [this] { 
+        llvm::outs () << "handle_err\n";
+        return skipUntil (); };
     if (!consume (tok::kw_MODULE) || !expect (tok::identifier)) {
         return handle_err ();
     }
 
+    llvm::outs() << "parseCompilationUnit\n";
     EnterDecl enter (Actions, D);
     advance ();
     // parse headears
@@ -51,7 +55,7 @@ bool Parser::parseCompilationUnit (ModuleDecl*& D) {
 
     DeclList Decls;
     StmtList Stmts;
-
+    llvm::outs() << "parseBlock\n";
     if (!parseBlock (Decls, Stmts) || !expect (tok::identifier))
         return handle_err ();
 
@@ -116,6 +120,7 @@ bool Parser::parseImport () {
  */
 bool Parser::parseBlock (DeclList& Decls, StmtList& Stmts) {
     auto handle_err = [this] () { return skipUntil (tok::identifier); };
+    llvm::outs() << "parseBlock\n";
 
     while (Tok.isOneOf (tok::kw_CONST, tok::kw_PROCEDURE, tok::kw_VAR))
         if (!parseDeclaration (Decls))

@@ -12,7 +12,7 @@ class Sema {
 
     public:
     Sema (DiagnosticEngine& Diag)
-    : CurScope (nullptr), CurDecl (nullptr), Diag(Diag) {
+    : CurScope (new Scope()), CurDecl (nullptr), Diag(Diag) {
         initalize ();
     };
 

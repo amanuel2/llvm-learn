@@ -637,6 +637,111 @@ build lib/Sema/install/strip: phony lib/Sema/CMakeFiles/install/strip.util
 
 # =============================================================================
 # Write statements declared in CMakeLists.txt:
+# /Users/amanuelbogale/Documents/llvm-learn/aman-lang/lib/CMakeLists.txt
+# =============================================================================
+
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target amanlangCodeGen
+
+
+#############################################
+# Order-only phony target for amanlangCodeGen
+
+build cmake_object_order_depends_target_amanlangCodeGen: phony || .
+
+build lib/CodeGen/CMakeFiles/amanlangCodeGen.dir/CodeGen.cc.o: CXX_COMPILER__amanlangCodeGen_unscanned_Debug /Users/amanuelbogale/Documents/llvm-learn/aman-lang/lib/CodeGen/CodeGen.cc || cmake_object_order_depends_target_amanlangCodeGen
+  DEFINES = -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS
+  DEP_FILE = lib/CodeGen/CMakeFiles/amanlangCodeGen.dir/CodeGen.cc.o.d
+  FLAGS = -fPIC -fvisibility-inlines-hidden -Werror=date-time -Werror=unguarded-availability-new -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wimplicit-fallthrough -Wcovered-switch-default -Wno-noexcept-type -Wnon-virtual-dtor -Wdelete-non-virtual-dtor -Wsuggest-override -Wstring-conversion -Wmisleading-indentation -Wctad-maybe-unsupported -fdiagnostics-color -g -std=c++17 -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS
+  INCLUDES = -I/Users/amanuelbogale/Documents/llvm-learn/aman-lang/thirdparty/antlr4-runtime -I/Users/amanuelbogale/Documents/llvm-learn/aman-lang/include -I/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/include -I/opt/homebrew/opt/llvm/include
+  OBJECT_DIR = lib/CodeGen/CMakeFiles/amanlangCodeGen.dir
+  OBJECT_FILE_DIR = lib/CodeGen/CMakeFiles/amanlangCodeGen.dir
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target amanlangCodeGen
+
+
+#############################################
+# Link the static library lib/CodeGen/libamanlangCodeGen.a
+
+build lib/CodeGen/libamanlangCodeGen.a: CXX_STATIC_LIBRARY_LINKER__amanlangCodeGen_Debug lib/CodeGen/CMakeFiles/amanlangCodeGen.dir/CodeGen.cc.o
+  ARCH_FLAGS = -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4
+  LANGUAGE_COMPILE_FLAGS = -fPIC -fvisibility-inlines-hidden -Werror=date-time -Werror=unguarded-availability-new -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wimplicit-fallthrough -Wcovered-switch-default -Wno-noexcept-type -Wnon-virtual-dtor -Wdelete-non-virtual-dtor -Wsuggest-override -Wstring-conversion -Wmisleading-indentation -Wctad-maybe-unsupported -fdiagnostics-color -g
+  OBJECT_DIR = lib/CodeGen/CMakeFiles/amanlangCodeGen.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = lib/CodeGen/libamanlangCodeGen.a
+  TARGET_PDB = amanlangCodeGen.a.dbg
+
+
+#############################################
+# Utility command for edit_cache
+
+build lib/CodeGen/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/lib/CodeGen && /opt/homebrew/Cellar/cmake/3.30.2/bin/ccmake -S/Users/amanuelbogale/Documents/llvm-learn/aman-lang -B/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build
+  DESC = Running CMake cache editor...
+  pool = console
+  restat = 1
+
+build lib/CodeGen/edit_cache: phony lib/CodeGen/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build lib/CodeGen/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/lib/CodeGen && /opt/homebrew/Cellar/cmake/3.30.2/bin/cmake --regenerate-during-build -S/Users/amanuelbogale/Documents/llvm-learn/aman-lang -B/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build lib/CodeGen/rebuild_cache: phony lib/CodeGen/CMakeFiles/rebuild_cache.util
+
+
+#############################################
+# Utility command for list_install_components
+
+build lib/CodeGen/list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build lib/CodeGen/CMakeFiles/install.util: CUSTOM_COMMAND lib/CodeGen/all
+  COMMAND = cd /Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/lib/CodeGen && /opt/homebrew/Cellar/cmake/3.30.2/bin/cmake -P cmake_install.cmake
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build lib/CodeGen/install: phony lib/CodeGen/CMakeFiles/install.util
+
+
+#############################################
+# Utility command for install/local
+
+build lib/CodeGen/CMakeFiles/install/local.util: CUSTOM_COMMAND lib/CodeGen/all
+  COMMAND = cd /Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/lib/CodeGen && /opt/homebrew/Cellar/cmake/3.30.2/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build lib/CodeGen/install/local: phony lib/CodeGen/CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build lib/CodeGen/CMakeFiles/install/strip.util: CUSTOM_COMMAND lib/CodeGen/all
+  COMMAND = cd /Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/lib/CodeGen && /opt/homebrew/Cellar/cmake/3.30.2/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build lib/CodeGen/install/strip: phony lib/CodeGen/CMakeFiles/install/strip.util
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
 # /Users/amanuelbogale/Documents/llvm-learn/aman-lang/CMakeLists.txt
 # =============================================================================
 
@@ -707,9 +812,119 @@ build tools/CMakeFiles/install/strip.util: CUSTOM_COMMAND tools/all
 build tools/install/strip: phony tools/CMakeFiles/install/strip.util
 
 # =============================================================================
+# Write statements declared in CMakeLists.txt:
+# /Users/amanuelbogale/Documents/llvm-learn/aman-lang/tools/CMakeLists.txt
+# =============================================================================
+
+# =============================================================================
+# Object build statements for EXECUTABLE target amanlang
+
+
+#############################################
+# Order-only phony target for amanlang
+
+build cmake_object_order_depends_target_amanlang: phony || cmake_object_order_depends_target_amanlangBasic cmake_object_order_depends_target_amanlangLexer cmake_object_order_depends_target_amanlangParser cmake_object_order_depends_target_amanlangSema
+
+build tools/driver/CMakeFiles/amanlang.dir/Driver.cc.o: CXX_COMPILER__amanlang_unscanned_Debug /Users/amanuelbogale/Documents/llvm-learn/aman-lang/tools/driver/Driver.cc || cmake_object_order_depends_target_amanlang
+  DEFINES = -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS
+  DEP_FILE = tools/driver/CMakeFiles/amanlang.dir/Driver.cc.o.d
+  FLAGS = -fPIC -fvisibility-inlines-hidden -Werror=date-time -Werror=unguarded-availability-new -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wimplicit-fallthrough -Wcovered-switch-default -Wno-noexcept-type -Wnon-virtual-dtor -Wdelete-non-virtual-dtor -Wsuggest-override -Wstring-conversion -Wmisleading-indentation -Wctad-maybe-unsupported -fdiagnostics-color -g -std=c++17 -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -fno-rtti
+  INCLUDES = -I/Users/amanuelbogale/Documents/llvm-learn/aman-lang/thirdparty/antlr4-runtime -I/Users/amanuelbogale/Documents/llvm-learn/aman-lang/include -I/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/include -I/opt/homebrew/opt/llvm/include -isystem /opt/homebrew/include
+  OBJECT_DIR = tools/driver/CMakeFiles/amanlang.dir
+  OBJECT_FILE_DIR = tools/driver/CMakeFiles/amanlang.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target amanlang
+
+
+#############################################
+# Link the executable tools/driver/amanlang
+
+build tools/driver/amanlang: CXX_EXECUTABLE_LINKER__amanlang_Debug tools/driver/CMakeFiles/amanlang.dir/Driver.cc.o | /opt/homebrew/opt/llvm/lib/libclangTooling.a /opt/homebrew/opt/llvm/lib/libclangBasic.a /opt/homebrew/opt/llvm/lib/libclangFrontend.a /opt/homebrew/opt/llvm/lib/libclangSerialization.a /opt/homebrew/opt/llvm/lib/libclangASTMatchers.a /opt/homebrew/opt/llvm/lib/libclangAST.a /opt/homebrew/opt/llvm/lib/libclangLex.a /opt/homebrew/opt/llvm/lib/libLLVMSupport.a lib/Basic/libamanlangBasic.a lib/Lexer/libamanlangLexer.a lib/Parser/libamanlangParser.a lib/Sema/libamanlangSema.a /opt/homebrew/opt/llvm/lib/libclangParse.a /opt/homebrew/opt/llvm/lib/libclangSema.a /opt/homebrew/opt/llvm/lib/libclangAPINotes.a /opt/homebrew/opt/llvm/lib/libclangEdit.a /opt/homebrew/opt/llvm/lib/libclangAnalysis.a /opt/homebrew/opt/llvm/lib/libclangSupport.a /opt/homebrew/opt/llvm/lib/libclangASTMatchers.a /opt/homebrew/opt/llvm/lib/libclangAST.a /opt/homebrew/opt/llvm/lib/libclangDriver.a /opt/homebrew/opt/llvm/lib/libclangFormat.a /opt/homebrew/opt/llvm/lib/libclangToolingInclusions.a /opt/homebrew/opt/llvm/lib/libclangToolingCore.a /opt/homebrew/opt/llvm/lib/libclangRewrite.a /opt/homebrew/opt/llvm/lib/libclangLex.a /opt/homebrew/opt/llvm/lib/libclangBasic.a /opt/homebrew/lib/libz3.dylib /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk/usr/lib/libz.tbd /opt/homebrew/lib/libzstd.dylib /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk/usr/lib/libcurses.tbd /opt/homebrew/opt/llvm/lib/libLLVMDemangle.a /opt/homebrew/opt/llvm/lib/libLLVM.dylib || lib/Basic/libamanlangBasic.a lib/Lexer/libamanlangLexer.a lib/Parser/libamanlangParser.a lib/Sema/libamanlangSema.a
+  FLAGS = -fPIC -fvisibility-inlines-hidden -Werror=date-time -Werror=unguarded-availability-new -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wmissing-field-initializers -Wimplicit-fallthrough -Wcovered-switch-default -Wno-noexcept-type -Wnon-virtual-dtor -Wdelete-non-virtual-dtor -Wsuggest-override -Wstring-conversion -Wmisleading-indentation -Wctad-maybe-unsupported -fdiagnostics-color -g -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4
+  LINK_FLAGS = -L/opt/homebrew/opt/llvm/lib
+  LINK_LIBRARIES = -Wl,-rpath,@loader_path/../lib -Wl,-rpath,/opt/homebrew/opt/llvm/lib  /opt/homebrew/opt/llvm/lib/libclangTooling.a  /opt/homebrew/opt/llvm/lib/libclangBasic.a  /opt/homebrew/opt/llvm/lib/libclangFrontend.a  /opt/homebrew/opt/llvm/lib/libclangSerialization.a  /opt/homebrew/opt/llvm/lib/libclangASTMatchers.a  /opt/homebrew/opt/llvm/lib/libclangAST.a  /opt/homebrew/opt/llvm/lib/libclangLex.a  /opt/homebrew/opt/llvm/lib/libLLVMSupport.a  lib/Basic/libamanlangBasic.a  lib/Lexer/libamanlangLexer.a  lib/Parser/libamanlangParser.a  lib/Sema/libamanlangSema.a  /opt/homebrew/opt/llvm/lib/libclangParse.a  /opt/homebrew/opt/llvm/lib/libclangSema.a  /opt/homebrew/opt/llvm/lib/libclangAPINotes.a  /opt/homebrew/opt/llvm/lib/libclangEdit.a  /opt/homebrew/opt/llvm/lib/libclangAnalysis.a  /opt/homebrew/opt/llvm/lib/libclangSupport.a  /opt/homebrew/opt/llvm/lib/libclangASTMatchers.a  /opt/homebrew/opt/llvm/lib/libclangAST.a  /opt/homebrew/opt/llvm/lib/libclangDriver.a  /opt/homebrew/opt/llvm/lib/libclangFormat.a  /opt/homebrew/opt/llvm/lib/libclangToolingInclusions.a  /opt/homebrew/opt/llvm/lib/libclangToolingCore.a  /opt/homebrew/opt/llvm/lib/libclangRewrite.a  /opt/homebrew/opt/llvm/lib/libclangLex.a  /opt/homebrew/opt/llvm/lib/libclangBasic.a  -lm  /opt/homebrew/lib/libz3.dylib  /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk/usr/lib/libz.tbd  /opt/homebrew/lib/libzstd.dylib  /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk/usr/lib/libcurses.tbd  /opt/homebrew/opt/llvm/lib/libLLVMDemangle.a  /opt/homebrew/opt/llvm/lib/libLLVM.dylib
+  OBJECT_DIR = tools/driver/CMakeFiles/amanlang.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = tools/driver/amanlang
+  TARGET_PDB = amanlang.dbg
+
+
+#############################################
+# Utility command for edit_cache
+
+build tools/driver/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/tools/driver && /opt/homebrew/Cellar/cmake/3.30.2/bin/ccmake -S/Users/amanuelbogale/Documents/llvm-learn/aman-lang -B/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build
+  DESC = Running CMake cache editor...
+  pool = console
+  restat = 1
+
+build tools/driver/edit_cache: phony tools/driver/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build tools/driver/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/tools/driver && /opt/homebrew/Cellar/cmake/3.30.2/bin/cmake --regenerate-during-build -S/Users/amanuelbogale/Documents/llvm-learn/aman-lang -B/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build tools/driver/rebuild_cache: phony tools/driver/CMakeFiles/rebuild_cache.util
+
+
+#############################################
+# Utility command for list_install_components
+
+build tools/driver/list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build tools/driver/CMakeFiles/install.util: CUSTOM_COMMAND tools/driver/all
+  COMMAND = cd /Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/tools/driver && /opt/homebrew/Cellar/cmake/3.30.2/bin/cmake -P cmake_install.cmake
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build tools/driver/install: phony tools/driver/CMakeFiles/install.util
+
+
+#############################################
+# Utility command for install/local
+
+build tools/driver/CMakeFiles/install/local.util: CUSTOM_COMMAND tools/driver/all
+  COMMAND = cd /Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/tools/driver && /opt/homebrew/Cellar/cmake/3.30.2/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build tools/driver/install/local: phony tools/driver/CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build tools/driver/CMakeFiles/install/strip.util: CUSTOM_COMMAND tools/driver/all
+  COMMAND = cd /Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/tools/driver && /opt/homebrew/Cellar/cmake/3.30.2/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build tools/driver/install/strip: phony tools/driver/CMakeFiles/install/strip.util
+
+# =============================================================================
 # Target aliases.
 
+build amanlang: phony tools/driver/amanlang
+
 build amanlangBasic: phony lib/Basic/libamanlangBasic.a
+
+build amanlangCodeGen: phony lib/CodeGen/libamanlangCodeGen.a
 
 build amanlangLexer: phony lib/Lexer/libamanlangLexer.a
 
@@ -718,6 +933,8 @@ build amanlangParser: phony lib/Parser/libamanlangParser.a
 build amanlangSema: phony lib/Sema/libamanlangSema.a
 
 build libamanlangBasic.a: phony lib/Basic/libamanlangBasic.a
+
+build libamanlangCodeGen.a: phony lib/CodeGen/libamanlangCodeGen.a
 
 build libamanlangLexer.a: phony lib/Lexer/libamanlangLexer.a
 
@@ -740,7 +957,7 @@ build all: phony lib/all tools/all
 #############################################
 # Folder: /Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/lib
 
-build lib/all: phony lib/Basic/all lib/Lexer/all lib/Parser/all lib/Sema/all
+build lib/all: phony lib/Basic/all lib/Lexer/all lib/Parser/all lib/Sema/all lib/CodeGen/all
 
 # =============================================================================
 
@@ -748,6 +965,13 @@ build lib/all: phony lib/Basic/all lib/Lexer/all lib/Parser/all lib/Sema/all
 # Folder: /Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/lib/Basic
 
 build lib/Basic/all: phony lib/Basic/libamanlangBasic.a
+
+# =============================================================================
+
+#############################################
+# Folder: /Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/lib/CodeGen
+
+build lib/CodeGen/all: phony lib/CodeGen/libamanlangCodeGen.a
 
 # =============================================================================
 
@@ -775,7 +999,14 @@ build lib/Sema/all: phony lib/Sema/libamanlangSema.a
 #############################################
 # Folder: /Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/tools
 
-build tools/all: phony
+build tools/all: phony tools/driver/all
+
+# =============================================================================
+
+#############################################
+# Folder: /Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/tools/driver
+
+build tools/driver/all: phony tools/driver/amanlang
 
 # =============================================================================
 # Built-in targets
@@ -784,14 +1015,14 @@ build tools/all: phony
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | /Users/amanuelbogale/Documents/llvm-learn/aman-lang/CMakeLists.txt /Users/amanuelbogale/Documents/llvm-learn/aman-lang/cmake/modules/AddAmanLang.cmake /Users/amanuelbogale/Documents/llvm-learn/aman-lang/lib/Basic/CMakeLists.txt /Users/amanuelbogale/Documents/llvm-learn/aman-lang/lib/CMakeLists.txt /Users/amanuelbogale/Documents/llvm-learn/aman-lang/lib/Lexer/CMakeLists.txt /Users/amanuelbogale/Documents/llvm-learn/aman-lang/lib/Parser/CMakeLists.txt /Users/amanuelbogale/Documents/llvm-learn/aman-lang/lib/Sema/CMakeLists.txt /Users/amanuelbogale/Documents/llvm-learn/aman-lang/tools/CMakeLists.txt /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/AddFileDependencies.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeCInformation.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeCXXInformation.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeCommonLanguageInclude.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeDependentOption.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeGenericSystem.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeInitializeConfigs.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeLanguageInformation.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeParseArguments.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakePushCheckState.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeSystemSpecificInformation.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CheckCCompilerFlag.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CheckCSourceCompiles.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CheckCXXCompilerFlag.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CheckCXXSourceCompiles.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CheckIncludeFile.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CheckLinkerFlag.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CheckSymbolExists.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Compiler/CMakeCommonCompilerMacros.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Compiler/Clang-C.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Compiler/Clang-CXX.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Compiler/Clang.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Compiler/GNU.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/FindLibXml2.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/FindPackageHandleStandardArgs.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/FindPackageMessage.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/FindPkgConfig.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/FindZLIB.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/GNUInstallDirs.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CheckCompilerFlag.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CheckFlagCommonConfig.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CheckLinkerFlag.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CheckSourceCompiles.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Platform/Apple-Clang-C.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Platform/Apple-Clang-CXX.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Platform/Apple-Clang.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Platform/Darwin-Initialize.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Platform/Darwin.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Platform/UnixPaths.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/SelectLibraryConfigurations.cmake /opt/homebrew/opt/llvm/lib/cmake/clang/ClangConfig.cmake /opt/homebrew/opt/llvm/lib/cmake/clang/ClangConfigVersion.cmake /opt/homebrew/opt/llvm/lib/cmake/clang/ClangTargets-release.cmake /opt/homebrew/opt/llvm/lib/cmake/clang/ClangTargets.cmake /opt/homebrew/opt/llvm/lib/cmake/llvm/AddLLVM.cmake /opt/homebrew/opt/llvm/lib/cmake/llvm/CheckCompilerVersion.cmake /opt/homebrew/opt/llvm/lib/cmake/llvm/CheckProblematicConfigurations.cmake /opt/homebrew/opt/llvm/lib/cmake/llvm/DetermineGCCCompatible.cmake /opt/homebrew/opt/llvm/lib/cmake/llvm/FindFFI.cmake /opt/homebrew/opt/llvm/lib/cmake/llvm/FindLibEdit.cmake /opt/homebrew/opt/llvm/lib/cmake/llvm/FindTerminfo.cmake /opt/homebrew/opt/llvm/lib/cmake/llvm/Findzstd.cmake /opt/homebrew/opt/llvm/lib/cmake/llvm/HandleLLVMOptions.cmake /opt/homebrew/opt/llvm/lib/cmake/llvm/HandleLLVMStdlib.cmake /opt/homebrew/opt/llvm/lib/cmake/llvm/LLVM-Config.cmake /opt/homebrew/opt/llvm/lib/cmake/llvm/LLVMCheckLinkerFlag.cmake /opt/homebrew/opt/llvm/lib/cmake/llvm/LLVMConfig.cmake /opt/homebrew/opt/llvm/lib/cmake/llvm/LLVMConfigVersion.cmake /opt/homebrew/opt/llvm/lib/cmake/llvm/LLVMDistributionSupport.cmake /opt/homebrew/opt/llvm/lib/cmake/llvm/LLVMExports-release.cmake /opt/homebrew/opt/llvm/lib/cmake/llvm/LLVMExports.cmake /opt/homebrew/opt/llvm/lib/cmake/llvm/LLVMProcessSources.cmake CMakeCache.txt CMakeFiles/3.30.2/CMakeCCompiler.cmake CMakeFiles/3.30.2/CMakeCXXCompiler.cmake CMakeFiles/3.30.2/CMakeSystem.cmake
+build build.ninja: RERUN_CMAKE | /Users/amanuelbogale/Documents/llvm-learn/aman-lang/CMakeLists.txt /Users/amanuelbogale/Documents/llvm-learn/aman-lang/cmake/modules/AddAmanLang.cmake /Users/amanuelbogale/Documents/llvm-learn/aman-lang/lib/Basic/CMakeLists.txt /Users/amanuelbogale/Documents/llvm-learn/aman-lang/lib/CMakeLists.txt /Users/amanuelbogale/Documents/llvm-learn/aman-lang/lib/CodeGen/CMakeLists.txt /Users/amanuelbogale/Documents/llvm-learn/aman-lang/lib/Lexer/CMakeLists.txt /Users/amanuelbogale/Documents/llvm-learn/aman-lang/lib/Parser/CMakeLists.txt /Users/amanuelbogale/Documents/llvm-learn/aman-lang/lib/Sema/CMakeLists.txt /Users/amanuelbogale/Documents/llvm-learn/aman-lang/tools/CMakeLists.txt /Users/amanuelbogale/Documents/llvm-learn/aman-lang/tools/driver/CMakeLists.txt /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/AddFileDependencies.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeCInformation.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeCXXInformation.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeCommonLanguageInclude.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeDependentOption.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeGenericSystem.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeInitializeConfigs.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeLanguageInformation.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeParseArguments.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakePushCheckState.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeSystemSpecificInformation.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CheckCCompilerFlag.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CheckCSourceCompiles.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CheckCXXCompilerFlag.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CheckCXXSourceCompiles.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CheckIncludeFile.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CheckLinkerFlag.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CheckSymbolExists.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Compiler/CMakeCommonCompilerMacros.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Compiler/Clang-C.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Compiler/Clang-CXX.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Compiler/Clang.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Compiler/GNU.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/FindLibXml2.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/FindPackageHandleStandardArgs.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/FindPackageMessage.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/FindPkgConfig.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/FindZLIB.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/GNUInstallDirs.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CheckCompilerFlag.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CheckFlagCommonConfig.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CheckLinkerFlag.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CheckSourceCompiles.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Platform/Apple-Clang-C.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Platform/Apple-Clang-CXX.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Platform/Apple-Clang.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Platform/Darwin-Initialize.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Platform/Darwin.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Platform/UnixPaths.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/SelectLibraryConfigurations.cmake /opt/homebrew/opt/llvm/lib/cmake/clang/ClangConfig.cmake /opt/homebrew/opt/llvm/lib/cmake/clang/ClangConfigVersion.cmake /opt/homebrew/opt/llvm/lib/cmake/clang/ClangTargets-release.cmake /opt/homebrew/opt/llvm/lib/cmake/clang/ClangTargets.cmake /opt/homebrew/opt/llvm/lib/cmake/llvm/AddLLVM.cmake /opt/homebrew/opt/llvm/lib/cmake/llvm/CheckCompilerVersion.cmake /opt/homebrew/opt/llvm/lib/cmake/llvm/CheckProblematicConfigurations.cmake /opt/homebrew/opt/llvm/lib/cmake/llvm/DetermineGCCCompatible.cmake /opt/homebrew/opt/llvm/lib/cmake/llvm/FindFFI.cmake /opt/homebrew/opt/llvm/lib/cmake/llvm/FindLibEdit.cmake /opt/homebrew/opt/llvm/lib/cmake/llvm/FindTerminfo.cmake /opt/homebrew/opt/llvm/lib/cmake/llvm/Findzstd.cmake /opt/homebrew/opt/llvm/lib/cmake/llvm/HandleLLVMOptions.cmake /opt/homebrew/opt/llvm/lib/cmake/llvm/HandleLLVMStdlib.cmake /opt/homebrew/opt/llvm/lib/cmake/llvm/LLVM-Config.cmake /opt/homebrew/opt/llvm/lib/cmake/llvm/LLVMCheckLinkerFlag.cmake /opt/homebrew/opt/llvm/lib/cmake/llvm/LLVMConfig.cmake /opt/homebrew/opt/llvm/lib/cmake/llvm/LLVMConfigVersion.cmake /opt/homebrew/opt/llvm/lib/cmake/llvm/LLVMDistributionSupport.cmake /opt/homebrew/opt/llvm/lib/cmake/llvm/LLVMExports-release.cmake /opt/homebrew/opt/llvm/lib/cmake/llvm/LLVMExports.cmake /opt/homebrew/opt/llvm/lib/cmake/llvm/LLVMProcessSources.cmake CMakeCache.txt CMakeFiles/3.30.2/CMakeCCompiler.cmake CMakeFiles/3.30.2/CMakeCXXCompiler.cmake CMakeFiles/3.30.2/CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build /Users/amanuelbogale/Documents/llvm-learn/aman-lang/CMakeLists.txt /Users/amanuelbogale/Documents/llvm-learn/aman-lang/cmake/modules/AddAmanLang.cmake /Users/amanuelbogale/Documents/llvm-learn/aman-lang/lib/Basic/CMakeLists.txt /Users/amanuelbogale/Documents/llvm-learn/aman-lang/lib/CMakeLists.txt /Users/amanuelbogale/Documents/llvm-learn/aman-lang/lib/Lexer/CMakeLists.txt /Users/amanuelbogale/Documents/llvm-learn/aman-lang/lib/Parser/CMakeLists.txt /Users/amanuelbogale/Documents/llvm-learn/aman-lang/lib/Sema/CMakeLists.txt /Users/amanuelbogale/Documents/llvm-learn/aman-lang/tools/CMakeLists.txt /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/AddFileDependencies.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeCInformation.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeCXXInformation.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeCommonLanguageInclude.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeDependentOption.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeGenericSystem.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeInitializeConfigs.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeLanguageInformation.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeParseArguments.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakePushCheckState.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeSystemSpecificInformation.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CheckCCompilerFlag.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CheckCSourceCompiles.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CheckCXXCompilerFlag.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CheckCXXSourceCompiles.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CheckIncludeFile.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CheckLinkerFlag.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CheckSymbolExists.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Compiler/CMakeCommonCompilerMacros.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Compiler/Clang-C.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Compiler/Clang-CXX.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Compiler/Clang.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Compiler/GNU.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/FindLibXml2.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/FindPackageHandleStandardArgs.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/FindPackageMessage.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/FindPkgConfig.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/FindZLIB.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/GNUInstallDirs.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CheckCompilerFlag.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CheckFlagCommonConfig.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CheckLinkerFlag.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CheckSourceCompiles.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Platform/Apple-Clang-C.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Platform/Apple-Clang-CXX.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Platform/Apple-Clang.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Platform/Darwin-Initialize.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Platform/Darwin.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Platform/UnixPaths.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/SelectLibraryConfigurations.cmake /opt/homebrew/opt/llvm/lib/cmake/clang/ClangConfig.cmake /opt/homebrew/opt/llvm/lib/cmake/clang/ClangConfigVersion.cmake /opt/homebrew/opt/llvm/lib/cmake/clang/ClangTargets-release.cmake /opt/homebrew/opt/llvm/lib/cmake/clang/ClangTargets.cmake /opt/homebrew/opt/llvm/lib/cmake/llvm/AddLLVM.cmake /opt/homebrew/opt/llvm/lib/cmake/llvm/CheckCompilerVersion.cmake /opt/homebrew/opt/llvm/lib/cmake/llvm/CheckProblematicConfigurations.cmake /opt/homebrew/opt/llvm/lib/cmake/llvm/DetermineGCCCompatible.cmake /opt/homebrew/opt/llvm/lib/cmake/llvm/FindFFI.cmake /opt/homebrew/opt/llvm/lib/cmake/llvm/FindLibEdit.cmake /opt/homebrew/opt/llvm/lib/cmake/llvm/FindTerminfo.cmake /opt/homebrew/opt/llvm/lib/cmake/llvm/Findzstd.cmake /opt/homebrew/opt/llvm/lib/cmake/llvm/HandleLLVMOptions.cmake /opt/homebrew/opt/llvm/lib/cmake/llvm/HandleLLVMStdlib.cmake /opt/homebrew/opt/llvm/lib/cmake/llvm/LLVM-Config.cmake /opt/homebrew/opt/llvm/lib/cmake/llvm/LLVMCheckLinkerFlag.cmake /opt/homebrew/opt/llvm/lib/cmake/llvm/LLVMConfig.cmake /opt/homebrew/opt/llvm/lib/cmake/llvm/LLVMConfigVersion.cmake /opt/homebrew/opt/llvm/lib/cmake/llvm/LLVMDistributionSupport.cmake /opt/homebrew/opt/llvm/lib/cmake/llvm/LLVMExports-release.cmake /opt/homebrew/opt/llvm/lib/cmake/llvm/LLVMExports.cmake /opt/homebrew/opt/llvm/lib/cmake/llvm/LLVMProcessSources.cmake CMakeCache.txt CMakeFiles/3.30.2/CMakeCCompiler.cmake CMakeFiles/3.30.2/CMakeCXXCompiler.cmake CMakeFiles/3.30.2/CMakeSystem.cmake: phony
+build /Users/amanuelbogale/Documents/llvm-learn/aman-lang/CMakeLists.txt /Users/amanuelbogale/Documents/llvm-learn/aman-lang/cmake/modules/AddAmanLang.cmake /Users/amanuelbogale/Documents/llvm-learn/aman-lang/lib/Basic/CMakeLists.txt /Users/amanuelbogale/Documents/llvm-learn/aman-lang/lib/CMakeLists.txt /Users/amanuelbogale/Documents/llvm-learn/aman-lang/lib/CodeGen/CMakeLists.txt /Users/amanuelbogale/Documents/llvm-learn/aman-lang/lib/Lexer/CMakeLists.txt /Users/amanuelbogale/Documents/llvm-learn/aman-lang/lib/Parser/CMakeLists.txt /Users/amanuelbogale/Documents/llvm-learn/aman-lang/lib/Sema/CMakeLists.txt /Users/amanuelbogale/Documents/llvm-learn/aman-lang/tools/CMakeLists.txt /Users/amanuelbogale/Documents/llvm-learn/aman-lang/tools/driver/CMakeLists.txt /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/AddFileDependencies.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeCInformation.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeCXXInformation.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeCommonLanguageInclude.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeDependentOption.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeGenericSystem.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeInitializeConfigs.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeLanguageInformation.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeParseArguments.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakePushCheckState.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeSystemSpecificInformation.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CheckCCompilerFlag.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CheckCSourceCompiles.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CheckCXXCompilerFlag.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CheckCXXSourceCompiles.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CheckIncludeFile.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CheckLinkerFlag.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/CheckSymbolExists.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Compiler/CMakeCommonCompilerMacros.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Compiler/Clang-C.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Compiler/Clang-CXX.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Compiler/Clang.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Compiler/GNU.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/FindLibXml2.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/FindPackageHandleStandardArgs.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/FindPackageMessage.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/FindPkgConfig.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/FindZLIB.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/GNUInstallDirs.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CheckCompilerFlag.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CheckFlagCommonConfig.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CheckLinkerFlag.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Internal/CheckSourceCompiles.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Platform/Apple-Clang-C.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Platform/Apple-Clang-CXX.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Platform/Apple-Clang.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Platform/Darwin-Initialize.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Platform/Darwin.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/Platform/UnixPaths.cmake /opt/homebrew/Cellar/cmake/3.30.2/share/cmake/Modules/SelectLibraryConfigurations.cmake /opt/homebrew/opt/llvm/lib/cmake/clang/ClangConfig.cmake /opt/homebrew/opt/llvm/lib/cmake/clang/ClangConfigVersion.cmake /opt/homebrew/opt/llvm/lib/cmake/clang/ClangTargets-release.cmake /opt/homebrew/opt/llvm/lib/cmake/clang/ClangTargets.cmake /opt/homebrew/opt/llvm/lib/cmake/llvm/AddLLVM.cmake /opt/homebrew/opt/llvm/lib/cmake/llvm/CheckCompilerVersion.cmake /opt/homebrew/opt/llvm/lib/cmake/llvm/CheckProblematicConfigurations.cmake /opt/homebrew/opt/llvm/lib/cmake/llvm/DetermineGCCCompatible.cmake /opt/homebrew/opt/llvm/lib/cmake/llvm/FindFFI.cmake /opt/homebrew/opt/llvm/lib/cmake/llvm/FindLibEdit.cmake /opt/homebrew/opt/llvm/lib/cmake/llvm/FindTerminfo.cmake /opt/homebrew/opt/llvm/lib/cmake/llvm/Findzstd.cmake /opt/homebrew/opt/llvm/lib/cmake/llvm/HandleLLVMOptions.cmake /opt/homebrew/opt/llvm/lib/cmake/llvm/HandleLLVMStdlib.cmake /opt/homebrew/opt/llvm/lib/cmake/llvm/LLVM-Config.cmake /opt/homebrew/opt/llvm/lib/cmake/llvm/LLVMCheckLinkerFlag.cmake /opt/homebrew/opt/llvm/lib/cmake/llvm/LLVMConfig.cmake /opt/homebrew/opt/llvm/lib/cmake/llvm/LLVMConfigVersion.cmake /opt/homebrew/opt/llvm/lib/cmake/llvm/LLVMDistributionSupport.cmake /opt/homebrew/opt/llvm/lib/cmake/llvm/LLVMExports-release.cmake /opt/homebrew/opt/llvm/lib/cmake/llvm/LLVMExports.cmake /opt/homebrew/opt/llvm/lib/cmake/llvm/LLVMProcessSources.cmake CMakeCache.txt CMakeFiles/3.30.2/CMakeCCompiler.cmake CMakeFiles/3.30.2/CMakeCXXCompiler.cmake CMakeFiles/3.30.2/CMakeSystem.cmake: phony
 
 
 #############################################

@@ -4,6 +4,8 @@
 #include "llvm/Support/SMLoc.h"
 #include "amanlang/Basic/TokenKinds.h"
 
+#include "llvm/Support/raw_ostream.h"
+
 namespace amanlang {
     class Lexer;
 
@@ -14,7 +16,10 @@ namespace amanlang {
             constexpr LLVM_ATTRIBUTE_ALWAYS_INLINE tok::TokenKind getKind() LLVM_READNONE { return Kind; } 
             constexpr LLVM_ATTRIBUTE_ALWAYS_INLINE void setKind(tok::TokenKind Kind) { this->Kind = Kind; }
 
-            constexpr LLVM_ATTRIBUTE_ALWAYS_INLINE bool is(tok::TokenKind Kind) { return this->Kind == Kind; }
+             LLVM_ATTRIBUTE_ALWAYS_INLINE bool is(tok::TokenKind Kind) { 
+                llvm::outs() << "Token Kind: " << this->Kind << " Kind: " << Kind << "\n";
+                return this->Kind == Kind; 
+            }
             constexpr LLVM_ATTRIBUTE_ALWAYS_INLINE bool isNot(tok::TokenKind Kind) { return this->Kind != Kind; }
             template <typename... Tokens> constexpr LLVM_ATTRIBUTE_ALWAYS_INLINE bool isOneOf(Tokens&&... Toks) { return (... || is(Toks)); }
 

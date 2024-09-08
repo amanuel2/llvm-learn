@@ -1,30 +1,30 @@
 [
 {
-  "directory": "/Users/amanuelbogale/Documents/llvm-learn/calc-language/build",
+  "directory": "/Users/amanuelbogale/Documents/llvm-learn/build",
   "command": "/opt/homebrew/opt/llvm/bin/clang++ -I/opt/homebrew/opt/llvm/include -I/Users/amanuelbogale/Documents/llvm-learn/calc-language/Lexer.h -I/Users/amanuelbogale/Documents/llvm-learn/calc-language/Parser.h -I/Users/amanuelbogale/Documents/llvm-learn/calc-language/Sema.h -I/Users/amanuelbogale/Documents/llvm-learn/calc-language/CodeGen.h -isystem /opt/homebrew/include -g -std=c++17 -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -fno-rtti -o CMakeFiles/comp.dir/main.cc.o -c /Users/amanuelbogale/Documents/llvm-learn/calc-language/main.cc",
   "file": "/Users/amanuelbogale/Documents/llvm-learn/calc-language/main.cc",
   "output": "CMakeFiles/comp.dir/main.cc.o"
 },
 {
-  "directory": "/Users/amanuelbogale/Documents/llvm-learn/calc-language/build",
+  "directory": "/Users/amanuelbogale/Documents/llvm-learn/build",
   "command": "/opt/homebrew/opt/llvm/bin/clang++ -I/opt/homebrew/opt/llvm/include -I/Users/amanuelbogale/Documents/llvm-learn/calc-language/Lexer.h -I/Users/amanuelbogale/Documents/llvm-learn/calc-language/Parser.h -I/Users/amanuelbogale/Documents/llvm-learn/calc-language/Sema.h -I/Users/amanuelbogale/Documents/llvm-learn/calc-language/CodeGen.h -isystem /opt/homebrew/include -g -std=c++17 -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -fno-rtti -o CMakeFiles/comp.dir/Lexer.cc.o -c /Users/amanuelbogale/Documents/llvm-learn/calc-language/Lexer.cc",
   "file": "/Users/amanuelbogale/Documents/llvm-learn/calc-language/Lexer.cc",
   "output": "CMakeFiles/comp.dir/Lexer.cc.o"
 },
 {
-  "directory": "/Users/amanuelbogale/Documents/llvm-learn/calc-language/build",
+  "directory": "/Users/amanuelbogale/Documents/llvm-learn/build",
   "command": "/opt/homebrew/opt/llvm/bin/clang++ -I/opt/homebrew/opt/llvm/include -I/Users/amanuelbogale/Documents/llvm-learn/calc-language/Lexer.h -I/Users/amanuelbogale/Documents/llvm-learn/calc-language/Parser.h -I/Users/amanuelbogale/Documents/llvm-learn/calc-language/Sema.h -I/Users/amanuelbogale/Documents/llvm-learn/calc-language/CodeGen.h -isystem /opt/homebrew/include -g -std=c++17 -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -fno-rtti -o CMakeFiles/comp.dir/Parser.cc.o -c /Users/amanuelbogale/Documents/llvm-learn/calc-language/Parser.cc",
   "file": "/Users/amanuelbogale/Documents/llvm-learn/calc-language/Parser.cc",
   "output": "CMakeFiles/comp.dir/Parser.cc.o"
 },
 {
-  "directory": "/Users/amanuelbogale/Documents/llvm-learn/calc-language/build",
+  "directory": "/Users/amanuelbogale/Documents/llvm-learn/build",
   "command": "/opt/homebrew/opt/llvm/bin/clang++ -I/opt/homebrew/opt/llvm/include -I/Users/amanuelbogale/Documents/llvm-learn/calc-language/Lexer.h -I/Users/amanuelbogale/Documents/llvm-learn/calc-language/Parser.h -I/Users/amanuelbogale/Documents/llvm-learn/calc-language/Sema.h -I/Users/amanuelbogale/Documents/llvm-learn/calc-language/CodeGen.h -isystem /opt/homebrew/include -g -std=c++17 -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -fno-rtti -o CMakeFiles/comp.dir/Sema.cc.o -c /Users/amanuelbogale/Documents/llvm-learn/calc-language/Sema.cc",
   "file": "/Users/amanuelbogale/Documents/llvm-learn/calc-language/Sema.cc",
   "output": "CMakeFiles/comp.dir/Sema.cc.o"
 },
 {
-  "directory": "/Users/amanuelbogale/Documents/llvm-learn/calc-language/build",
+  "directory": "/Users/amanuelbogale/Documents/llvm-learn/build",
   "command": "/opt/homebrew/opt/llvm/bin/clang++ -I/opt/homebrew/opt/llvm/include -I/Users/amanuelbogale/Documents/llvm-learn/calc-language/Lexer.h -I/Users/amanuelbogale/Documents/llvm-learn/calc-language/Parser.h -I/Users/amanuelbogale/Documents/llvm-learn/calc-language/Sema.h -I/Users/amanuelbogale/Documents/llvm-learn/calc-language/CodeGen.h -isystem /opt/homebrew/include -g -std=c++17 -arch arm64 -isysroot /Applications/NIX.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.4   -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -fno-rtti -o CMakeFiles/comp.dir/CodeGen.cc.o -c /Users/amanuelbogale/Documents/llvm-learn/calc-language/CodeGen.cc",
   "file": "/Users/amanuelbogale/Documents/llvm-learn/calc-language/CodeGen.cc",
   "output": "CMakeFiles/comp.dir/CodeGen.cc.o"
