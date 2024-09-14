@@ -12,7 +12,7 @@ void CGProcedure::run (ProcedureDecl* Proc) {
     Function = createFunction (Proc, FunType);
 
     // create first BB
-    llvm::BasicBlock* BB = llvm::BasicBlock::Create (CGM.getLLVMCtx (), "entry", Fn);
+    llvm::BasicBlock* BB = llvm::BasicBlock::Create (CGM.getLLVMCtx (), "entry", Function);
     setInsertion (BB);
 
     // We must step through all formal parameters. To handle VAR parameters correctly
@@ -239,14 +239,14 @@ void CGProcedure::writeLocalVariable (llvm::BasicBlock* BB, Decl* Decl, llvm::Va
     assert (BB && "Basic block is nullptr");
     assert (Val && "Value is nullptr");
 
-    BasicBlock_t blockDef = BlockDefs.at (*BB);
+    BasicBlock blockDef = BlockDefs.at (BB);
     blockDef.Defs[Decl]   = llvm::TrackingVH<llvm::Value> (Val);
 }
 
 
 llvm::Value* CGProcedure::readLocalVariable (llvm::BasicBlock* BB, Decl* Decl) {
     assert (BB && "Basic block is nullptr");
-    BasicBlock_t blockDef = BlockDefs.at (*BB);
+    BasicBlock blockDef = BlockDefs.at (BB);
     auto Val              = blockDef.Defs.find (Decl);
     if (Val != blockDef.Defs.end ())
         return Val->second;
@@ -255,7 +255,7 @@ llvm::Value* CGProcedure::readLocalVariable (llvm::BasicBlock* BB, Decl* Decl) {
 
 llvm::Value* CGProcedure::readLocalVariableRecursive (llvm::BasicBlock* BB, Decl* Decl) {
     llvm::Value* Ret     = nullptr;
-    BasicBlock_t currDef = BlockDefs.at (*BB);
+    BasicBlock currDef = BlockDefs.at (BB);
     if (!currDef.Sealed) {
         llvm::PHINode* Phi = addEmptyPhi (BB, Decl);
         currDef.IncompletePhis.insert ({ Phi, Decl }); // Add incomplete phi
@@ -322,7 +322,7 @@ llvm::Value* CGProcedure::optimizePhi (llvm::PHINode* Phi) {
     // then we replace the instruction with this value. If the instruction has no operand,
     // then we replace the instruction with the special Undef value.
     // Only if the instruction has two or more distinct operands do we have to keep the instruction
-    for (auto* V : Phi->incoming_values ()) {
+    for (auto& V : Phi->incoming_values ()) {
         if (V == Prev || V == Phi)
             continue;
         if (Prev && V != Prev)
@@ -415,7 +415,7 @@ llvm::Function* CGProcedure::createFunction (ProcedureDecl* Proc, llvm::Function
  */
 void CGProcedure::sealBlock (llvm::BasicBlock* BB) {
 
-    auto it = BlockDefs.find (*BB);
+    auto it = BlockDefs.find (BB);
     if (it != BlockDefs.end ()) {
         for (auto PhiDecl : it->second.IncompletePhis) {
             addPhiOperands (BB, PhiDecl.second, PhiDecl.first);

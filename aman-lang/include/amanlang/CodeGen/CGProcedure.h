@@ -3,21 +3,40 @@
 
 #include "amanlang/AST/AST.h"
 #include "amanlang/CodeGen/CGModule.h"
-#include <llvm/ir/IRBuilder.h>
+#include <llvm/IR/IRBuilder.h>
 #include <variant>
+
+namespace llvm {
+
+template <> struct DenseMapInfo<BasicBlock*> {
+    static inline BasicBlock* getEmptyKey () {
+        return reinterpret_cast<BasicBlock*> (0);
+    }
+    static inline BasicBlock* getTombstoneKey () {
+        return reinterpret_cast<BasicBlock*> (-1);
+    }
+    static unsigned getHashValue (const BasicBlock* BB) {
+        return reinterpret_cast<uintptr_t> (BB);
+    }
+    static bool isEqual (const BasicBlock* LHS, const BasicBlock* RHS) {
+        return LHS == RHS;
+    }
+};
+
+} // end namespace llvm
 
 namespace amanlang {
 
 class CGProcedure {
 
-    typedef struct BasicBlock {
+    struct BasicBlock {
         llvm::DenseMap<Decl*, llvm::TrackingVH<llvm::Value>> Defs; // Map Var -> defintion
         llvm::DenseMap<llvm::PHINode*, Decl*> IncompletePhis; // Map Phi -> Decl
 
         unsigned Sealed : 1; // Block is sealed => no more predesscors
         BasicBlock () : Sealed (0) {
         }
-    } BasicBlock_t;
+    };
 
     using ExprVariant =
     std::variant<InfixExpression*, PrefixExpression*, VariableAccess*, ConstantAccess*, IntegerLiteral*, BooleanLiteral*>;
@@ -72,7 +91,7 @@ class CGProcedure {
     llvm::Function* Function;
     llvm::FunctionType* FunType;
 
-    llvm::DenseMap<llvm::BasicBlock, BasicBlock_t> BlockDefs;
+    llvm::DenseMap<llvm::BasicBlock*, BasicBlock> BlockDefs;
     llvm::DenseMap<FormalParameterDecl*, llvm::Argument*> FormalParams;
 
     // Read/Write Vars

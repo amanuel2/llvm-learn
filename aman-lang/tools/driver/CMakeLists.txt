@@ -8,4 +8,5 @@ target_link_libraries(amanlang
   amanlangLexer
   amanlangParser
   amanlangSema
-  )
+  amanlangCodeGen
+)

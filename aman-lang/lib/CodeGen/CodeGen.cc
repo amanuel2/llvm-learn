@@ -4,11 +4,6 @@
 
 namespace amanlang {
 
-// which target architecture we’d like to generate code.
-CodeGen* CodeGen::create (llvm::LLVMContext& Ctx, llvm::TargetMachine* TM) {
-    return new CodeGen (Ctx, *TM);
-}
-
 /// A Module instance is used to store all the information related to an
 /// LLVM module. Modules are the top level container of all other LLVM
 /// Intermediate Representation (IR) objects. Each module directly contains a
