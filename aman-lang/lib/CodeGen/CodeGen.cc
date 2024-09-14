@@ -3,6 +3,8 @@
 #include <memory>
 
 namespace amanlang {
+
+// which target architecture we’d like to generate code.
 CodeGen* CodeGen::create (llvm::LLVMContext& Ctx, llvm::TargetMachine* TM) {
     return new CodeGen (Ctx, *TM);
 }

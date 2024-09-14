@@ -1,5 +1,6 @@
 #include "amanlang/CodeGen/CGModule.h"
 #include "amanlang/AST/AST.h"
+#include "amanlang/CodeGen/CGProcedure.h"
 #include "llvm/ADT/StringExtras.h"
 #include "llvm/ADT/Twine.h"
 #include "llvm/IR/Constants.h"
@@ -45,8 +46,9 @@ void CGModule::run (ModuleDecl* Mod) {
             return;
         }
 
-        if (auto* Var = llvm::dyn_cast<ProcedureDecl> (Decl)) {
-            // CGPProcedure.run()
+        if (auto* Procedure = llvm::dyn_cast<ProcedureDecl> (Decl)) {
+            CGProcedure CGP(*this);
+            CGP.run(Procedure);
             return;
         }
     }

@@ -8,6 +8,30 @@ namespace amanlang {
 /////////////////////////////////////////////////////////////////////////////
 
 void CGProcedure::run (ProcedureDecl* Proc) {
+    FunType  = createFunctionType (Proc);
+    Function = createFunction (Proc, FunType);
+
+    // create first BB
+    llvm::BasicBlock* BB = llvm::BasicBlock::Create (CGM.getLLVMCtx (), "entry", Fn);
+    setInsertion (BB);
+
+    // We must step through all formal parameters. To handle VAR parameters correctly
+    // In contrast to local variables,
+    // formal parameters have a value in the first basic block, so we must make these values known
+    for (auto [Idx, Arg] : llvm::enumerate (Function->args ())) {
+        FormalParameterDecl* FP = Proc->getFormalParams ()[Idx];
+        FormalParams[FP]        = &Arg;
+        writeLocalVariable (CurrBlk, FP, &Arg);
+    }
+
+    auto Block = Proc->getStmts ();
+    this->operator() (Block); // call emit on statements
+
+    // The last block after generating the IR code may not be sealed yet, so we must call sealBlock()
+    if (!CurrBlk->getTerminator ()) {
+        Builder.CreateRetVoid (); // we may have an implicit return
+    }
+    sealBlock (CurrBlk);
 }
 
 /////////////////////////////////////////////////////////////////////////////
@@ -143,13 +167,13 @@ llvm::Value* CGProcedure::operator() (IfStatement* Stmt) {
 llvm::Value* CGProcedure::operator() (WhileStatement* Stmt) {
     // Condition Block + BranchInst
     llvm::BasicBlock* WhileCondBB =
-    llvm::BasicBlock::Create (CGM.getLLVMCtx (), "while.cond", Fn);
+    llvm::BasicBlock::Create (CGM.getLLVMCtx (), "while.cond", Function);
     // The basic block for the while body.
     llvm::BasicBlock* WhileBodyBB =
-    llvm::BasicBlock::Create (CGM.getLLVMCtx (), "while.body", Fn);
+    llvm::BasicBlock::Create (CGM.getLLVMCtx (), "while.body", Function);
     // The basic block after the while statement.
     llvm::BasicBlock* AfterWhileBB =
-    llvm::BasicBlock::Create (CGM.getLLVMCtx (), "after.while", Fn);
+    llvm::BasicBlock::Create (CGM.getLLVMCtx (), "after.while", Function);
 
     [[maybe_unused]] auto* While_Cond_BR = Builder.CreateBr (WhileCondBB);
     sealBlock (CurrBlk);
@@ -180,33 +204,86 @@ llvm::Value* CGProcedure::operator() (ReturnStatement* Stmt) {
 /////////////////////////////////////////////////////////////////////////////
 
 void CGProcedure::writeVariable (llvm::BasicBlock* BB, Decl* Decl, llvm::Value* Val) {
+    if (auto* V = llvm::dyn_cast<VariableDecl> (Decl)) {
+        if (V->getEnclosingDecl () == ProcDecl)
+            writeLocalVariable (BB, Decl, Val);
+        else // enclosingDecl => Module
+            Builder.CreateStore (Val, CGM.getGlobal (Decl));
+    } else if (auto* FP = llvm::dyn_cast<FormalParameterDecl> (Decl)) {
+        if (FP->isVar ())
+            Builder.CreateStore (Val, FormalParams[FP]);
+        else
+            writeLocalVariable (BB, Decl, Val);
+    }
 }
 
 llvm::Value* CGProcedure::readVariable (llvm::BasicBlock* BB, Decl* Decl) {
+    if (auto* V = llvm::dyn_cast<VariableDecl> (Decl)) {
+        if (V->getEnclosingDecl () == ProcDecl)
+            readLocalVariable (BB, Decl);
+        else // enclosingDecl => Module
+            Builder.CreateLoad (mapType (Decl), CGM.getGlobal (Decl));
+    } else if (auto* FP = llvm::dyn_cast<FormalParameterDecl> (Decl)) {
+        if (FP->isVar ())
+            Builder.CreateLoad (mapType (Decl), FormalParams[FP]);
+        else
+            readLocalVariable (BB, Decl);
+    }
 }
 
 /////////////////////////////////////////////////////////////////////////////
 #pragma mark - CGProcedure (Read/Write Local Vars)
 /////////////////////////////////////////////////////////////////////////////
 
-void CGProcedure::writeLocalVariable(llvm::BasicBlock* BB, Decl* Decl, llvm::Value* Val) {
-    assert(BB && "Basic block is nullptr");
-    assert(Val && "Value is nullptr");
+void CGProcedure::writeLocalVariable (llvm::BasicBlock* BB, Decl* Decl, llvm::Value* Val) {
+    assert (BB && "Basic block is nullptr");
+    assert (Val && "Value is nullptr");
 
-    auto& blockDef = BlockDefs.at(*BB);
-    blockDef.Defs[Decl] = llvm::TrackingVH<llvm::Value>(Val);
+    BasicBlock_t blockDef = BlockDefs.at (*BB);
+    blockDef.Defs[Decl]   = llvm::TrackingVH<llvm::Value> (Val);
 }
 
 
 llvm::Value* CGProcedure::readLocalVariable (llvm::BasicBlock* BB, Decl* Decl) {
-  assert(BB && "Basic block is nullptr");
-  auto Val = BlockDefs[BB].Defs.find(Decl);
-  if (Val != BlockDefs[BB].Defs.end())
-    return Val->second;
-  return readLocalVariableRecursive(BB, Decl);
+    assert (BB && "Basic block is nullptr");
+    BasicBlock_t blockDef = BlockDefs.at (*BB);
+    auto Val              = blockDef.Defs.find (Decl);
+    if (Val != blockDef.Defs.end ())
+        return Val->second;
+    return readLocalVariableRecursive (BB, Decl);
 }
 
 llvm::Value* CGProcedure::readLocalVariableRecursive (llvm::BasicBlock* BB, Decl* Decl) {
+    llvm::Value* Ret     = nullptr;
+    BasicBlock_t currDef = BlockDefs.at (*BB);
+    if (!currDef.Sealed) {
+        llvm::PHINode* Phi = addEmptyPhi (BB, Decl);
+        currDef.IncompletePhis.insert ({ Phi, Decl }); // Add incomplete phi
+        Ret = Phi;
+    } else if (auto* PredBB = BB->getSinglePredecessor ()) {
+        ///// HEADER FILE DOCS /////
+        /// Return the predecessor of this block if it has a single predecessor
+        /// block. Otherwise return a null pointer.
+        //   const BasicBlock *getSinglePredecessor() const;
+
+        /// Return the predecessor of this block if it has a unique predecessor
+        /// block. Otherwise return a null pointer.
+        ///
+        /// Note that unique predecessor doesn't mean single edge, there can be
+        /// multiple edges from the unique predecessor to this block (for example a
+        /// switch statement with multiple cases having the same destination).
+        //   const BasicBlock *getUniquePredecessor() const;
+        Ret = readLocalVariable (PredBB, Decl);
+    } else { // block is sealed and has multiple preds
+        // Create empty phi instruction to break potential
+        // cycles.
+        llvm::PHINode* Phi = addEmptyPhi (BB, Decl);
+        writeLocalVariable (BB, Decl, Phi); // Write empty phi to break cycle
+        Ret = addPhiOperands (BB, Decl, Phi); // add pred values as operands to phi
+    }
+
+    writeLocalVariable (BB, Decl, Ret);
+    return Ret;
 }
 
 /////////////////////////////////////////////////////////////////////////////
@@ -241,7 +318,10 @@ CGProcedure::addPhiOperands (llvm::BasicBlock* BB, Decl* Decl, llvm::PHINode* Ph
 llvm::Value* CGProcedure::optimizePhi (llvm::PHINode* Phi) {
     llvm::Value* Prev = nullptr;
 
-    // Try to find a single non-Phi value
+    // If the instruction has only one operand or all operands have the same value,
+    // then we replace the instruction with this value. If the instruction has no operand,
+    // then we replace the instruction with the special Undef value.
+    // Only if the instruction has two or more distinct operands do we have to keep the instruction
     for (auto* V : Phi->incoming_values ()) {
         if (V == Prev || V == Phi)
             continue;
@@ -254,9 +334,10 @@ llvm::Value* CGProcedure::optimizePhi (llvm::PHINode* Phi) {
     if (Prev == nullptr)
         Prev = llvm::UndefValue::get (Phi->getType ());
 
-    // Collect phi instructions using this one
+    // Removing a phi instruction may lead to optimization opportunities in
+    // other phi instructions. Fortunately, LLVM keeps track of the users and
+    // the use of values Collect phi instructions using this one
     llvm::SmallVector<llvm::PHINode*, 8> CandidatePhis;
-    // A Use represents the edge between a Value definition and its users
     for (llvm::Use& U : Phi->uses ()) {
         if (auto* P = llvm::dyn_cast<llvm::PHINode> (U.getUser ()))
             if (P != Phi)
@@ -275,11 +356,53 @@ llvm::Value* CGProcedure::optimizePhi (llvm::PHINode* Phi) {
 }
 
 /////////////////////////////////////////////////////////////////////////////
-#pragma mark - CGProcedure (Utils)
+#pragma mark - CGProcedure (Function)
 /////////////////////////////////////////////////////////////////////////////
 
-llvm::Type* CGProcedure::mapType (Decl* Decl, bool HonorReference) {
+// To emit a function in LLVM IR, a function type is needed, which is similar to a prototype in C.
+llvm::FunctionType* CGProcedure::createFunctionType (ProcedureDecl* Proc) {
+    llvm::Type* retType =
+    (!Proc->getRetType ()) ? CGM.VoidTy : mapType (Proc->getRetType ());
+    auto params = Proc->getFormalParams ();
+
+    llvm::SmallVector<llvm::Type*, 8> tmp{};
+    for (auto param : params)
+        tmp.push_back (mapType (param));
+
+    return llvm::FunctionType::get (retType, tmp, false);
 }
+
+// Based on the function type, we also create the LLVM function.
+// This associates the function type with the linkage and the mangled name:
+llvm::Function* CGProcedure::createFunction (ProcedureDecl* Proc, llvm::FunctionType* FTy) {
+    auto* func = llvm::Function::Create (
+    FTy, llvm::GlobalValue::ExternalLinkage, "", CGM.getModule ());
+
+    // enumerate params
+    for (auto param : llvm::enumerate (func->args ())) {
+        llvm::Argument& Arg     = param.value ();
+        FormalParameterDecl* FP = Proc->getFormalParams ()[param.index ()];
+
+        // Can Change
+        if (FP->isVar ()) {
+            llvm::AttrBuilder Attr (CGM.getLLVMCtx ());
+            llvm::TypeSize Sz = CGM.getModule ()->getDataLayout ().getTypeStoreSize (
+            CGM.convertType (FP->getType ()));
+            Attr.addDereferenceableAttr (Sz);
+            Attr.addAttribute (llvm::Attribute::NoCapture);
+            Arg.addAttrs (Attr);
+        }
+
+        Arg.setName (FP->getName ());
+    }
+
+    return func;
+}
+
+
+/////////////////////////////////////////////////////////////////////////////
+#pragma mark - CGProcedure (Utils)
+/////////////////////////////////////////////////////////////////////////////
 
 /**
  * Seals a basic block by adding any incomplete PHI node operands and marking the block as sealed.
@@ -300,6 +423,19 @@ void CGProcedure::sealBlock (llvm::BasicBlock* BB) {
         it->second.IncompletePhis.clear ();
         it->second.Sealed = true;
     }
+}
+
+
+llvm::Type* CGProcedure::mapType (Decl* Decl, bool HonorReference) {
+    if (auto* V = llvm::dyn_cast<VariableDecl> (Decl))
+        return CGM.convertType (V->getType ());
+    else if (auto* FP = llvm::dyn_cast<FormalParameterDecl> (Decl)) {
+        if (FP->isVar ())
+            return llvm::PointerType::get (CGM.getLLVMCtx (), 0);
+        return CGM.convertType (FP->getType ());
+    }
+    auto* ret = llvm::cast<TypeDecl> (Decl);
+    return CGM.convertType (ret);
 }
 
 } // namespace amanlang
