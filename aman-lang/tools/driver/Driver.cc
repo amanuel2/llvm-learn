@@ -1,9 +1,8 @@
 #include "amanlang/Basic/Diagnostic.h"
+#include "amanlang/CodeGen/CodeGen.h"
 #include "amanlang/Lexer/Lexer.h"
 #include "amanlang/Parser/Parser.h"
 #include "amanlang/Sema/Sema.h"
-#include "llvm/Support/InitLLVM.h"
-#include "amanlang/CodeGen/CodeGen.h"
 #include "llvm/Support/raw_ostream.h"
 
 #include "llvm/CodeGen/CommandFlags.h"
@@ -12,17 +11,24 @@
 #include "llvm/Support/WithColor.h"
 #include "llvm/TargetParser/Host.h"
 #include "llvm/TargetParser/Triple.h"
-#include <llvm/Support/FileSystem.h>
-#include <llvm/Support/ToolOutputFile.h>
+#include "llvm/Support/InitLLVM.h"
+#include "llvm/Support/FileSystem.h"
+#include "llvm/Support/ToolOutputFile.h"
 
+// #include "llvm-c/Core.h"
 #include "llvm/IR/IRPrintingPasses.h"
 #include "llvm/IR/LegacyPassManager.h"
+#include "llvm/InitializePasses.h"
 #include "llvm/Pass.h"
 
+#include "llvm/CodeGen/CommandFlags.h"
 #include "llvm/Support/TargetSelect.h" // init for MC,Arch,etc...
 
 
-#include <system_error>
+using namespace llvm;
+
+// CodeGenFlags
+static llvm::codegen::RegisterCodeGenFlags CGF;
 
 ////////////////////////////////////////////////////////////////////////////////
 #pragma mark - Command Line Options
@@ -42,7 +48,6 @@ llvm::cl::Positional, // Position == no '-' required so can do ./amanlang test.l
 llvm::cl::desc ("<input-files>"),
 llvm::cl::init ("-"));
 
-
 // Option for output file name
 static llvm::cl::opt<std::string>
 OutputName ("o", llvm::cl::desc ("Output file name"), llvm::cl::init ("a.out"));
@@ -57,7 +62,6 @@ void printVersion (llvm::raw_ostream& OS) {
     exit (EXIT_SUCCESS);
 }
 
-static llvm::codegen::RegisterCodeGenFlags RCG;
 
 ////////////////////////////////////////////////////////////////////////////////
 #pragma mark - Target Machine
@@ -89,6 +93,7 @@ llvm::TargetMachine* createTarget () {
 
 bool emit (llvm::StringRef Argv0, llvm::Module* M, llvm::TargetMachine* TM, llvm::StringRef InputFilename) {
     llvm::CodeGenFileType FileType = llvm::codegen::getFileType ();
+    llvm::outs () << "Aman was here\n";
 
     if (OutputName.empty ()) {
         OutputName = "-";
@@ -162,14 +167,34 @@ void default_cpu () {
 
 int main (int argc, const char** _argv) {
 
-    // Initalization
+    llvm::InitLLVM X (argc, _argv);
+    CGF;
+
+    // Initialize targets first, so that --version shows registered targets.
     llvm::InitializeAllTargets ();
     llvm::InitializeAllTargetMCs ();
     llvm::InitializeAllAsmPrinters ();
     llvm::InitializeAllAsmParsers ();
 
-    llvm::cl::SetVersionPrinter (&printVersion);
+
+    // Initialize codegen and IR passes used by llc so that the -print-after,
+    // -print-before, and -stop-after options work.
+    llvm::PassRegistry* Registry = llvm::PassRegistry::getPassRegistry ();
+    llvm::initializeCore (*Registry);
+    llvm::initializeCodeGen (*Registry);
+
+
+    llvm::outs () << "Begin before\n";
+    // Register the Target and CPU printer for --version.
+    llvm::cl::AddExtraVersionPrinter (llvm::sys::printDefaultTargetAndDetectedCPU);
+    // Register the target printer for --version.
+    llvm::cl::AddExtraVersionPrinter (llvm::TargetRegistry::printRegisteredTargetsForVersion);
+
+    //   cl::ParseCommandLineOptions(argc, argv, "llvm system compiler\n");
+    // llvm::cl::SetVersionPrinter (&printVersion);
     llvm::cl::ParseCommandLineOptions (argc, _argv, "AmanLang");
+
+    llvm::outs () << "INIT DONE\n";
 
     default_cpu ();
 
@@ -199,7 +224,8 @@ int main (int argc, const char** _argv) {
         amanlang::Sema Sema (Diag);
         amanlang::Parser Parser (Lex, Sema);
 
-        //
+        llvm::outs () << "Test\n";
+        // Mod
         auto* Mod = Parser.parse ();
         if (Mod && !Diag.numErrors ()) {
             llvm::LLVMContext Ctx;
