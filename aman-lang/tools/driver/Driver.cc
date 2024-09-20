@@ -1,3 +1,4 @@
+#include "amanlang/AST/ASTCtx.h"
 #include "amanlang/Basic/Diagnostic.h"
 #include "amanlang/CodeGen/CodeGen.h"
 #include "amanlang/Lexer/Lexer.h"
@@ -28,7 +29,7 @@
 using namespace llvm;
 
 // CodeGenFlags
-static llvm::codegen::RegisterCodeGenFlags CGF;
+// static llvm::codegen::RegisterCodeGenFlags CGF;
 
 ////////////////////////////////////////////////////////////////////////////////
 #pragma mark - Command Line Options
@@ -117,7 +118,7 @@ bool emit (llvm::StringRef Argv0, llvm::Module* M, llvm::TargetMachine* TM, llvm
     std::error_code ec;
     llvm::sys::fs::OpenFlags OpenFlags = llvm::sys::fs::OF_None;
     if (FileType == llvm::CodeGenFileType::AssemblyFile)
-        OpenFlags |= llvm::sys::fs::OF_TextWithCRLF;
+        OpenFlags |= llvm::sys::fs::OF_Text;
 
     auto Out = std::make_unique<llvm::ToolOutputFile> (OutputName, ec, OpenFlags);
     if (ec) {
@@ -165,10 +166,21 @@ void default_cpu () {
 #pragma mark - Main
 ////////////////////////////////////////////////////////////////////////////////
 
+static llvm::codegen::RegisterCodeGenFlags CGF();
+  static cl::opt<CodeGenFileType> FileType(
+      "filetype", cl::init(CodeGenFileType::AssemblyFile),
+      cl::desc(
+          "Choose a file type (not all types are supported by all targets):"),
+      cl::values(clEnumValN(CodeGenFileType::AssemblyFile, "asm",
+                            "Emit an assembly ('.s') file"),
+                 clEnumValN(CodeGenFileType::ObjectFile, "obj",
+                            "Emit a native object ('.o') file"),
+                 clEnumValN(CodeGenFileType::Null, "null",
+                            "Emit nothing, for performance testing")));
+
 int main (int argc, const char** _argv) {
 
     llvm::InitLLVM X (argc, _argv);
-    CGF;
 
     // Initialize targets first, so that --version shows registered targets.
     llvm::InitializeAllTargets ();
@@ -221,6 +233,7 @@ int main (int argc, const char** _argv) {
         SrcMgr.AddNewSourceBuffer (std::move (File.get ()), llvm::SMLoc ());
 
         amanlang::Lexer Lex (SrcMgr, Diag);
+        auto ASTCtx = amanlang::ASTContext(SrcMgr, Filename);
         amanlang::Sema Sema (Diag);
         amanlang::Parser Parser (Lex, Sema);
 
@@ -229,7 +242,7 @@ int main (int argc, const char** _argv) {
         auto* Mod = Parser.parse ();
         if (Mod && !Diag.numErrors ()) {
             llvm::LLVMContext Ctx;
-            if (amanlang::CodeGen* CG = amanlang::CodeGen::create (Ctx, TM)) {
+            if (amanlang::CodeGen* CG = amanlang::CodeGen::create (Ctx, TM, ASTCtx)) {
                 std::unique_ptr<llvm::Module> M = CG->run (Mod, InputFile);
                 if (!emit (_argv[0], M.get (), TM, InputFile)) {
                     llvm::WithColor::error (llvm::errs (), +_argv[0])

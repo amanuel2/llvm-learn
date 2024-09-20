@@ -34,6 +34,8 @@ void CGProcedure::run (ProcedureDecl* Proc) {
     sealBlock (CurrBlk);
 }
 
+void CGProcedure::run() {}
+
 /////////////////////////////////////////////////////////////////////////////
 #pragma mark - CGProcedure (Emit - Expr)
 /////////////////////////////////////////////////////////////////////////////
@@ -82,7 +84,7 @@ llvm::Value* CGProcedure::operator() (Expr* E) {
         return (*this) (Infix);
     } else if (auto* Prefix = llvm::dyn_cast<PrefixExpression> (E)) {
         return (*this) (Prefix);
-    } else if (auto* Var = llvm::dyn_cast<VariableAccess> (E)) {
+    } else if (auto* Var = llvm::dyn_cast<Designator> (E)) {
         return (*this) (Var);
     } else if (auto* Const = llvm::dyn_cast<ConstantAccess> (E)) {
         return (*this) (Const);
@@ -93,6 +95,68 @@ llvm::Value* CGProcedure::operator() (Expr* E) {
     } else {
         llvm_unreachable ("Unknown expression type");
     }
+}
+
+// ch.5
+// Examples with CreateInBoundsGEP function
+
+// Value *i32zero = ConstantInt::get(contexet, APInt(32, 0));
+// Value *indices[2] = {i32zero, i32zero};
+// builder.CreateInBoundsGEP(var, ArrayRef<Value *>(indices, 2));
+
+// Which will yield
+
+// %1 = getelementptr inbounds [10 x i32], [10 x i32]* %0, i32 0, i32 0
+llvm::Value* CGProcedure::_handleDesignator (Designator* Var) {
+    auto* Decl       = Var->getDecl ();
+    llvm::Value* Val = readVariable (CurrBlk, Decl);
+
+    // add array and record support.
+    auto& Selectors = Var->getSelectors ();
+    for (auto it = Selectors.begin (); it != Selectors.end ();) {
+        // Index Selector [3]
+        if (auto* IdxSel = llvm::dyn_cast<IndexSelector> (*it)) {
+            llvm::SmallVector<llvm::Value*, 4> IdxList;
+            while (it != Selectors.end ()) {
+                if (auto* Sel = llvm::dyn_cast<IndexSelector> (*it)) {
+                    IdxList.push_back (this->operator() (Sel->getIndex ()));
+                    ++it;
+                } else
+                    break;
+            }
+            Val = Builder.CreateInBoundsGEP (Val->getType (), Val, IdxList);
+            Val = Builder.CreateLoad (Val->getType (), Val);
+        }
+        // Field Selector .xyz
+        else if (auto* FieldSel = llvm::dyn_cast<FieldSelector> (*it)) {
+            llvm::SmallVector<llvm::Value*, 4> IdxList;
+            while (it != Selectors.end ()) {
+                if (auto* Sel = llvm::dyn_cast<FieldSelector> (*it)) {
+                    llvm::Value* V =
+                    llvm::ConstantInt::get (CGM.Int64Ty, Sel->getIndex ());
+                    IdxList.push_back (V);
+                    ++it;
+                } else
+                    break;
+
+
+                Val = Builder.CreateInBoundsGEP (Val->getType (), Val, IdxList);
+                Val = Builder.CreateLoad (Val->getType (), Val);
+            }
+        }
+
+        // Deref *it
+        else if (auto* _ = llvm::dyn_cast<DerefSelector> (*it)) {
+            Val = Builder.CreateLoad (Val->getType (), Val);
+            ++it;
+        }
+
+        else {
+            llvm::report_fatal_error ("Unsupported selector");
+        }
+    }
+
+    return Val;
 }
 
 
@@ -119,7 +183,41 @@ llvm::Value* CGProcedure::operator() (const StmtList& Stmts) {
 
 llvm::Value* CGProcedure::operator() (AssignmentStatement* Stmt) {
     auto* Val = this->operator() (Stmt->getExpr ());
-    writeVariable (CurrBlk, Stmt->getVar (), Val);
+
+    // Write Statement out to variable
+    // Desig = Decl + Sel_Lst
+    Designator* Desig = Stmt->getVar ();
+    auto& Selectors   = Desig->getSelectors ();
+    if (Selectors.empty ()) {
+        writeVariable (CurrBlk, Desig->getDecl (), Val);
+        return Val;
+    }
+
+    llvm::SmallVector<llvm::Value*, 4> IdxList;
+    // First index for GEP.
+    IdxList.push_back (llvm::ConstantInt::get (CGM.Int32Ty, 0));
+    auto* Base = readVariable (CurrBlk, Desig->getDecl (), false);
+    for (auto I = Selectors.begin (), E = Selectors.end (); I != E; ++I) {
+        if (auto* IdxSel = llvm::dyn_cast<IndexSelector> (*I)) {
+            IdxList.push_back (this->operator() (IdxSel->getIndex ()));
+        } else if (auto* FieldSel = llvm::dyn_cast<FieldSelector> (*I)) {
+            llvm::Value* V = llvm::ConstantInt::get (CGM.Int32Ty, FieldSel->getIndex ());
+            IdxList.push_back (V);
+        } else {
+            llvm::report_fatal_error ("not implemented");
+        }
+    }
+
+    if (!IdxList.empty ()) {
+        if (Base->getType ()->isPointerTy ()) {
+            Base = Builder.CreateInBoundsGEP (mapType (Desig->getDecl ()), Base, IdxList);
+            Builder.CreateStore (Val, Base);
+        } else {
+            llvm::report_fatal_error ("should not happen");
+        }
+    }
+
+    return Val;
 }
 
 llvm::Value* CGProcedure::operator() (ProcedureCallStatement* Stmt) {
@@ -217,17 +315,24 @@ void CGProcedure::writeVariable (llvm::BasicBlock* BB, Decl* Decl, llvm::Value* 
     }
 }
 
-llvm::Value* CGProcedure::readVariable (llvm::BasicBlock* BB, Decl* Decl) {
+llvm::Value* CGProcedure::readVariable (llvm::BasicBlock* BB, Decl* Decl, bool LoadVal) {
     if (auto* V = llvm::dyn_cast<VariableDecl> (Decl)) {
         if (V->getEnclosingDecl () == ProcDecl)
-            readLocalVariable (BB, Decl);
-        else // enclosingDecl => Module
-            Builder.CreateLoad (mapType (Decl), CGM.getGlobal (Decl));
+            return readLocalVariable (BB, Decl);
+
+        if (V->getEnclosingDecl () == CGM.getModuleDeclaration ()) { // enclosingDecl => Module
+            auto* Global = CGM.getGlobal (Decl);
+            if (LoadVal)
+                Builder.CreateLoad (mapType (Decl), Global);
+            return Global;
+        }
     } else if (auto* FP = llvm::dyn_cast<FormalParameterDecl> (Decl)) {
-        if (FP->isVar ())
-            Builder.CreateLoad (mapType (Decl), FormalParams[FP]);
-        else
-            readLocalVariable (BB, Decl);
+        if (FP->isVar ()) {
+            if (LoadVal)
+                Builder.CreateLoad (mapType (Decl), FormalParams[FP]);
+            return FormalParams[FP];
+        } else
+            return readLocalVariable (BB, Decl);
     }
 }
 
@@ -240,21 +345,21 @@ void CGProcedure::writeLocalVariable (llvm::BasicBlock* BB, Decl* Decl, llvm::Va
     assert (Val && "Value is nullptr");
 
     BasicBlock blockDef = BlockDefs.at (BB);
-    blockDef.Defs[Decl]   = llvm::TrackingVH<llvm::Value> (Val);
+    blockDef.Defs[Decl] = llvm::TrackingVH<llvm::Value> (Val);
 }
 
 
 llvm::Value* CGProcedure::readLocalVariable (llvm::BasicBlock* BB, Decl* Decl) {
     assert (BB && "Basic block is nullptr");
     BasicBlock blockDef = BlockDefs.at (BB);
-    auto Val              = blockDef.Defs.find (Decl);
+    auto Val            = blockDef.Defs.find (Decl);
     if (Val != blockDef.Defs.end ())
         return Val->second;
     return readLocalVariableRecursive (BB, Decl);
 }
 
 llvm::Value* CGProcedure::readLocalVariableRecursive (llvm::BasicBlock* BB, Decl* Decl) {
-    llvm::Value* Ret     = nullptr;
+    llvm::Value* Ret   = nullptr;
     BasicBlock currDef = BlockDefs.at (BB);
     if (!currDef.Sealed) {
         llvm::PHINode* Phi = addEmptyPhi (BB, Decl);
@@ -262,8 +367,8 @@ llvm::Value* CGProcedure::readLocalVariableRecursive (llvm::BasicBlock* BB, Decl
         Ret = Phi;
     } else if (auto* PredBB = BB->getSinglePredecessor ()) {
         ///// HEADER FILE DOCS /////
-        /// Return the predecessor of this block if it has a single predecessor
-        /// block. Otherwise return a null pointer.
+        /// Return the predecessor of this block if it has a single
+        /// predecessor block. Otherwise return a null pointer.
         //   const BasicBlock *getSinglePredecessor() const;
 
         /// Return the predecessor of this block if it has a unique predecessor
@@ -298,22 +403,22 @@ llvm::PHINode* CGProcedure::addEmptyPhi (llvm::BasicBlock* BB, Decl* Decl) {
 
 llvm::Value*
 CGProcedure::addPhiOperands (llvm::BasicBlock* BB, Decl* Decl, llvm::PHINode* Phi) {
-    for (auto* PredBB : llvm::predecessors (BB))
-        Phi->addIncoming (readLocalVariable (PredBB, Decl), PredBB);
+    for (auto it = llvm::pred_begin (BB); it != llvm::pred_end (BB); it++)
+        Phi->addIncoming (readLocalVariable (*it, Decl), *it);
     return optimizePhi (Phi);
 }
 
 /**
  * Optimizes a PHI node by replacing it with a single value if possible.
  *
- * This function analyzes the incoming values of the given PHI node and tries to
- * find a single non-PHI value. If such a value is found, it replaces all uses
- * of the PHI node with that value and recursively optimizes any other PHI nodes
- * that used the original PHI node.
+ * This function analyzes the incoming values of the given PHI node and
+ * tries to find a single non-PHI value. If such a value is found, it
+ * replaces all uses of the PHI node with that value and recursively
+ * optimizes any other PHI nodes that used the original PHI node.
  *
  * @param Phi The PHI node to optimize.
- * @return The single value that replaces the PHI node, or the PHI node itself
- *         if it cannot be optimized.
+ * @return The single value that replaces the PHI node, or the PHI node
+ * itself if it cannot be optimized.
  */
 llvm::Value* CGProcedure::optimizePhi (llvm::PHINode* Phi) {
     llvm::Value* Prev = nullptr;
@@ -335,8 +440,8 @@ llvm::Value* CGProcedure::optimizePhi (llvm::PHINode* Phi) {
         Prev = llvm::UndefValue::get (Phi->getType ());
 
     // Removing a phi instruction may lead to optimization opportunities in
-    // other phi instructions. Fortunately, LLVM keeps track of the users and
-    // the use of values Collect phi instructions using this one
+    // other phi instructions. Fortunately, LLVM keeps track of the users
+    // and the use of values Collect phi instructions using this one
     llvm::SmallVector<llvm::PHINode*, 8> CandidatePhis;
     for (llvm::Use& U : Phi->uses ()) {
         if (auto* P = llvm::dyn_cast<llvm::PHINode> (U.getUser ()))
@@ -379,13 +484,14 @@ llvm::Function* CGProcedure::createFunction (ProcedureDecl* Proc, llvm::Function
     FTy, llvm::GlobalValue::ExternalLinkage, "", CGM.getModule ());
 
     // enumerate params
-    for (auto param : llvm::enumerate (func->args ())) {
-        llvm::Argument& Arg     = param.value ();
-        FormalParameterDecl* FP = Proc->getFormalParams ()[param.index ()];
+    size_t idx = 0;
+    for (auto* it = func->arg_begin (); it != func->arg_end (); it++, idx++) {
+        llvm::Argument& Arg     = *it;
+        FormalParameterDecl* FP = Proc->getFormalParams ()[idx];
 
         // Can Change
         if (FP->isVar ()) {
-            llvm::AttrBuilder Attr (CGM.getLLVMCtx ());
+            llvm::AttrBuilder Attr (Function->getContext ());
             llvm::TypeSize Sz = CGM.getModule ()->getDataLayout ().getTypeStoreSize (
             CGM.convertType (FP->getType ()));
             Attr.addDereferenceableAttr (Sz);
@@ -426,14 +532,17 @@ void CGProcedure::sealBlock (llvm::BasicBlock* BB) {
 }
 
 
-llvm::Type* CGProcedure::mapType (Decl* Decl, bool HonorReference) {
+llvm::Type* CGProcedure::mapType (Decl* Decl) {
     if (auto* V = llvm::dyn_cast<VariableDecl> (Decl))
         return CGM.convertType (V->getType ());
-    else if (auto* FP = llvm::dyn_cast<FormalParameterDecl> (Decl)) {
+
+    if (auto* FP = llvm::dyn_cast<FormalParameterDecl> (Decl)) {
+        llvm::Type* Ty = CGM.convertType (FP->getType ());
         if (FP->isVar ())
-            return llvm::PointerType::get (CGM.getLLVMCtx (), 0);
-        return CGM.convertType (FP->getType ());
+            Ty = Ty->getPointerTo ();
+        return Ty;
     }
+
     auto* ret = llvm::cast<TypeDecl> (Decl);
     return CGM.convertType (ret);
 }

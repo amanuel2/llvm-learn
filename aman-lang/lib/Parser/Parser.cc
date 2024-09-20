@@ -36,15 +36,16 @@ ModuleDecl* Parser::parse () {
  * @return `true` if the compilation unit was parsed successfully, `false` otherwise.
  */
 bool Parser::parseCompilationUnit (ModuleDecl*& D) {
-    llvm::outs() << "parseCompilationUnit\n";
-    auto handle_err = [this] { 
+    llvm::outs () << "parseCompilationUnit\n";
+    auto handle_err = [this] {
         llvm::outs () << "handle_err\n";
-        return skipUntil (); };
+        return skipUntil ();
+    };
     if (!consume (tok::kw_MODULE) || !expect (tok::identifier)) {
         return handle_err ();
     }
 
-    llvm::outs() << "parseCompilationUnit\n";
+    llvm::outs () << "parseCompilationUnit\n";
     EnterDecl enter (Actions, D);
     advance ();
     // parse headears
@@ -55,7 +56,7 @@ bool Parser::parseCompilationUnit (ModuleDecl*& D) {
 
     DeclList Decls;
     StmtList Stmts;
-    llvm::outs() << "parseBlock\n";
+    llvm::outs () << "parseBlock\n";
     if (!parseBlock (Decls, Stmts) || !expect (tok::identifier))
         return handle_err ();
 
@@ -84,8 +85,8 @@ bool Parser::parseCompilationUnit (ModuleDecl*& D) {
  */
 bool Parser::parseImport () {
     auto _errorhandler = [this] {
-        return skipUntil (tok::kw_BEGIN, tok::kw_CONST, tok::kw_END,
-        tok::kw_FROM, tok::kw_IMPORT, tok::kw_PROCEDURE, tok::kw_VAR);
+        return skipUntil (tok::kw_BEGIN, tok::kw_CONST, tok::kw_END, tok::kw_FROM,
+        tok::kw_IMPORT, tok::kw_PROCEDURE, tok::kw_VAR, tok::kw_TYPE);
     };
     IdentList Ids;
     llvm::StringRef ModuleName;
@@ -120,9 +121,9 @@ bool Parser::parseImport () {
  */
 bool Parser::parseBlock (DeclList& Decls, StmtList& Stmts) {
     auto handle_err = [this] () { return skipUntil (tok::identifier); };
-    llvm::outs() << "parseBlock\n";
+    llvm::outs () << "parseBlock\n";
 
-    while (Tok.isOneOf (tok::kw_CONST, tok::kw_PROCEDURE, tok::kw_VAR))
+    while (Tok.isOneOf (tok::kw_CONST, tok::kw_PROCEDURE, tok::kw_VAR, tok::kw_TYPE))
         if (!parseDeclaration (Decls))
             return handle_err ();
 
@@ -134,6 +135,140 @@ bool Parser::parseBlock (DeclList& Decls, StmtList& Stmts) {
         handle_err ();
     }
 
+    return true;
+}
+
+
+/**
+ * Parses a type declaration in the current scope.
+ *
+ * This function parses a type declaration, which can be one of the following:
+ * - An alias type declaration
+ * - A pointer type declaration
+ * - An array type declaration
+ * - A record type declaration
+ *
+ * The parsed type declaration is then added to the provided `Decls` list.
+ *
+ * @param Decls The list of declarations to add the parsed type declaration to.
+ * @return `true` if the type declaration was parsed successfully, `false` otherwise.
+ */
+bool Parser::parseTypeDeclaration (DeclList& Decls) {
+    auto _errorhandler = [this] { return skipUntil (tok::semi); };
+    if (!expect (tok::identifier))
+        return _errorhandler ();
+
+    auto Loc  = Tok.getLocation ();
+    auto Name = Tok.getIdentifier ();
+    advance ();
+
+    if (!consume (tok::equal))
+        return _errorhandler ();
+
+    if (Tok.is (tok::identifier)) {
+        Decl* D;
+        if (!parseQualident (D))
+            return _errorhandler ();
+        Actions.actOnAliasTypeDeclaration (Decls, Loc, Name, D);
+    } else if (Tok.is (tok::kw_POINTER)) {
+        advance ();
+        if (!expect (tok::kw_TO))
+            return _errorhandler ();
+        Decl* D;
+        advance ();
+        if (!parseQualident (D))
+            return _errorhandler ();
+        Actions.actOnPointerTypeDeclaration (Decls, Loc, Name, D);
+    } else if (Tok.is (tok::kw_ARRAY)) {
+        advance ();
+        if (!expect (tok::l_square))
+            return _errorhandler ();
+        Expr* E = nullptr;
+        advance ();
+        if (!parseExpression (E))
+            return _errorhandler ();
+        if (!consume (tok::r_square))
+            return _errorhandler ();
+        if (!expect (tok::kw_OF))
+            return _errorhandler ();
+        Decl* D;
+        advance ();
+        if (parseQualident (D))
+            return _errorhandler ();
+        Actions.actOnArrayTypeDeclaration (Decls, Loc, Name, E, D);
+    } else if (Tok.is (tok::kw_RECORD)) {
+        FieldList Fields;
+        advance ();
+        if (!parseFieldList (Fields))
+            return _errorhandler ();
+        if (!expect (tok::kw_END))
+            return _errorhandler ();
+        Actions.actOnRecordTypeDeclaration (Decls, Loc, Name, Fields);
+        advance ();
+    } else {
+        /*ERROR*/
+        return _errorhandler ();
+    }
+
+    return true;
+}
+
+bool Parser::parseFieldList (FieldList& Fields) {
+    auto _errorhandler = [this] { return skipUntil (tok::kw_END); };
+    if (!parseField (Fields))
+        return _errorhandler ();
+    while (Tok.is (tok::semi)) {
+        advance ();
+        if (!parseField (Fields))
+            return _errorhandler ();
+    }
+    return true;
+}
+
+bool Parser::parseField (FieldList& Fields) {
+    auto _errorhandler = [this] { return skipUntil (tok::semi, tok::kw_END); };
+    Decl* D;
+    IdentList Ids;
+    if (!parseIdentList (Ids))
+        return _errorhandler ();
+    if (!consume (tok::colon))
+        return _errorhandler ();
+    if (!parseQualident (D))
+        return _errorhandler ();
+    Actions.actOnFieldDeclaration (Fields, Ids, D);
+    return false;
+}
+
+bool Parser::parseSelectors (Expr*& E) {
+    auto _errorhandler = [this] {
+        return skipUntil (tok::hash, tok::r_paren, tok::star, tok::plus,
+        tok::comma, tok::minus, tok::slash, tok::colonequal, tok::semi,
+        tok::less, tok::lessequal, tok::equal, tok::greater, tok::greaterequal,
+        tok::kw_AND, tok::kw_DIV, tok::kw_DO, tok::kw_ELSE, tok::kw_END,
+        tok::kw_MOD, tok::kw_OR, tok::kw_THEN, tok::r_square);
+    };
+    while (Tok.isOneOf (tok::period, tok::l_square, tok::caret)) {
+        if (Tok.is (tok::caret)) {
+            Actions.actOnDereferenceSelector (E, Tok.getLocation ());
+            advance ();
+        } else if (Tok.is (tok::l_square)) {
+            auto Loc    = Tok.getLocation ();
+            Expr* IndexE = nullptr;
+            advance ();
+            if (!parseExpression (IndexE))
+                return _errorhandler ();
+            if (!expect (tok::r_square))
+                return _errorhandler ();
+            Actions.actOnIndexSelector (E, Loc, IndexE);
+            advance ();
+        } else if (Tok.is (tok::period)) {
+            advance ();
+            if (!expect (tok::identifier))
+                return _errorhandler ();
+            Actions.actOnFieldSelector (E, Tok.getLocation (), Tok.getIdentifier ());
+            advance ();
+        }
+    }
     return true;
 }
 
@@ -378,9 +513,8 @@ bool Parser::parseFormalParameter (FormalParamList& Params) {
 
     // Check Semantics + (Add to Params)
     Actions.actOnFormalParameterDeclaration (Params, Ids, D, IsVar);
-    return false;
+    return true;
 }
-
 
 /////////////////////////////////////////////////////////////////////////////
 #pragma mark - Parser (Statements)
@@ -426,31 +560,41 @@ bool Parser::parseStatement (StmtList& Stmts) {
         return skipUntil (tok::semi, tok::kw_ELSE, tok::kw_END);
     };
 
-    Decl* D = nullptr;
-    Expr* E = nullptr;
-    ExprList Exprs;
-    llvm::SMLoc Loc = Tok.getLocation ();
 
     switch (Tok.getKind ()) {
-    case tok::colonequal:
-        advance ();
-        if (!parseExpression (E))
-            return handle_err ();
-        Actions.actOnAssignment (Stmts, Loc, D, E); // Stmts.push_back
-        break;
-    case tok::l_paren:
-        if (Tok.is (tok::l_paren)) {
-            advance ();
-            if (Tok.isOneOf (tok::l_paren, tok::plus, tok::minus, tok::kw_NOT,
-                tok::identifier, tok::integer_literal))
-                if (!parseExprList (Exprs))
-                    return handle_err ();
 
-            if (!consume (tok::r_paren))
+    case tok::identifier: {
+        Decl* D;
+        Expr *E = nullptr, *Desig = nullptr;
+        llvm::SMLoc Loc = Tok.getLocation ();
+        if (!parseQualident (D))
+            return handle_err ();
+        if (!Tok.is (tok::l_paren)) {
+            Desig = Actions.actOnDesignator (D);
+            if (!parseSelectors (Desig))
                 return handle_err ();
+            if (!consume (tok::colonequal))
+                return handle_err ();
+            if (!parseExpression (E))
+                return handle_err ();
+            Actions.actOnAssignment (Stmts, Loc, Desig, E);
+        } else if (Tok.is (tok::l_paren)) {
+            ExprList Exprs;
+            if (Tok.is (tok::l_paren)) {
+                advance ();
+                if (Tok.isOneOf (tok::l_paren, tok::plus, tok::minus,
+                    tok::kw_NOT, tok::identifier, tok::integer_literal)) {
+                    if (!parseExprList (Exprs))
+                        return handle_err ();
+                }
+                if (consume (tok::r_paren))
+                    return handle_err ();
+            }
+            Actions.actOnProcCall (Stmts, Loc, D, Exprs);
         }
-        Actions.actOnProcCall (Stmts, Loc, D, Exprs); // Stmts.push_back
+
         break;
+    }
 
     case tok::kw_IF:
         if (!parseIfStatement (Stmts))
@@ -788,7 +932,7 @@ bool Parser::parseFactor (Expr*& E) {
                    tok::lessequal, tok::equal, tok::greater, tok::greaterequal,
                    tok::kw_AND, tok::kw_DIV, tok::kw_DO, tok::kw_ELSE,
                    tok::kw_END, tok::kw_MOD, tok::kw_OR, tok::kw_THEN)) {
-            E = Actions.actOnVariable (D);
+            E = Actions.actOnDesignator (D);
         }
         break;
     }

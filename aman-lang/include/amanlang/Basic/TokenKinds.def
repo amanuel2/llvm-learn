@@ -12,11 +12,10 @@
 
 TOK(unknown)             // Not a token.
 TOK(eof)                 // End of file.
-
 TOK(identifier)          // abcde123
-
 TOK(integer_literal)     // 123, 123B, 123H
 TOK(string_literal)      // "foo", 'foo'
+
 
 PUNCTUATOR(plus,                "+")
 PUNCTUATOR(minus,               "-")
@@ -35,6 +34,10 @@ PUNCTUATOR(lessequal,           "<=")
 PUNCTUATOR(greaterequal,        ">=")
 PUNCTUATOR(l_paren,             "(")
 PUNCTUATOR(r_paren,             ")")
+// Ch-5
+PUNCTUATOR(caret,               "^")
+PUNCTUATOR(l_square,            "[")
+PUNCTUATOR(r_square,            "]")
 
 KEYWORD(AND                         , KEYALL)
 KEYWORD(BEGIN                       , KEYALL)
@@ -55,6 +58,14 @@ KEYWORD(RETURN                      , KEYALL)
 KEYWORD(THEN                        , KEYALL)
 KEYWORD(VAR                         , KEYALL)
 KEYWORD(WHILE                       , KEYALL)
+// Ch-5
+KEYWORD(ARRAY                       , KEYALL)
+KEYWORD(OF                          , KEYALL)
+KEYWORD(POINTER                     , KEYALL)
+KEYWORD(RECORD                      , KEYALL)
+KEYWORD(TO                          , KEYALL)
+KEYWORD(TYPE                        , KEYALL)
+
 
 #undef KEYWORD
 #undef PUNCTUATOR

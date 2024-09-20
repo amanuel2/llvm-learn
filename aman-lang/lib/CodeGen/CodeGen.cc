@@ -16,7 +16,7 @@ std::unique_ptr<llvm::Module> CodeGen::run (ModuleDecl* Decl, std::string name) 
     M->setTargetTriple (Machine.getTargetTriple ().getTriple ());
     M->setDataLayout (Machine.createDataLayout ());
 
-    CGModule CGM (M.get ());
+    CGModule CGM (M.get (), ASTCtx);
     CGM.initialize ();
     CGM.run (Decl);
     return M;

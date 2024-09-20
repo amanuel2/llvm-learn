@@ -188,6 +188,12 @@ void Lexer::next (Token& Result) {
             else
                 formToken (Result, Ptr + 1, tok::greater);
             break;
+
+        // CH.5 (selectors)
+        case '^': formToken (Result, Ptr + 1, tok::caret);
+        case '[': formToken (Result, Ptr + 1, tok::l_square);
+        case ']': formToken (Result, Ptr + 1, tok::r_square);
+
         default: Result.setKind (tok::unknown);
         }
         return;

@@ -33,6 +33,12 @@ class Parser {
     bool parseFormalParameters (FormalParamList& Params, Decl*& RetType);
     bool parseFormalParameterList (FormalParamList& Params);
     bool parseFormalParameter (FormalParamList& Params);
+    // ch.5
+    bool parseTypeDeclaration(DeclList &Decls);
+    bool parseSelectors(Expr *&E);
+    bool parseFieldList(FieldList &Fields);
+    bool parseField(FieldList &Fields);
+
 
     // Parser Statements
     bool parseStatementSequence (StmtList& Stmts);

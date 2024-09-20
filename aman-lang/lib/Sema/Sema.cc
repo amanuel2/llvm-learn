@@ -1,4 +1,7 @@
 #include "amanlang/Sema/Sema.h"
+#include "amanlang/AST/AST.h"
+#include "amanlang/Basic/Diagnostic.h"
+#include "llvm/ADT/StringSet.h"
 
 using namespace amanlang;
 
@@ -35,8 +38,8 @@ bool Sema::isOperatorForType (tok::TokenKind Op, TypeDecl* Ty) {
 }
 
 void Sema::initalize () {
-    IntegerType = new TypeDecl (CurDecl, llvm::SMLoc (), "Integer");
-    BooleanType = new TypeDecl (CurDecl, llvm::SMLoc (), "Boolean");
+    IntegerType = new PervasiveTypeDecl (CurDecl, llvm::SMLoc (), "Integer");
+    BooleanType = new PervasiveTypeDecl (CurDecl, llvm::SMLoc (), "Boolean");
 
     TrueLiteral  = new BooleanLiteral (true, BooleanType);
     FalseLiteral = new BooleanLiteral (false, BooleanType);
@@ -244,6 +247,158 @@ void Sema::actOnProcedureHeading (ProcedureDecl* ProcDecl, FormalParamList& Para
 }
 
 /////////////////////////////////////////////////////////////////////////////
+#pragma mark - Action (Declarations - Type)
+/////////////////////////////////////////////////////////////////////////////
+
+/**
+ * Creates a new alias type declaration and adds it to the current scope.
+ *
+ * This function is responsible for creating a new `AliasTypeDecl` instance and
+ * inserting it into the current scope. If a declaration with the same name
+ * already exists in the current scope, an error is reported.
+ *
+ * @param Decls The list of declarations to add the new alias type declaration to.
+ * @param Loc The source location of the alias type declaration.
+ * @param Name The name of the alias type.
+ * @param D The declaration to alias.
+ */
+void Sema::actOnAliasTypeDeclaration (DeclList& Decls, llvm::SMLoc Loc, llvm::StringRef Name, Decl* D) {
+    assert (CurScope && "CurrentScope not set");
+    if (TypeDecl* Ty = llvm::dyn_cast<TypeDecl> (D)) { // just another TypeDecl
+        AliasTypeDecl* Decl = new AliasTypeDecl (CurDecl, Loc, Name, Ty);
+        if (CurScope->insert (Decl))
+            Decls.push_back (Decl);
+        else
+            Diag.report (Loc, diag::err_symbold_declared, Name);
+    } else {
+        Diag.report (Loc, diag::err_vardecl_requires_type, Name);
+    }
+}
+
+/**
+ * Creates a new array type declaration and adds it to the current scope.
+ *
+ * This function is responsible for creating a new `ArrayTypeDecl` instance and
+ * inserting it into the current scope. The array type declaration must have a
+ * constant integer expression for the array size, and the element type must be
+ * a valid type declaration. If a declaration with the same name already exists
+ * in the current scope, an error is reported.
+ *
+ * @param Decls The list of declarations to add the new array type declaration to.
+ * @param Loc The source location of the array type declaration.
+ * @param Name The name of the array type.
+ * @param E The constant integer expression for the array size.
+ * @param D The type declaration for the array element type.
+ */
+void Sema::actOnArrayTypeDeclaration (DeclList& Decls,
+llvm::SMLoc Loc,
+llvm::StringRef Name,
+Expr* E,
+Decl* D) {
+    assert (CurScope && "CurrentScope not set");
+    if (E && E->isConst () && E->getType ()->getName () == "INTEGER") {
+        if (TypeDecl* Ty = llvm::dyn_cast<TypeDecl> (D)) {
+            ArrayTypeDecl* Decl = new ArrayTypeDecl (CurDecl, Loc, Name, E, Ty);
+            if (CurScope->insert (Decl))
+                Decls.push_back (Decl);
+            else
+                Diag.report (Loc, diag::err_symbold_declared, Name);
+        } else {
+            Diag.report (Loc, diag::err_vardecl_requires_type); // TODO
+        }
+    }
+}
+
+/**
+ * Creates a new pointer type declaration and adds it to the current scope.
+ *
+ * This function is responsible for creating a new `PointerTypeDecl` instance and
+ * inserting it into the current scope. The pointer type declaration must have a
+ * valid type declaration as its base type. If a declaration with the same name
+ * already exists in the current scope, an error is reported.
+ *
+ * @param Decls The list of declarations to add the new pointer type declaration to.
+ * @param Loc The source location of the pointer type declaration.
+ * @param Name The name of the pointer type.
+ * @param D The type declaration for the base type of the pointer.
+ */
+void Sema::actOnPointerTypeDeclaration (DeclList& Decls,
+llvm::SMLoc Loc,
+llvm::StringRef Name,
+Decl* D) {
+    assert (CurScope && "CurrentScope not set");
+    if (TypeDecl* Ty = llvm::dyn_cast<TypeDecl> (D)) {
+        PointerTypeDecl* Decl = new PointerTypeDecl (CurDecl, Loc, Name, Ty);
+        if (CurScope->insert (Decl))
+            Decls.push_back (Decl);
+        else
+            Diag.report (Loc, diag::err_symbold_declared, Name);
+    } else {
+        Diag.report (Loc,
+        diag::err_vardecl_requires_type); // TODO
+    }
+}
+
+/**
+ * Handles the declaration of fields within a struct or record type.
+ *
+ * This function is responsible for creating new `FieldDecl` instances for each
+ * field identifier provided, and associating the appropriate type declaration
+ * with each field. If the type declaration is not a valid `TypeDecl`, an error
+ * is reported.
+ *
+ * @param Fields The list of field declarations to add the new fields to.
+ * @param Ids The list of field identifier names.
+ * @param D The type declaration to associate with the new fields.
+ */
+void Sema::actOnFieldDeclaration (FieldList& Fields, IdentList& Ids, Decl* D) {
+    if (TypeDecl* Ty = llvm::dyn_cast<TypeDecl> (D)) {
+        for (auto it = Ids.begin (); it != Ids.end (); ++it)
+            Fields.emplace_back (it->Loc, it->Name, Ty);
+
+    } else if (!Ids.empty ()) {
+        Diag.report (Ids.front ().Loc,
+        diag::err_vardecl_requires_type); // TODO
+    }
+}
+
+/**
+ * Handles the declaration of a record type.
+ *
+ * This function is responsible for creating a new `RecordTypeDeclaration` and
+ * adding it to the provided declaration list. It first checks that there are no
+ * duplicate field names in the record type, and reports an error if any are
+ * found. The new record type declaration is then inserted into the current
+ * scope, or an error is reported if a declaration with the same name already
+ * exists in the current scope.
+ *
+ * @param Decls The list of declarations to add the new record type declaration to.
+ * @param Loc The source location of the record type declaration.
+ * @param Name The name of the record type.
+ * @param Fields The list of field declarations for the record type.
+ */
+void Sema::actOnRecordTypeDeclaration (DeclList& Decls,
+llvm::SMLoc Loc,
+llvm::StringRef Name,
+const FieldList& Fields) {
+    assert (CurScope && "CurrentScope not set");
+    llvm::StringSet<> FieldSet;
+    for (const auto& F : Fields) {
+        if (FieldSet.find (F.getName ()) != FieldSet.end ()) {
+            Diag.report (F.getLoc (), diag::err_symbold_declared, F.getName ());
+            return;
+        }
+        FieldSet.insert (F.getName ());
+    }
+    RecordTypeDecl* Decl = new RecordTypeDecl (CurDecl, Loc, Name, Fields);
+    if (CurScope->insert (Decl))
+        Decls.push_back (Decl);
+    else
+        Diag.report (Loc, diag::err_symbold_declared, Name);
+}
+
+
+/////////////////////////////////////////////////////////////////////////////
 #pragma mark - Action (Statements)
 /////////////////////////////////////////////////////////////////////////////
 
@@ -259,8 +414,8 @@ void Sema::actOnProcedureHeading (ProcedureDecl* ProcDecl, FormalParamList& Para
  * @param D The variable declaration to assign to.
  * @param E The expression to assign to the variable.
  */
-void Sema::actOnAssignment (StmtList& Stmts, llvm::SMLoc Loc, Decl* D, Expr* E) {
-    if (auto Var = llvm::dyn_cast<VariableDecl> (D)) {
+void Sema::actOnAssignment (StmtList& Stmts, llvm::SMLoc Loc, Expr* D, Expr* E) {
+    if (auto Var = llvm::dyn_cast<Designator> (D)) {
         if (Var->getType () != E->getType ()) {
             Diag.report (Loc, diag::err_types_for_operator_not_compatible,
             tok::getPunctuatorSpelling (tok::colonequal));
@@ -299,7 +454,7 @@ const ExprList& Actuals) {
         Expr* Arg              = *A;
         if (F->getType () != Arg->getType ())
             Diag.report (Loc, diag::err_type_of_formal_and_actual_parameter_not_compatible);
-        if (F->isVar () && llvm::isa<VariableAccess> (Arg))
+        if (F->isVar () && llvm::isa<Designator> (Arg))
             Diag.report (Loc, diag::err_var_parameter_requires_var);
     }
 }
@@ -392,7 +547,7 @@ void Sema::actOnReturnStatement (StmtList& Stmts, llvm::SMLoc Loc, Expr* RetVal)
         Diag.report (Loc, diag::err_function_requires_return);
     if (!Cur->getRetType () && RetVal)
         Diag.report (Loc, diag::err_procedure_requires_empty_return);
-    if ((Cur->getRetType () && RetVal) && Cur->getRetType () != RetVal->getType())
+    if ((Cur->getRetType () && RetVal) && Cur->getRetType () != RetVal->getType ())
         Diag.report (Loc, diag::err_function_and_return_type);
 
     Stmts.push_back (new ReturnStatement (RetVal));
@@ -541,11 +696,11 @@ Expr* Sema::actOnPrefixExpression (Expr* E, const OperatorInfo& Op) {
 
     if (Op.getKind () == tok::TokenKind::minus) {
         bool Ambigious = true;
-        if (llvm::isa<VariableAccess> (E) || llvm::isa<ConstantAccess> (E) ||
+        if (llvm::isa<Designator> (E) || llvm::isa<ConstantAccess> (E) ||
         llvm::isa<IntegerLiteral> (E))
             Ambigious = false;
         if (auto Infix = llvm::dyn_cast<InfixExpression> (E)) {
-            auto OpKind = Infix->getOperatorInfo().getKind();
+            auto OpKind = Infix->getOperatorInfo ().getKind ();
             if (OpKind == tok::TokenKind::star || OpKind == tok::TokenKind::slash)
                 Ambigious = false;
         }
@@ -583,34 +738,6 @@ Expr* Sema::actOnIntegerLiteral (llvm::SMLoc Loc, llvm::StringRef Literal) {
 
     llvm::APInt Value (64, Literal, Radix);
     return new IntegerLiteral (Loc, llvm::APSInt (Value), IntegerType);
-}
-
-/**
- * Resolves a variable declaration to an expression representing the variable access.
- *
- * This function takes a declaration for a variable, parameter, or constant, and
- * returns an expression that represents accessing that variable or constant.
- * For boolean constants, it returns the appropriate `TrueLiteral` or `FalseLiteral`
- * expression.
- *
- * @param D The declaration to resolve to an expression.
- * @return An expression representing the variable or constant access, or `nullptr`
- *         if the declaration is not a valid variable, parameter, or constant.
- */
-Expr* Sema::actOnVariable (Decl* D) {
-    if (!D)
-        return nullptr;
-    if (auto* V = llvm::dyn_cast<VariableDecl> (D))
-        return new VariableAccess (V);
-    else if (auto* P = llvm::dyn_cast<FormalParameterDecl> (D))
-        return new VariableAccess (P);
-    else if (auto* C = llvm::dyn_cast<ConstantDecl> (D)) {
-        if (C == TrueConst || C == FalseConst)
-            return (C == TrueConst) ? TrueLiteral : FalseLiteral;
-
-        return new ConstantAccess (C);
-    }
-    return nullptr;
 }
 
 /**
@@ -690,10 +817,10 @@ Expr* Sema::actOnFunctionCall (Decl* D, ExprList& Params) {
  */
 Decl* Sema::actOnQualIdentPart (Decl* Prev, llvm::SMLoc Loc, llvm::StringRef Name) {
     if (!Prev) {
-        llvm::outs() << "Lookup begin\n";
+        llvm::outs () << "Lookup begin\n";
         if (Decl* D = CurScope->lookup (Name))
             return D;
-        llvm::outs() << "Lookup end\n";
+        llvm::outs () << "Lookup end\n";
     } else if (auto* Mod = llvm::dyn_cast<ModuleDecl> (Prev)) {
         auto Decls = Mod->getDecls ();
         for (auto it = Decls.begin (); it != Decls.end (); it++)
@@ -706,4 +833,99 @@ Decl* Sema::actOnQualIdentPart (Decl* Prev, llvm::SMLoc Loc, llvm::StringRef Nam
 
     Diag.report (Loc, diag::err_undeclared_name, Name);
     return nullptr;
+}
+
+/////////////////////////////////////////////////////////////////////////////
+#pragma mark - Action (Designators)
+/////////////////////////////////////////////////////////////////////////////
+
+Expr* Sema::actOnDesignator (Decl* D) {
+    if (!D)
+        return nullptr;
+
+    if (auto* V = llvm::dyn_cast<VariableDecl> (D))
+        return new Designator (V);
+
+    if (auto* P = llvm::dyn_cast<FormalParameterDecl> (D))
+        return new Designator (P);
+
+    if (auto* C = llvm::dyn_cast<ConstantDecl> (D)) {
+        if (C == TrueConst)
+            return TrueLiteral;
+        if (C == FalseConst) {
+            return FalseLiteral;
+        }
+        return new ConstantAccess (C);
+    }
+    return nullptr;
+}
+
+// Each Selectors below just adds its self to designator (one)
+
+/**
+ * Handles an index selector expression for a designator.
+ *
+ * If the designator is an array type, this function adds a new index selector
+ * to the designator, using the provided expression as the index.
+ *
+ * @param Desig The designator expression.
+ * @param Loc The source location of the index selector.
+ * @param E The index expression.
+ */
+void Sema::actOnIndexSelector (Expr* Desig, llvm::SMLoc Loc, Expr* E) {
+    if (auto* D = llvm::dyn_cast<Designator> (Desig)) {
+        if (auto* Ty = llvm::dyn_cast<ArrayTypeDecl> (D->getType ())) {
+            D->addSelector (new IndexSelector (Ty->getType (), E));
+        }
+        Diag.report (Loc, diag::err_expected); // change name
+    }
+    Diag.report (Loc, diag::err_expected); // change name
+}
+
+/**
+ * Handles a field selector expression for a designator.
+ *
+ * If the designator is a record type, this function adds a new field selector
+ * to the designator, using the provided field name.
+ *
+ * @param Desig The designator expression.
+ * @param Loc The source location of the field selector.
+ * @param Name The name of the field to select.
+ */
+void Sema::actOnFieldSelector (Expr* Desig, llvm::SMLoc Loc, llvm::StringRef Name) {
+    // TODO Implement
+    if (auto* D = llvm::dyn_cast<Designator> (Desig)) {
+        if (auto* R = llvm::dyn_cast<RecordTypeDecl> (D->getType ())) {
+            uint32_t Index = 0;
+            for (const auto& F : R->getFields ()) {
+                if (F.getName () == Name) {
+                    D->addSelector (new FieldSelector (F.getType (), Name, Index));
+                    return;
+                }
+                ++Index;
+            }
+            // TODO Error message
+        }
+        // TODO Error message
+    }
+    // TODO Error message
+}
+
+/**
+ * Handles a dereference selector expression for a designator.
+ *
+ * If the designator is a pointer type, this function adds a new dereference
+ * selector to the designator.
+ *
+ * @param Desig The designator expression.
+ * @param Loc The source location of the dereference selector.
+ */
+void Sema::actOnDereferenceSelector (Expr* Desig, llvm::SMLoc Loc) {
+    if (auto* D = llvm::dyn_cast<Designator> (Desig)) {
+        if (auto* Ty = llvm::dyn_cast<PointerTypeDecl> (D->getType ())) {
+            D->addSelector (new DerefSelector (Ty->getType ()));
+        }
+        // TODO Error message
+    }
+    // TODO Error message
 }

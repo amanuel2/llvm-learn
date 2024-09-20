@@ -25,11 +25,17 @@ class Decl;
 class Expr;
 class Stmt;
 class FormalParameterDecl;
+class Selector;
+class Field;
 
 using DeclList        = std::vector<Decl*>;
 using FormalParamList = std::vector<FormalParameterDecl*>;
 using ExprList        = std::vector<Expr*>;
 using StmtList        = std::vector<Stmt*>;
+
+
+using SelList   = std::vector<Selector*>;
+using FieldList = std::vector<Field>;
 
 
 /**
@@ -57,7 +63,20 @@ typedef std::vector<Ident> IdentList;
 class Decl {
 
     public:
-    enum DeclKind { DK_Module, DK_Const, DK_Type, DK_Var, DK_Param, DK_Proc };
+    enum DeclKind {
+        DK_Module,
+        DK_Const,
+        DK_Var,
+        DK_Param,
+        DK_Proc,
+
+        // Types
+        DK_AliasType,
+        DK_ArrayType,
+        DK_PervasiveType,
+        DK_PointerType,
+        DK_RecordType,
+    };
 
     Decl (DeclKind Kind, Decl* EnclosingDecl, llvm::SMLoc& Loc, llvm::StringRef Name)
     : Kind (Kind), EnclosingDecl (EnclosingDecl), Loc (Loc), Name (Name) {
@@ -148,6 +167,8 @@ class ConstantDecl : public Decl {
     Expr* E;
 };
 
+#pragma mark - ## Type Declarations
+
 /**
  * Represents a type declaration in the Aman programming language.
  *
@@ -156,13 +177,183 @@ class ConstantDecl : public Decl {
  */
 class TypeDecl : public Decl {
     public:
-    TypeDecl (Decl* EnclosingDecl, llvm::SMLoc Loc, llvm::StringRef Name)
-    : Decl (DK_Type, EnclosingDecl, Loc, Name) {
+    TypeDecl (DeclKind Kind, Decl* EnclosingDecl, llvm::SMLoc Loc, llvm::StringRef Name)
+    : Decl (Kind, EnclosingDecl, Loc, Name) {
     }
 
     static bool classof (const Decl* D) {
-        return D->getKind () == DK_Type;
+        return D->getKind () >= DK_AliasType && D->getKind () <= DK_RecordType;
     }
+};
+
+/**
+ * Represents an alias type declaration in the Aman programming language.
+ *
+ * The `AliasTypeDecl` class represents a type declaration that defines a new type
+ * as an alias for an existing type. This allows creating new type names that refer
+ * to the same underlying type.
+ *
+ * @param EnclosingDecL The declaration that encloses this alias type declaration.
+ * @param Loc The source location of this declaration.
+ * @param Name The name of the new alias type.
+ * @param Type The existing type that the new alias type refers to.
+ * @example:
+ */
+class AliasTypeDecl : public TypeDecl {
+    TypeDecl* Type;
+
+    public:
+    AliasTypeDecl (Decl* EnclosingDecL, llvm::SMLoc Loc, llvm::StringRef Name, TypeDecl* Type)
+    : TypeDecl (DK_AliasType, EnclosingDecL, Loc, Name), Type (Type) {
+    }
+
+    TypeDecl* getType () const {
+        return Type;
+    }
+
+    static bool classof (const Decl* D) {
+        return D->getKind () == DK_AliasType;
+    }
+};
+
+/**
+ * Represents an array type declaration in the Aman programming language.
+ *
+ * The `ArrayTypeDecl` class represents a type declaration that defines a new array
+ * type. The array type is parameterized by the number of elements in the array,
+ * specified by the `Nums` expression, and the element type, specified by the `Type`
+ * type declaration.
+ *
+ * @param EnclosingDecL The declaration that encloses this array type declaration.
+ * @param Loc The source location of this declaration.
+ * @param Name The name of the new array type.
+ * @param Nums An expression that specifies the number of elements in the array.
+ * @param Type The type declaration that specifies the element type of the array.
+ */
+class ArrayTypeDecl : public TypeDecl {
+    Expr* Nums;
+    TypeDecl* Type;
+
+    public:
+    ArrayTypeDecl (Decl* EnclosingDecl, llvm::SMLoc Loc, llvm::StringRef Name, Expr* Nums, TypeDecl* Type)
+    : TypeDecl (DK_ArrayType, EnclosingDecl, Loc, Name), Nums (Nums), Type (Type) {
+    }
+
+    Expr* getNums () const {
+        return Nums;
+    }
+    TypeDecl* getType () const {
+        return Type;
+    }
+
+    static bool classof (const Decl* D) {
+        return D->getKind () == DK_ArrayType;
+    }
+};
+
+/**
+ * Represents a pervasive type declaration in the Aman programming language.
+ *
+ * The `PervasiveTypeDecl` class represents a type declaration for a pervasive type,
+ * which is a built-in type that is available throughout the entire program. This
+ * class is used to declare pervasive types in the Aman language.
+ *
+ * @param EnclosingDecL The declaration that encloses this pervasive type declaration.
+ * @param Loc The source location of this declaration.
+ * @param Name The name of the new pervasive type.
+ */
+class PervasiveTypeDecl : public TypeDecl {
+    public:
+    PervasiveTypeDecl (Decl* EnclosingDecL, llvm::SMLoc Loc, llvm::StringRef Name)
+    : TypeDecl (DK_PervasiveType, EnclosingDecL, Loc, Name) {
+    }
+
+    static bool classof (const Decl* D) {
+        return D->getKind () == DK_PervasiveType;
+    }
+};
+
+/**
+ * Represents a pointer type declaration in the Aman programming language.
+ *
+ * The `PointerTypeDeclaration` class represents a pointer type declaration, which
+ * declares a new type that is a pointer to another type. This class is used to
+ * declare pointer types in the Aman language.
+ *
+ * @param EnclosingDecL The declaration that encloses this pointer type declaration.
+ * @param Loc The source location of this declaration.
+ * @param Name The name of the new pointer type.
+ * @param Type The type declaration that specifies the type that this pointer points to.
+ */
+class PointerTypeDecl : public TypeDecl {
+    public:
+    PointerTypeDecl (Decl* EnclosingDecl, llvm::SMLoc Loc, llvm::StringRef Name, TypeDecl* Type)
+    : TypeDecl (DK_PointerType, EnclosingDecl, Loc, Name), Type (Type) {
+    }
+
+    TypeDecl* getType () const {
+        return Type;
+    }
+
+    static bool classof (const Decl* D) {
+        return D->getKind () == DK_PointerType;
+    }
+
+    private:
+    TypeDecl* Type;
+};
+
+/**
+ * Represents a record type declaration in the Aman programming language.
+ *
+ * The `RecordTypeDecl` class represents a record type declaration, which declares a new
+ * type that is a collection of named fields, each with their own type. This class is
+ * used to declare record types in the Aman language.
+ *
+ * @param EnclosingDecL The declaration that encloses this record type declaration.
+ * @param Loc The source location of this declaration.
+ * @param Name The name of the new record type.
+ * @param Fields The list of fields that make up this record type.
+ */
+class RecordTypeDecl : public TypeDecl {
+
+    public:
+    RecordTypeDecl (Decl* EnclosingDecL, llvm::SMLoc Loc, llvm::StringRef Name, const FieldList& Fields)
+    : TypeDecl (DK_RecordType, EnclosingDecL, Loc, Name), Fields (Fields) {
+    }
+
+    const FieldList& getFields () const {
+        return Fields;
+    }
+
+    static bool classof (const Decl* D) {
+        return D->getKind () == DK_RecordType;
+    }
+
+    private:
+    FieldList Fields;
+};
+
+class Field {
+
+    public:
+    Field (llvm::SMLoc Loc, const llvm::StringRef& Name, TypeDecl* Type)
+    : Loc (Loc), Name (Name), Type (Type) {
+    }
+    auto getLoc () const {
+        return Loc;
+    }
+    auto getType () const {
+        return Type;
+    }
+    const llvm::StringRef& getName () const {
+        return Name;
+    }
+
+    private:
+    llvm::SMLoc Loc;
+    llvm::StringRef Name;
+    TypeDecl* Type;
 };
 
 /**
@@ -346,6 +537,7 @@ class Expr {
         EK_Var,
         EK_Const,
         EK_Func,
+        EK_Designator,
     };
 
     private:
@@ -468,35 +660,156 @@ class BooleanLiteral : public Expr {
     bool Value;
 };
 
+// /**
+//  * Represents a variable access expression in the abstract syntax tree (AST).
+//  * A variable access expression refers to a variable declaration, which can be either a
+//  * VariableDecl or a FormalParameterDecl. The expression holds a reference to the
+//  * variable declaration and its type.
+//  *
+//  * FormalParameterDecl Example: `procedure foo (x: integer) { x }` where `x` is a FormalParameterDecl.
+//  * VariableDecl Example: `var x: integer = 42` where `x` is a VariableDecl.
+//  */
+// class VariableAccess : public Expr {
+//     public:
+//     VariableAccess (VariableDecl* Var)
+//     : Expr (EK_Var, Var->getType (), false), Var (Var) {
+//     }
+//     VariableAccess (FormalParameterDecl* Param)
+//     : Expr (EK_Var, Param->getType (), false), Var (Param) {
+//     }
+
+//     Decl* getDecl () {
+//         return Var;
+//     }
+
+//     static bool classof (const Expr* E) {
+//         return E->getKind () == EK_Var;
+//     }
+
+//     private:
+//     Decl* Var;
+// };
+
 /**
- * Represents a variable access expression in the abstract syntax tree (AST).
- * A variable access expression refers to a variable declaration, which can be either a
- * VariableDecl or a FormalParameterDecl. The expression holds a reference to the
- * variable declaration and its type.
- *
- * FormalParameterDecl Example: `procedure foo (x: integer) { x }` where `x` is a FormalParameterDecl.
- * VariableDecl Example: `var x: integer = 42` where `x` is a VariableDecl.
+ * Represents a selector expression in the abstract syntax tree (AST).
+ * A selector expression refers to a component of a composite type, such as an array index, a struct field, or a pointer dereference.
+ * The selector expression holds the kind of selector (index, field, or dereference) and the type of the selected component.
  */
-class VariableAccess : public Expr {
+class Selector {
+
     public:
-    VariableAccess (VariableDecl* Var)
-    : Expr (EK_Var, Var->getType (), false), Var (Var) {
+    enum class SelectorKind {
+        SK_Index,
+        SK_Field,
+        SK_Dereference,
+    };
+
+    SelectorKind getKind () const {
+        return Kind;
     }
-    VariableAccess (FormalParameterDecl* Param)
-    : Expr (EK_Var, Param->getType (), false), Var (Param) {
+    TypeDecl* getType () const {
+        return Type;
+    }
+
+    Selector (SelectorKind Kind, TypeDecl* Type) : Kind (Kind), Type (Type) {};
+
+    private:
+    protected:
+    const SelectorKind Kind;
+
+    // The type decribes the base type.
+    // E.g. the component type of an index selector
+    TypeDecl* Type;
+};
+
+class IndexSelector : public Selector {
+    public:
+    IndexSelector (TypeDecl* Type, Expr* Index)
+    : Selector (Selector::SelectorKind::SK_Index, Type), Index (Index) {};
+
+    Expr* getIndex () const {
+        return Index;
+    }
+
+    // llvm rrti
+    static bool classof (const Selector* Sel) {
+        return Sel->getKind () == Selector::SelectorKind::SK_Index;
+    }
+
+    private:
+    Expr* Index;
+};
+
+
+/**
+ * Represents a field selector expression in the abstract syntax tree (AST).
+ * A field selector expression refers to a field or member of a composite type, such as a struct or class.
+ * The expression holds the name and index of the selected field, as well as the type of the field.
+ */
+class FieldSelector : public Selector {
+    public:
+    FieldSelector (TypeDecl* Type, llvm::StringRef& Name, uint32_t Idx)
+    : Selector (Selector::SelectorKind::SK_Field, Type), Name (Name), Idx (Idx) {};
+
+    auto getName () const {
+        return Name;
+    }
+
+    auto getIndex () const {
+        return Idx;
+    }
+
+    static bool classof (const Selector* Sel) {
+        return Sel->getKind () == Selector::SelectorKind::SK_Field;
+    }
+
+    private:
+    llvm::StringRef& Name;
+    uint32_t Idx;
+};
+
+/**
+ * Represents a dereference selector expression in the abstract syntax tree (AST).
+ * A dereference selector expression refers to the underlying type of a pointer or reference type.
+ * The expression holds the type of the underlying value that the pointer or reference points to.
+ */
+class DerefSelector : public Selector {
+    public:
+    DerefSelector (TypeDecl* Type)
+    : Selector (Selector::SelectorKind::SK_Dereference, Type) {};
+
+    static bool classof (const Selector* Sel) {
+        return Sel->getKind () == Selector::SelectorKind::SK_Dereference;
+    };
+};
+
+class Designator : public Expr {
+    public:
+    Designator (VariableDecl* Var) : Expr (EK_Var, Var->getType (), false) {};
+    Designator (FormalParameterDecl* Param)
+    : Expr (EK_Designator, Param->getType (), false) {};
+
+    void addSelector (Selector* Sel) {
+        Lst.push_back (Sel);
+        setType (Sel->getType ());
     }
 
     Decl* getDecl () {
         return Var;
     }
+    const SelList& getSelectors () const {
+        return Lst;
+    }
 
-    static bool classof (const Expr* E) {
-        return E->getKind () == EK_Var;
+    static bool classof (const Expr* Expr) {
+        return Expr->getKind () == EK_Designator;
     }
 
     private:
     Decl* Var;
+    SelList Lst;
 };
+
 
 /**
  * Represents a constant access expression in the abstract syntax tree (AST).
@@ -578,11 +891,11 @@ class Stmt {
  */
 class AssignmentStatement : public Stmt {
     public:
-    AssignmentStatement (VariableDecl* Var, Expr* E)
+    AssignmentStatement (Designator* Var, Expr* E)
     : Stmt (SK_Assign), Var (Var), E (E) {
     }
 
-    VariableDecl* getVar () {
+    Designator* getVar () {
         return Var;
     }
     Expr* getExpr () {
@@ -594,7 +907,7 @@ class AssignmentStatement : public Stmt {
     }
 
     private:
-    VariableDecl* Var;
+    Designator* Var;
     Expr* E;
 };
 

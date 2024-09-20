@@ -1,6 +1,7 @@
 #pragma once
 
 #include "amanlang/AST/AST.h"
+#include "amanlang/AST/ASTCtx.h"
 #include <llvm/IR/LLVMContext.h>
 #include <llvm/IR/Module.h>
 
@@ -8,7 +9,7 @@ namespace amanlang {
 
 class CGModule {
     public:
-    CGModule (llvm::Module* M) : M (M) {
+    CGModule (llvm::Module* M, ASTContext& ASTCtx) : M (M), ASTCtx (ASTCtx) {
         initialize ();
     }
 
@@ -23,18 +24,22 @@ class CGModule {
     void run (ModuleDecl* Mod);
 
     // getters
-    constexpr LLVM_ATTRIBUTE_ALWAYS_INLINE llvm::LLVMContext& getLLVMCtx () {
+    constexpr LLVM_ATTRIBUTE_ALWAYS_INLINE auto& getLLVMCtx () {
         return M->getContext ();
     }
-    constexpr LLVM_ATTRIBUTE_ALWAYS_INLINE llvm::Module* getModule () {
+    constexpr LLVM_ATTRIBUTE_ALWAYS_INLINE auto* getModule () {
         return M;
     }
-    constexpr LLVM_ATTRIBUTE_ALWAYS_INLINE ModuleDecl* getModuleDeclaration () {
+    constexpr LLVM_ATTRIBUTE_ALWAYS_INLINE auto* getModuleDeclaration () {
         return ModDecl;
     }
 
-    constexpr LLVM_ATTRIBUTE_ALWAYS_INLINE llvm::GlobalObject* getGlobal (Decl* D) {
+    constexpr LLVM_ATTRIBUTE_ALWAYS_INLINE auto* getGlobal (Decl* D) {
         return Globals[D];
+    }
+
+    constexpr LLVM_ATTRIBUTE_ALWAYS_INLINE auto& getASTCtx () {
+        return ASTCtx;
     }
 
     llvm::Type* convertType (TypeDecl* Ty);
@@ -46,5 +51,8 @@ class CGModule {
 
     // Repository of global objects.
     llvm::DenseMap<Decl*, llvm::GlobalObject*> Globals;
+    llvm::DenseMap<TypeDecl*, llvm::Type*> TypeCache;
+
+    ASTContext& ASTCtx;
 };
 } // namespace amanlang

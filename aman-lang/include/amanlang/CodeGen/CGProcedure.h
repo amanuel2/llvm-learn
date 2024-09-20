@@ -39,7 +39,7 @@ class CGProcedure {
     };
 
     using ExprVariant =
-    std::variant<InfixExpression*, PrefixExpression*, VariableAccess*, ConstantAccess*, IntegerLiteral*, BooleanLiteral*>;
+    std::variant<InfixExpression*, PrefixExpression*, Designator*, ConstantAccess*, IntegerLiteral*, BooleanLiteral*>;
 
     using StmtVariant =
     std::variant<AssignmentStatement*, ProcedureCallStatement*, IfStatement*, WhileStatement*, ReturnStatement*, StmtList&>;
@@ -47,9 +47,13 @@ class CGProcedure {
     public:
     explicit CGProcedure (CGModule& CGM)
     : CGM (CGM), Builder (CGM.getLLVMCtx ()), CurrBlk (nullptr) {};
+
+
     void run (ProcedureDecl* Proc);
+    void run ();
 
     protected:
+
     LLVM_ATTRIBUTE_ALWAYS_INLINE void setInsertion (llvm::BasicBlock* BB) {
         CurrBlk = BB;
         Builder.SetInsertPoint (BB);
@@ -59,7 +63,7 @@ class CGProcedure {
     llvm::Value* operator() (Expr* expr);
     llvm::Value* operator() (InfixExpression* expr);
     llvm::Value* operator() (PrefixExpression* expr);
-    llvm::Value* operator() (VariableAccess* expr) {
+    llvm::Value* operator() (Designator* expr) {
         auto* D = expr->getDecl ();
         return readVariable (CurrBlk, D);
     }
@@ -93,10 +97,12 @@ class CGProcedure {
 
     llvm::DenseMap<llvm::BasicBlock*, BasicBlock> BlockDefs;
     llvm::DenseMap<FormalParameterDecl*, llvm::Argument*> FormalParams;
+    // descriptor for an auto variable, which is a local variable that is not a subprogram parameter
+    llvm::DenseMap<Decl*, llvm::DILocalVariable*> DIVariables; // Ch.5
 
     // Read/Write Vars
     void writeVariable (llvm::BasicBlock* BB, Decl* Decl, llvm::Value* Val);
-    llvm::Value* readVariable (llvm::BasicBlock* BB, Decl* Decl);
+    llvm::Value* readVariable (llvm::BasicBlock* BB, Decl* Decl, bool LoadVal = true);
 
     // Read/Write Local Vars
     void writeLocalVariable (llvm::BasicBlock* BB, Decl* Decl, llvm::Value* Val);
@@ -113,8 +119,9 @@ class CGProcedure {
     llvm::Function* createFunction (ProcedureDecl* Proc, llvm::FunctionType* FTy);
 
     // Utils
-    llvm::Type* mapType (Decl* Decl, bool HonorReference = true);
+    llvm::Type* mapType (Decl* Decl);
     void sealBlock (llvm::BasicBlock* BB);
+    llvm::Value* _handleDesignator(Designator* Var); // ch.5
 };
 
 } // namespace amanlang
