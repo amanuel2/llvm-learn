@@ -21,4 +21,5 @@ std::unique_ptr<llvm::Module> CodeGen::run (ModuleDecl* Decl, std::string name) 
     CGM.run (Decl);
     return M;
 }
+
 } // namespace amanlang

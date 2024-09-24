@@ -9,16 +9,18 @@
 #include "llvm/CodeGen/CommandFlags.h"
 #include "llvm/MC/TargetRegistry.h"
 #include "llvm/Support/CommandLine.h"
+#include "llvm/Support/FileSystem.h"
+#include "llvm/Support/InitLLVM.h"
+#include "llvm/Support/ToolOutputFile.h"
 #include "llvm/Support/WithColor.h"
 #include "llvm/TargetParser/Host.h"
 #include "llvm/TargetParser/Triple.h"
-#include "llvm/Support/InitLLVM.h"
-#include "llvm/Support/FileSystem.h"
-#include "llvm/Support/ToolOutputFile.h"
 
 // #include "llvm-c/Core.h"
 #include "llvm/IR/IRPrintingPasses.h"
+#include "llvm/IR/LLVMContext.h"
 #include "llvm/IR/LegacyPassManager.h"
+#include "llvm/IR/Module.h"
 #include "llvm/InitializePasses.h"
 #include "llvm/Pass.h"
 
@@ -99,7 +101,7 @@ bool emit (llvm::StringRef Argv0, llvm::Module* M, llvm::TargetMachine* TM, llvm
     if (OutputName.empty ()) {
         OutputName = "-";
     } else {
-        if (InputFilename.endswith (".mod"))
+        if (InputFilename.ends_with (".mod"))
             OutputName = InputFilename.drop_back (4).str ();
         else
             OutputName = InputFilename.str ();
@@ -166,17 +168,13 @@ void default_cpu () {
 #pragma mark - Main
 ////////////////////////////////////////////////////////////////////////////////
 
-static llvm::codegen::RegisterCodeGenFlags CGF();
-  static cl::opt<CodeGenFileType> FileType(
-      "filetype", cl::init(CodeGenFileType::AssemblyFile),
-      cl::desc(
-          "Choose a file type (not all types are supported by all targets):"),
-      cl::values(clEnumValN(CodeGenFileType::AssemblyFile, "asm",
-                            "Emit an assembly ('.s') file"),
-                 clEnumValN(CodeGenFileType::ObjectFile, "obj",
-                            "Emit a native object ('.o') file"),
-                 clEnumValN(CodeGenFileType::Null, "null",
-                            "Emit nothing, for performance testing")));
+static llvm::codegen::RegisterCodeGenFlags CGF ();
+static cl::opt<CodeGenFileType> FileType ("filetype",
+cl::init (CodeGenFileType::AssemblyFile),
+cl::desc ("Choose a file type (not all types are supported by all targets):"),
+cl::values (clEnumValN (CodeGenFileType::AssemblyFile, "asm", "Emit an assembly ('.s') file"),
+clEnumValN (CodeGenFileType::ObjectFile, "obj", "Emit a native object ('.o') file"),
+clEnumValN (CodeGenFileType::Null, "null", "Emit nothing, for performance testing")));
 
 int main (int argc, const char** _argv) {
 
@@ -233,7 +231,7 @@ int main (int argc, const char** _argv) {
         SrcMgr.AddNewSourceBuffer (std::move (File.get ()), llvm::SMLoc ());
 
         amanlang::Lexer Lex (SrcMgr, Diag);
-        auto ASTCtx = amanlang::ASTContext(SrcMgr, Filename);
+        auto ASTCtx = amanlang::ASTContext (SrcMgr, Filename);
         amanlang::Sema Sema (Diag);
         amanlang::Parser Parser (Lex, Sema);
 

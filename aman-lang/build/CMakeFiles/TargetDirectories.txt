@@ -1,6 +1,8 @@
 /Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/intrinsics_gen.dir
 /Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/omp_gen.dir
 /Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/acc_gen.dir
+/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/ARMTargetParserTableGen.dir
+/Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/AArch64TargetParserTableGen.dir
 /Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/RISCVTargetParserTableGen.dir
 /Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/clang-tablegen-targets.dir
 /Users/amanuelbogale/Documents/llvm-learn/aman-lang/build/CMakeFiles/edit_cache.dir

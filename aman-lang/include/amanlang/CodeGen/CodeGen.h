@@ -2,6 +2,7 @@
 #include "amanlang/AST/AST.h"
 #include "amanlang/AST/ASTCtx.h"
 #include <llvm/Target/TargetMachine.h>
+#include <optional>
 #include <string>
 
 namespace amanlang {
@@ -9,7 +10,8 @@ namespace amanlang {
 class CodeGen {
     public:
     // which target architecture we’d like to generate code.
-    static CodeGen* create (llvm::LLVMContext& Ctx, llvm::TargetMachine* TM, ASTContext& ASTCtx) {
+    static CodeGen*
+    create (llvm::LLVMContext& Ctx, llvm::TargetMachine* TM, ASTContext& ASTCtx) {
         return new CodeGen (Ctx, *TM, ASTCtx);
     }
 

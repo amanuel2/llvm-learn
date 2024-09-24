@@ -68,15 +68,20 @@ std::string CGModule::mangleName (Decl* D) {
     llvm::SmallString<16> Tmp;
 
     while (D) {
-        llvm::StringRef Name = D->getName();
-        Tmp.clear();
-        Tmp.append(llvm::itostr(Name.size()));
+        llvm::StringRef Name = D->getName ();
+        Tmp.clear ();
+        Tmp.append (llvm::itostr (Name.size ()));
         Tmp.append (Name);
-        Mangled.insert(0, Tmp.c_str()); // push_front
+        Mangled.insert (0, Tmp.c_str ()); // push_front
         D = D->getEnclosingDecl ();
     }
 
     return "_t" + Mangled;
+}
+
+void CGModule::decorateInst (llvm::Instruction* Inst, TypeDecl* Type) {
+    if (auto* Tag = this->Tbaa.getAccessTagInfo (Type))
+        Inst->setMetadata (llvm::LLVMContext::MD_tbaa, Tag);
 }
 
 void CGModule::run (ModuleDecl* Mod) {

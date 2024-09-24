@@ -327,6 +327,9 @@ LLVM_BUILD_INSTRUMENTED_COVERAGE:BOOL=OFF
 //The directory containing a CMake configuration file for LLVM.
 LLVM_DIR:PATH=/opt/homebrew/opt/llvm/lib/cmake/llvm
 
+//Build LLVM with -ffat-lto-objects.
+LLVM_ENABLE_FATLTO:BOOL=OFF
+
 //Disable optional build system features that cause problems for
 // IDE generators
 LLVM_ENABLE_IDE:BOOL=OFF
@@ -361,6 +364,10 @@ LLVM_PARALLEL_COMPILE_JOBS:STRING=
 
 //Define the maximum number of concurrent link jobs (Ninja only).
 LLVM_PARALLEL_LINK_JOBS:STRING=
+
+//Define the maximum number of concurrent tablegen jobs (Ninja
+// only).
+LLVM_PARALLEL_TABLEGEN_JOBS:STRING=
 
 //Use prefix for sources
 LLVM_SOURCE_PREFIX:STRING=
@@ -799,8 +806,6 @@ PKG_CONFIG_EXECUTABLE-ADVANCED:INTERNAL=1
 SUPPORTS_FVISIBILITY_INLINES_HIDDEN_FLAG:INTERNAL=1
 //ADVANCED property for variable: Terminfo_LIBRARIES
 Terminfo_LIBRARIES-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: Terminfo_LINKABLE
-Terminfo_LINKABLE-ADVANCED:INTERNAL=1
 //Test Terminfo_LINKABLE
 Terminfo_LINKABLE:INTERNAL=1
 //ADVANCED property for variable: ZLIB_INCLUDE_DIR

@@ -2,6 +2,7 @@
 
 #include "amanlang/AST/AST.h"
 #include "amanlang/AST/ASTCtx.h"
+#include "amanlang/CodeGen/CGTbaa.h"
 #include <llvm/IR/LLVMContext.h>
 #include <llvm/IR/Module.h>
 
@@ -9,7 +10,8 @@ namespace amanlang {
 
 class CGModule {
     public:
-    CGModule (llvm::Module* M, ASTContext& ASTCtx) : M (M), ASTCtx (ASTCtx) {
+    CGModule (llvm::Module* M, ASTContext& ASTCtx)
+    : M (M), ASTCtx (ASTCtx), Tbaa (*this) {
         initialize ();
     }
 
@@ -54,5 +56,9 @@ class CGModule {
     llvm::DenseMap<TypeDecl*, llvm::Type*> TypeCache;
 
     ASTContext& ASTCtx;
+
+    // Ch.6
+    CGTbaa Tbaa;
+    void decorateInst (llvm::Instruction* Inst, TypeDecl* Type);
 };
 } // namespace amanlang
