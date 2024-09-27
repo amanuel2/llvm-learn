@@ -4,4 +4,5 @@ add_amanlang_library(amanlangCodeGen
     CGProcedure.cc
     CGEh.cc
     CGTbaa.cc
+    CGDebugInfo.cc
 )
