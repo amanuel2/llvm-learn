@@ -1,0 +1,10 @@
+/Users/amanuelbogale/Documents/llvm-learn/tablegen/CMakeFiles/intrinsics_gen.dir
+/Users/amanuelbogale/Documents/llvm-learn/tablegen/CMakeFiles/omp_gen.dir
+/Users/amanuelbogale/Documents/llvm-learn/tablegen/CMakeFiles/acc_gen.dir
+/Users/amanuelbogale/Documents/llvm-learn/tablegen/CMakeFiles/ARMTargetParserTableGen.dir
+/Users/amanuelbogale/Documents/llvm-learn/tablegen/CMakeFiles/AArch64TargetParserTableGen.dir
+/Users/amanuelbogale/Documents/llvm-learn/tablegen/CMakeFiles/RISCVTargetParserTableGen.dir
+/Users/amanuelbogale/Documents/llvm-learn/tablegen/CMakeFiles/clang-tablegen-targets.dir
+/Users/amanuelbogale/Documents/llvm-learn/tablegen/CMakeFiles/amanlang-tblgen.dir
+/Users/amanuelbogale/Documents/llvm-learn/tablegen/CMakeFiles/edit_cache.dir
+/Users/amanuelbogale/Documents/llvm-learn/tablegen/CMakeFiles/rebuild_cache.dir
