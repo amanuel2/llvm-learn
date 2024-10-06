@@ -43,7 +43,7 @@ link_directories(${CLANG_LIBRARY_DIRS})
 include(AddLLVM)
 include(HandleLLVMOptions)
 
-# Add AmanLang library
+# Add AmanLang library (our custom AddXYZ.cmake)
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules")
 include(AddAmanLang)
 
